@@ -3,21 +3,25 @@ title: Resume
 layout: resume
 ---
 
-<b> Use this template to share your accomplishments </b>  
-
 ## Currently
 
-Current Position Description
+I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah. While working toward my PhD I am being funding as a Research Assistant. As such, I provide statistical support for papers being published by my department.
 
 ## Education
 
-`1990 - 1994`
-__University Name__
-Degree Awarded
+`2021 - 2023`
+__Montana State University__
+Master of Science in Statistics
 
-`1995 - 1997`
-__University Name__
-Degree Awarded 
+`2015 - 2016`
+__Brigham Young University- Hawaii__
+Bachelor of Science, Summa Cum Laude in Mathematics
+
+`2011-2014`
+__Shoreline Community College__
+Associate of Arts
+
+
 
 ## Awards
 
