@@ -12,7 +12,7 @@ owner:
   bio: An outdoorsy statistician
   website: #
   email: mthroolin@gmail.com #personal email
-  twitter: mthroolin
+  twitter: #mthroolin
   linkedin: mthroolin
   github: mthroolin
   orcid: #orcid id
@@ -23,8 +23,8 @@ owner:
     analytics:
     verify:
     scholar: #google scholar 'user' id 
-  facebook: mthroolin
-  instagram: mthroolin
+  facebook: #mthroolin
+  instagram: #mthroolin
   bing-verify:
   stackoverflow: #123456/username from a "https://stackoverflow.com/users/123456/username" link
   xing: #username
@@ -34,7 +34,7 @@ owner:
   foursquare: #username
   steam: #username
   dribbble: #username
-  youtube: \\@mtwanderings
+  youtube: #@mtwanderings
   soundcloud: #username
   weibo: #username
   flickr: #username
