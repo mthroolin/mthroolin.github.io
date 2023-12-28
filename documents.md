@@ -5,6 +5,8 @@ title: Work Samples
 
 ## Projects at University of Utah
 
+[The Impact of Neurobehavior on Feeding Outcomes in Neonates with CHD](neonate_feeding.html){:target="_blank"}
+
 ## Projects at Montana State University
 
 [An Introduction to Directed Acyclic Graphs and Markov Equivalence](throolin_writingproject.pdf){:target="_blank"}
