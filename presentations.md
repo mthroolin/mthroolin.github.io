@@ -1,5 +1,5 @@
 ---
-layout: resume
+layout: presentation-post-index.html
 title: Work Samples
 ---
 
