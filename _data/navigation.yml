@@ -1,12 +1,12 @@
 # Site navigation links
-- title: Home
+- title: About Michael
   url: /
 
 # - title: Contact
 #  url: /contact/
 
 - title: Work Samples
-  url: /presentations/
+  url: /documents/
 
 - title: Curriculum Vitae
   url: /resume/
