@@ -1,7 +1,6 @@
 ---
 layout: resume
 title: Work Samples
-excerpt: "Recent Presentations"
 ---
 
 A list of recent work:
