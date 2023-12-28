@@ -1,5 +1,5 @@
 ---
-layout: presentation-post-index
+layout: resume
 title: Work Samples
 excerpt: "Recent Presentations"
 ---
