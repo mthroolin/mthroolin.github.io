@@ -11,22 +11,18 @@ I am studying towards a PhD in Population Health Sciences, with an emphasis in b
 
 `2023 - Present`
 __University of Utah__
-
 PhD Student in Population Health Sciences
 
 `2021 - 2023`
 __Montana State University__
-
-Master of Science in Statistics
+MS in Statistics
 
 `2015 - 2016`
 __Brigham Young University- Hawaii__
-
-Bachelor of Science, Summa Cum Laude in Mathematics
+BS, Summa Cum Laude, in Mathematics
 
 `2011-2014`
 __Shoreline Community College__
-
 Associate of Arts
 
 
