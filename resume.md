@@ -10,20 +10,24 @@ I am studying towards a PhD in Population Health Sciences, with an emphasis in b
 ## Education
 
 `2023 - Present`
-__University of Utah__
-PhD Student in Population Health Sciences
+__PhD Student in Population Health Sciences__, 
+University of Utah
+
 
 `2021 - 2023`
-__Montana State University__
-MS in Statistics
+__MS in Statistics__, 
+Montana State University
+
 
 `2015 - 2016`
-__Brigham Young University- Hawaii__
-BS, Summa Cum Laude, in Mathematics
+__BS in Mathematics, Summa Cum Laude__, 
+Brigham Young University- Hawaii
+
 
 `2011-2014`
-__Shoreline Community College__
-Associate of Arts
+__Associate of Arts__, 
+Shoreline Community College
+
 
 
 ## Employment History
@@ -60,7 +64,7 @@ __Math Tutor/Grader__, Brigham Young University- Hawaii
 ## Volunteer Experience
 
 `2017-2019`
-Missionary-Portugal, The Church of Jesus Christ of Latter-day Saints
+__Missionary-Portugal__, The Church of Jesus Christ of Latter-day Saints
 
 - Provided free tutoring in high school and college level mathematics (in portuguese).
 - Trained missionaries on use of geocoding scripts when switching from paper to electronic databases
@@ -68,19 +72,19 @@ Missionary-Portugal, The Church of Jesus Christ of Latter-day Saints
 - Taught English as a second language regularly.
 
 `2016-2017`
-Math Club Coach, Bellingham Family Partnership
+__Math Club Coach__, Bellingham Family Partnership
 
 - Organized a math club for a homeschool group.
 - Created activities for club members in combinatorics, probability, algebra, number theory, game theory, and topology.
 
 ## Awards
 `2013`
-Vigil Honor, Order of the Arrow-Boy Scouts of America
+__Vigil Honor__, Order of the Arrow-Boy Scouts of America
 
 The Vigil Honor is the highest honor that the Order of the Arrow can bestow upon its members for service to scouting. Only 2% of members may be considered each year to receive this honor.
 
 `2012`
-Eagle Scout, Boy Scouts of America
+__Eagle Scout__, Boy Scouts of America
 
 The Eagle Scout is the highest rank in the Boy Scouts of America. Fewer than 4% of all Scouts earn the Eagle rank (Boy Scout Handbook, 2005 printing).
 
