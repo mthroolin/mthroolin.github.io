@@ -1,6 +1,6 @@
 ---
 layout: presentation-post-index
-title: Presentations
+title: Work Samples
 excerpt: "Recent Presentations"
 ---
 
