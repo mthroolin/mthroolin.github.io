@@ -3,21 +3,10 @@ layout: home
 excerpt: "About Me..."
 ---
 
-This project is meant to help students and researchers across University of Rochester create their
-  own hosted academic website for free with GitHub. 
+I grew up in a home where education was of paramount importance. My father was a mathematician  who ensured that my siblings and I  had strong foundations in mathematics. This led me to begin studies in pure mathematics at the University of Washington, where I particularly became fond of discrete mathematical modeling and was introduced to graph theory and Markov chains. I recieved a recruitment scholarship to finish my degree at Brigham Young University-Hawaii,  where I continued doing independent research in graph theory. There, Kainalu Barino and I decided to attempt tackling the shaved die problem, which is to determine the probabilities associated with a shaved die landing on a particular side. I developed a Markov chain to describe that process in two dimensions, and with the help of our advisors, we extended our model to include special cases in three dimensions and presented our findings at the undergraduate symposium there.
 
-## About this Site
+After graduating, I wanted to excite younger generations to pursue an education in the mathematical sciences.  I worked at Johns Hopkins Center for Talented Youth as a TA for a math course the summer after I graduated. Then, I moved back up to Washington where I volunteered as a math coach for some homeschool students who wanted to start a math club. As the lead for the development of activities at that club, I taught introductory topology, game theory, combinatorics, and other advanced mathematical topics to the children and gave them classic problems in each field to resolve. After the math club season was over, I decided to serve a mission for my church and resigned from my position as a coach. However, during the following season, that team continued on to the Washington State Math Olympiad, and several of the students placed in the top ten for individual and team competitions, coming home decorated with medals.
 
-This project is a slight customization based off of some great work by 
-  [NC State University Libraries](https://www.lib.ncsu.edu/).
-  The original project, called [`jekyll academic`](https://ncsu-libraries.github.io/jekyll-academic-docs/)
-  has its own [github repository](https://github.com/NCSU-Libraries/jekyll-academic)
-  and [workshop documentation](https://ncsu-libraries.github.io/jekyll-academic-docs/workshop/). 
+My service as a church missionary in Portugal was integral to me focusing my career path on Statistics. Several of the people I met had me tutor their kids in mathematics, and I developed a bilingual mathematical vocabulary. I talked with many mathematicians studying at the University of Porto. Later, I served in the city of Évora, and worked through some mathematical statistics problems with some of the graduate students attending the university there. The experiences I had in Portugal led me to want to pursue a graduate education in statistics when I returned to the United States.
 
-
-## Creating Your Own
-
-To see a step-by-step guide to build your own site, go to the [RESEARCH](/research) section. 
-  There you'll find a basic [guide](/blog/getting-started) that will help you
-  create your new site.
-  
+I have since earned a master's degree at Montana State University, where I wrote an unpublished brief introduction to directed acyclic graphs and markov equivalence in a causal inference framework. Now, I study at the University of Utah preparing to write a dissertation in biostatistics.
