@@ -3,6 +3,6 @@ layout: presentation-post-index.html
 title: Work Samples
 ---
 
-A list of recent work:
+[An Introduction to Directed Acyclic Graphs and Markov Equivalence](documents/throolin_writingproject.pdf)
 
-[An Introduction to Markov Equivalence](documents/throolin_writingproject.pdf)
+<a href="mthroolin.github.io/documents/throolin_writingproject.pdf" target="_blank">An Introduction to Directed Acyclic Graphs and Markov Equivalence</a>
