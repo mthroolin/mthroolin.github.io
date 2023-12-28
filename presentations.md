@@ -4,4 +4,4 @@ title: Work Samples
 excerpt: "Recent Presentations"
 ---
 
-<embed src="documents/throolin_writingproject.pdf" width="100%" height="850px"/> <\a>
+[An Introduction to Markov Equivalence](documents/throolin_writingproject.pdf)
