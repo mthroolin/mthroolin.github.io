@@ -1,5 +1,5 @@
 ---
-layout: presentation-post-index.html
+layout: presentation-post-index
 title: Work Samples
 ---
 
