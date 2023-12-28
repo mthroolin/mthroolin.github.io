@@ -1,20 +1,20 @@
 
 # Site wide configuration
 
-title: RCL SiteBuilder
+title: Michael Throolin
 locale: en_US
 logo: #logo.png # filename of a logo image that has been placed into your images directory
 
 # Enter the following platform usernames if you would like for them to appear on your site.
 owner:
-  name: University of Rochester Libraries
+  name: Michael Throolin
   avatar: #bio-photo.jpg
-  bio: An academic website builder based off of NCSU Libraries' "jekyll academic"
-  website: https://library.rochester.edu
-  email: rclfeedback@library.rochester.edu #personal email
+  bio: An outdoorsy statistician
+  website: #
+  email: mthroolin@gmail.com #personal email
   twitter: RCLibraries
-  linkedin: #linkedin id
-  github: rochester-rcl
+  linkedin: mthroolin
+  github: mthroolin
   orcid: #orcid id
   researchgate: #researchgate username 
   mendeley: #mendeley username 
@@ -23,8 +23,8 @@ owner:
     analytics:
     verify:
     scholar: #google scholar 'user' id 
-  facebook: rivercampuslibraries
-  instagram: rclibraries
+  facebook: mthroolin
+  instagram: mthroolin
   bing-verify:
   stackoverflow: #123456/username from a "https://stackoverflow.com/users/123456/username" link
   xing: #username
@@ -34,7 +34,7 @@ owner:
   foursquare: #username
   steam: #username
   dribbble: #username
-  youtube: RCLibraries
+  youtube: mtwanderings
   soundcloud: #username
   weibo: #username
   flickr: #username
