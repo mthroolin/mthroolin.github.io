@@ -1,5 +1,5 @@
 ---
-layout: resume
+layout: home
 title: About Michael
 excerpt: "About Me..."
 ---
