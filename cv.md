@@ -10,43 +10,43 @@ I am studying towards a PhD in Population Health Sciences, with an emphasis in b
 ## Education
 
 `2023 - Present`
-__PhD Student Population Health Sciences__, 
+**PhD Student Population Health Sciences**, 
 University of Utah
 
 
 `2021 - 2023`
-__MS Statistics__, 
+**MS Statistics**, 
 Montana State University
 
 `2015 - 2016`
-__BS Mathematics, Summa Cum Laude__, 
+**BS Mathematics, Summa Cum Laude**, 
 Brigham Young University- Hawaii
 
 ## Employment History
 
 `2023-Present`
-__Research Assistant__, University of Utah
+**Research Assistant**, University of Utah
 
 - Providing statistical support to a paper being published in the British Medical Journal
 
 `2021-2023`
-__Graduate Teaching Assistant__, Montana State University 
+**Graduate Teaching Assistant**, Montana State University 
 
 - Course Assistant for Methods of Data Analysis II (STAT 412/512). Topics included: experimental design, multi-factor ANOVA, repeated measures, logistic regression, Poisson log-linear regression, and introductions to multivariate and time series analyses.
 - Co-instructor for an introductory course in statistics (STAT 216). Topics included: Traditional and resistant estimators of location and spread, fundamentals of inference using randomization and classical methods, confidence intervals, and tests of hypotheses.
 
 `Summer 2022`
-__Instructor__, Johns Hopkins Center for Talented Youth (Seasonal) 
+**Instructor**, Johns Hopkins Center for Talented Youth (Seasonal) 
 
 - Developed curriculum and instructed a summer course entitled "Paradoxes and Infinities" to a group of middle school and high school students. Topics included set theory, topology, computer theory, game theory, calculus, moral paradoxes, vagueness paradoxes, self referential paradoxes, and several mathematical paradoxes proposed by Zeno, Cantor, and Russell.
 
 `Summers 2016,2017`
-__Teaching Assistant__, Johns Hopkins Center for Talented Youth (Seasonal) 
+**Teaching Assistant**, Johns Hopkins Center for Talented Youth (Seasonal) 
 
 - Assistant for a summer course taught to middle school students entitled "Inductive and Deductive Reasoning". Topics included: sequences, inductive and deductive reasoning, proofs, beginning group theory, combinatorics, and an introduction to cryptology.
 
 `2015-2016`
-__Math Tutor/Grader__, Brigham Young University- Hawaii 
+**Math Tutor/Grader**, Brigham Young University- Hawaii 
 
 - Substitute for calculus lectures.
 - Typeset tutor qualification exams using LaTeX
@@ -73,7 +73,7 @@ BYU-H Undergraduate Research Conference May 2016
 ## Volunteer Experience
 
 `2017-2019`
-__Missionary-Portugal__, The Church of Jesus Christ of Latter-day Saints
+**Missionary-Portugal**, The Church of Jesus Christ of Latter-day Saints
 
 - Provided free tutoring in high school and college level mathematics (in portuguese).
 - Trained missionaries on use of geocoding scripts when switching from paper to electronic databases
@@ -81,32 +81,32 @@ __Missionary-Portugal__, The Church of Jesus Christ of Latter-day Saints
 - Taught English as a second language regularly.
 
 `2016-2017`
-__Math Club Coach__, Bellingham Family Partnership
+**Math Club Coach**, Bellingham Family Partnership
 
 - Organized a math club for a homeschool group.
 - Created activities for club members in combinatorics, probability, algebra, number theory, game theory, and topology.
 
 ## Awards
 `2022`
-__Math/Science Scholarships__, Montana State University
+**Math/Science Scholarships**, Montana State University
 
 `2016`
-__Math Department Scholarship__, Brigham Young University- Hawaii
+**Math Department Scholarship**, Brigham Young University- Hawaii
 
 `2015,2016`
-__Merit Scholarships__, Brigham Young University- Hawaii
+**Merit Scholarships**, Brigham Young University- Hawaii
 
 `2015`
-__Recruitment Scholarship__, Brigham Young University- Hawaii
+**Recruitment Scholarship**, Brigham Young University- Hawaii
 
 `2014`
-__Dean's List__, University of Washington
+**Dean's List**, University of Washington
 
 `2013`
-__Vigil Honor__, Order of the Arrow-Boy Scouts of America
+**Vigil Honor**, Order of the Arrow-Boy Scouts of America
 
 `2012`
-__Eagle Scout__, Boy Scouts of America
+**Eagle Scout**, Boy Scouts of America
 
 ## Transcript Summary
 
