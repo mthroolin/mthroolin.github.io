@@ -84,7 +84,7 @@ The Eagle Scout is the highest rank in the Boy Scouts of America. Fewer than 4% 
 
 <style>
 .table-wrapper {
-  overflow: scroll;
+  overflow-y: scroll;
   height:300px;
   width:100%;
 }
