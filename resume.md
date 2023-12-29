@@ -50,7 +50,7 @@ __Math Tutor/Grader__, Brigham Young University- Hawaii
 
 - Substitute for calculus lectures.
 - Typeset tutor qualification exams using LaTeX
-- Additiionally tutored Java, C++, and Algorithms
+- Additionally tutored Java, C++, and Algorithms
 
 
 ## Volunteer Experience
@@ -70,15 +70,26 @@ __Math Club Coach__, Bellingham Family Partnership
 - Created activities for club members in combinatorics, probability, algebra, number theory, game theory, and topology.
 
 ## Awards
+`2022`
+__Math/Science Scholarship__, Montana State University
+
+`2016`
+__Math Department Scholarship__, Brigham Young University- Hawaii
+
+`2015,2016`
+__Merit Scholarship__, Brigham Young University- Hawaii
+
+`2015`
+__Recruitment Scholarship__, Brigham Young University- Hawaii
+
+`2014`
+__Dean's List__, University of Washington
+
 `2013`
 __Vigil Honor__, Order of the Arrow-Boy Scouts of America
 
-The Vigil Honor is the highest honor that the Order of the Arrow can bestow upon its members for service to scouting. Only 2% of members may be considered each year to receive this honor.
-
 `2012`
 __Eagle Scout__, Boy Scouts of America
-
-The Eagle Scout is the highest rank in the Boy Scouts of America. Fewer than 4% of all Scouts earn the Eagle rank (Boy Scout Handbook, 2005 printing).
 
 ## Transcript Summary
 
@@ -103,6 +114,10 @@ table th:nth-of-type(2) {
 }
 table th:nth-of-type(3) {
     width: 40%;
+}
+tr:nth-child(even) {
+  background-color: #b2b2b2!important;
+  color: #f4f4f4!important;
 }
 </style>
 
