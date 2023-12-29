@@ -71,7 +71,7 @@ __Math Club Coach__, Bellingham Family Partnership
 
 ## Awards
 `2022`
-__Math/Science Scholarship__, Montana State University
+__Math/Science Scholarships__, Montana State University
 
 `2016`
 __Math Department Scholarship__, Brigham Young University- Hawaii
