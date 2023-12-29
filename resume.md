@@ -93,13 +93,14 @@ th {
   position: sticky;
   top: 0;
   z-index: 2;
+  background-color: #666;
 }
 </style>
 
 <div class="table-wrapper" markdown="block">
 
 | Course Title | Term | School/Organization |
-|-----------|:-----------:|-----------:|
+|-----------------------|:-----------:|-----------------------:|
 | Advanced Statistical Inference | Fall 2023/Spring 2024  | University of Utah |
 | Survival Data Analysis | Spring 2024  | University of Utah |
 | Epidemiology Thoery and Methods | Spring 2024  | University of Utah |
