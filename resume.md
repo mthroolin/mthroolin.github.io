@@ -112,7 +112,7 @@ table th:nth-of-type(3) {
 |-----------------------|:-----------:|-----------------------:|
 | Advanced Statistical Inference | 2023-2024  | University of Utah |
 | Survival Data Analysis | 2024  | University of Utah |
-| Epidemiology Thoery and Methods | 2024  | University of Utah |
+| Epidemiology Theory and Methods | 2024  | University of Utah |
 | Multilevel Models | 2023 | University of Utah |
 | Statistical Practice | 2023 | University of Utah |
 | Experimental Design | 2023  | Montana State University |
