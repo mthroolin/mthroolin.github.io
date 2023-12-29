@@ -96,38 +96,38 @@ th {
   background-color: #DCDCDC;
 }
   table th:first-of-type {
-    width: 35%;
-}
-table th:nth-of-type(2) {
     width: 40%;
 }
+table th:nth-of-type(2) {
+    width: 20%;
+}
 table th:nth-of-type(3) {
-    width: 35%;
+    width: 40%;
 }
 </style>
 
 <div class="table-wrapper" markdown="block">
 
-| Course Title | Term | School/Organization |
+| Course Title | Year | School/Organization |
 |-----------------------|:-----------:|-----------------------:|
-| Advanced Statistical Inference | Fall 2023/Spring 2024  | University of Utah |
-| Survival Data Analysis | Spring 2024  | University of Utah |
-| Epidemiology Thoery and Methods | Spring 2024  | University of Utah |
-| Multilevel Models | Fall 2023 | University of Utah |
-| Statistical Practice | Fall 2023 | University of Utah |
-| Experimental Design | Spring 2023  | Montana State University |
-| Advanced Mathematical Statistics | Spring 2023  | Montana State University |
-| Mixed Effects Models | Fall 2022  | Montana State University |
-| Time Series Analysis | Fall 2022  | Montana State University |
-| Bayesian Data Analysis | Fall 2022  | Montana State University |
-| Multivariate Analysis | Spring 2022  | Montana State University |
-| Mathematical Statistics | Fall 2021/Spring 2022  | Montana State University |
-| Linear Models/Regression Analysis | Fall 2021/Spring 2022  | Montana State University |
-| Coputational Theory | Spring 2016 | Brigham Young University-Hawaii |
-| Algorithms and Complexity | Spring 2016 | Brigham Young University-Hawaii |
-| Numerical Methods | Winter 2015-16 | Brigham Young University-Hawaii |
-| Real Analysis | Fall 2015/Winter 2015-16 | Brigham Young University-Hawaii |
-| Abstract Algebra II | Winter 2015-16 | Brigham Young University-Hawaii |
+| Advanced Statistical Inference | 2023-2024  | University of Utah |
+| Survival Data Analysis | 2024  | University of Utah |
+| Epidemiology Thoery and Methods | 2024  | University of Utah |
+| Multilevel Models | 2023 | University of Utah |
+| Statistical Practice | 2023 | University of Utah |
+| Experimental Design | 2023  | Montana State University |
+| Advanced Mathematical Statistics | 2023  | Montana State University |
+| Mixed Effects Models | 2022  | Montana State University |
+| Time Series Analysis | 2022  | Montana State University |
+| Bayesian Data Analysis | 2022  | Montana State University |
+| Multivariate Analysis | 2022  | Montana State University |
+| Mathematical Statistics | 2021-2022  | Montana State University |
+| Linear Models/Regression Analysis | 2021-2022  | Montana State University |
+| Coputational Theory | 2016 | Brigham Young University-Hawaii |
+| Algorithms and Complexity | 2016 | Brigham Young University-Hawaii |
+| Numerical Methods | 2015-2016 | Brigham Young University-Hawaii |
+| Real Analysis | 2015-2016 | Brigham Young University-Hawaii |
+| Abstract Algebra | 2015-2016 | Brigham Young University-Hawaii |
 
 </div>
 
