@@ -85,9 +85,25 @@ The Eagle Scout is the highest rank in the Boy Scouts of America. Fewer than 4% 
 <div class="table-wrapper" markdown="block">
 
 | Course Title | Term | School/Organization |
-|-----------|-----------|-----------|
-| Advanced Statistical Inference | Fall 2023  | University of Utah |
+|-----------|:-----------:|-----------:|
+| Advanced Statistical Inference | Fall 2023/Spring 2024  | University of Utah |
+| Survival Data Analysis | Spring 2024  | University of Utah |
+| Epidemiology Thoery and Methods | Spring 2024  | University of Utah |
 | Multilevel Models | Fall 2023 | University of Utah |
+| Statistical Practice | Fall 2023 | University of Utah |
+| Experimental Design | Spring 2023  | Montana State University |
+| Advanced Mathematical Statistics | Spring 2023  | Montana State University |
+| Mixed Effects Models | Fall 2022  | Montana State University |
+| Time Series Analysis | Fall 2022  | Montana State University |
+| Bayesian Data Analysis | Fall 2022  | Montana State University |
+| Multivariate Analysis | Spring 2022  | Montana State University |
+| Mathematical Statistics | Fall 2021/Spring 2022  | Montana State University |
+| Linear Models/Regression Analysis | Fall 2021/Spring 2022  | Montana State University |
+| Coputational Theory | Spring 2016 | Brigham Young University-Hawaii |
+| Algorithms and Complexity | Spring 2016 | Brigham Young University-Hawaii |
+| Numerical Methods | Winter 2015-16 | Brigham Young University-Hawaii |
+| Real Analysis | Fall 2015/Winter 2015-16 | Brigham Young University-Hawaii |
+| Abstract Algebra II | Winter 2015-16 | Brigham Young University-Hawaii |
 
 </div>
 
