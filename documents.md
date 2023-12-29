@@ -3,7 +3,7 @@ layout: resume
 title: Work Samples
 ---
 
-## Projects at University of Utah
+## Projects at the University of Utah
 
 [The Impact of Neurobehavior on Feeding Outcomes in Neonates with CHD](neonate_feeding.html){:target="_blank"}
 
