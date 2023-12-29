@@ -116,8 +116,7 @@ table th:nth-of-type(3) {
     width: 40%;
 }
 tr:nth-child(even) {
-  background-color: #b2b2b2!important;
-  color: #f4f4f4!important;
+  background-color: #E8E8E8!important;
 }
 </style>
 
