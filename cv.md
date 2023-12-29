@@ -52,6 +52,14 @@ __Math Tutor/Grader__, Brigham Young University- Hawaii
 - Typeset tutor qualification exams using LaTeX
 - Additionally tutored Java, C++, and Algorithms
 
+## Posters
+
+`2024`
+Jacobson BT, Sebrell TA, Zanca L, DeWit J, Sonar S, Hardy C, __Throolin M__, Brewster P, Andujo K, Jones K, Jones S, Bowen L, Sago J, Smith S, Bimczok D, **Pathogen delivery route impacts disease severity in Mycoplasma ovipneumoniae and 
+Mannheimia haemolytica coinfection**, Conference of Research Workers in Animal Diseases, January 2024
+
+`2023`
+Jacobson BT, DeWit J, Zanca L, Adams N, Jones K, __Throolin M__, Hardy C, Jones S, Kaker A, Sebrell A, Jutila M,  Rynda-Apple A, Bimczok D, **Health effects of Mycoplasma respiratory coinfection in a domestic sheep model, NIH Institute of Translational Health Sciences Summit**, May 2023
 
 ## Volunteer Experience
 
