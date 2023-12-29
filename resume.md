@@ -77,7 +77,7 @@ __Math/Science Scholarships__, Montana State University
 __Math Department Scholarship__, Brigham Young University- Hawaii
 
 `2015,2016`
-__Merit Scholarship__, Brigham Young University- Hawaii
+__Merit Scholarships__, Brigham Young University- Hawaii
 
 `2015`
 __Recruitment Scholarship__, Brigham Young University- Hawaii
