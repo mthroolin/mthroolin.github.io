@@ -4,7 +4,7 @@ title: About Michael
 excerpt: "About Me..."
 ---
 
-I am a PhD student studying biostatistics at the University of Utah. My research interests include high-dimensional data analysis and visualization, bayesian inference, causal inference, and mathematical statistics. Outside of my studies, I am an ultramarathoner and outdoor enthusiast.
+I am a PhD student studying biostatistics at the University of Utah. My research interests include high-dimensional data analysis and visualization, bayesian inference, causal inference, and mathematical statistics. Outside of my studies, I am an ultramarathoner and mountaineer.
 
 My father was a mathematician  who ensured that my siblings and I  had strong foundations in mathematics. This led me to begin studies in pure mathematics at the University of Washington, where I particularly became fond of discrete mathematical modeling and was introduced to graph theory and Markov chains. I recieved a recruitment scholarship to finish my degree at Brigham Young University-Hawaii,  where I continued doing independent research in graph theory. There, Kainalu Barino and I decided to attempt tackling the shaved die problem, which is to determine the probabilities associated with a shaved die landing on a particular side. We developed a Markov chain to describe that process in two dimensions, and with the help of our advisors, we extended our model to include special cases in three dimensions and presented our findings at the undergraduate symposium there.
 
