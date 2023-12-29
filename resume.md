@@ -99,10 +99,10 @@ th {
     width: 35%;
 }
 table th:nth-of-type(2) {
-    width: 25%;
+    width: 30%;
 }
 table th:nth-of-type(3) {
-    width: 40%;
+    width: 35%;
 }
 </style>
 
