@@ -5,7 +5,7 @@ layout: resume
 
 ## Currently
 
-I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah. While working toward my PhD I am being funding as a Research Assistant. As such, I provide statistical support for papers being published by my department.
+I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah and am funded as a Research Assistant. As such, I provide statistical support for papers being published by my department.
 
 ## Education
 
