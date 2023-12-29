@@ -80,3 +80,14 @@ __Eagle Scout__, Boy Scouts of America
 
 The Eagle Scout is the highest rank in the Boy Scouts of America. Fewer than 4% of all Scouts earn the Eagle rank (Boy Scout Handbook, 2005 printing).
 
+## Transcript Summary
+
+<div class="table-wrapper" markdown="block">
+
+| Course Title | Term | School/Organization |
+|-----------|-----------|-----------|
+|           |           |           |
+|           |           |           |
+
+</div>
+
