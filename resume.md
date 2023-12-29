@@ -86,8 +86,8 @@ The Eagle Scout is the highest rank in the Boy Scouts of America. Fewer than 4% 
 
 | Course Title | Term | School/Organization |
 |-----------|-----------|-----------|
-|           |           |           |
-|           |           |           |
+| Advanced Statistical Inference | Fall 2023  | University of Utah |
+| Multilevel Models | Fall 2023 | University of Utah |
 
 </div>
 
