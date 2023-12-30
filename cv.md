@@ -147,6 +147,7 @@ tr:nth-child(even) {
 | Statistical Practice | 2023 | University of Utah |
 | Experimental Design | 2023  | Montana State University |
 | Advanced Mathematical Statistics | 2023  | Montana State University |
+| Statistical Consulting | 2022-2023  | Montana State University |
 | Mixed Effects Models | 2022  | Montana State University |
 | Time Series Analysis | 2022  | Montana State University |
 | Bayesian Data Analysis | 2022  | Montana State University |
