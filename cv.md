@@ -153,7 +153,7 @@ tr:nth-child(even) {
 | Multivariate Analysis | 2022  | Montana State University |
 | Mathematical Statistics | 2021-2022  | Montana State University |
 | Linear Models/Regression Analysis | 2021-2022  | Montana State University |
-| Coputational Theory | 2016 | Brigham Young University-Hawaii |
+| Computational Theory | 2016 | Brigham Young University-Hawaii |
 | Algorithms and Complexity | 2016 | Brigham Young University-Hawaii |
 | Numerical Methods | 2015-2016 | Brigham Young University-Hawaii |
 | Real Analysis | 2015-2016 | Brigham Young University-Hawaii |
