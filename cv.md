@@ -66,7 +66,7 @@ NIH Institute of Translational Health Sciences Summit, May 2023
 
 `2016`
 Barino K, **Throolin M**.
-Probability Models for Rolling Irregular Dice in 2-Dimensions with Special Cases in 3-Dimensions.
+[Probability Models for Rolling Irregular Dice in 2-Dimensions with Special Cases in 3-Dimensions](/documents/shaved_die.pdf){:target="_blank"}.
 BYU-H Undergraduate Research Conference May 2016
 
 ## Volunteer Experience
