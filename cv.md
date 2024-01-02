@@ -112,8 +112,8 @@ BYU-H Undergraduate Research Conference May 2016
 <style>
 .table-wrapper {
   overflow-y: scroll;
-  height:300px;
-  width:100%;
+  height: 300px;
+  width: 100%;
 }
 th {
   position: -webkit-sticky;
