@@ -52,7 +52,7 @@ Brigham Young University- Hawaii
 - Typeset tutor qualification exams using LaTeX
 - Additionally tutored Java, C++, and Algorithms
 
-## Posters
+## Conference Posters
 
 `2024`
 Jacobson BT, Sebrell TA, Zanca L, DeWit J, Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Jones S, Bowen L, Sago J, Smith S, Bimczok D.
