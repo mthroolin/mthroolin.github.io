@@ -50,7 +50,7 @@ Brigham Young University- Hawaii
 
 - Substitute for calculus lectures.
 - Typeset tutor qualification exams using LaTeX
-- Additionally tutored Java, C++, and Algorithms
+- Besides math, tutored Java, C++, and Algorithms
 
 ## Conference Posters
 
