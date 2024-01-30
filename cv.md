@@ -169,5 +169,6 @@ tr:nth-child(even) {
 | Abstract Algebra | 2015-2016 | Brigham Young University-Hawaii |
 | Differential Equations | 2014| University of Washington |
 | Multivariate Calculus | 2014| University of Washington |
+
 </div>
 
