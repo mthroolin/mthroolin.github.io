@@ -22,6 +22,14 @@ Montana State University
 **BS Mathematics, Summa Cum Laude**, 
 Brigham Young University- Hawaii
 
+`2011-2014`
+**AA General Studies**, 
+Shoreline Community College
+
+`2013 - 2014`
+**No Degree, Mathematics**, 
+University of Washington
+
 ## Employment History
 
 `2023-Present`
@@ -159,6 +167,7 @@ tr:nth-child(even) {
 | Numerical Methods | 2015-2016 | Brigham Young University-Hawaii |
 | Real Analysis | 2015-2016 | Brigham Young University-Hawaii |
 | Abstract Algebra | 2015-2016 | Brigham Young University-Hawaii |
-
+| Differential Equations | 2014| University of Washington |
+| Multivariate Calculus | 2014| University of Washington |
 </div>
 
