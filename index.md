@@ -15,5 +15,3 @@ My service as a church missionary in Portugal was integral to focusing my career
 I have since earned a master's degree in statistics at Montana State University, where I wrote an unpublished brief introduction to directed acyclic graphs and Markov equivalence in a causal inference framework. There, I was funded as a teaching assistant but also did some consulting with a researcher working with livestock. Results from our collaboration in livestock health research have been presented at multiple conferences and will soon be published.
 
 Now, as I prepare to write a dissertation in biostatistics, I am funded as a research assistant in the Department of Population Health Sciences at the University of Utah.
-
-<meta name="google-site-verification" content="_HOH8MbybsbaBd4id_0xqr2LqRsTSlS0YeGW-6J61HA" />
