@@ -35,7 +35,7 @@ University of Washington
 `2023-Present`
 **Research Assistant**, University of Utah
 
-- Providing statistical support to a paper being published in the British Medical Journal
+- Providing statistical support to papers being published by the Deparment of Population Health Sciences.
 
 `2021-2023`
 **Graduate Teaching Assistant**, Montana State University 
