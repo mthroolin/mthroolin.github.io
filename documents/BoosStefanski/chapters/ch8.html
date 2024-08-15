@@ -297,17 +297,18 @@ p_2^2 \text{ if second sample}\end{cases} \\
 <p><span class="math display">\[\overset \sim {\mathbf B} = \frac 1 n \begin{pmatrix} \sum_{i=1}^{n+1} (Y_i - m_i \overset \sim p )^2+  \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2&amp;
 - \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \\ - \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 &amp;  \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \end{pmatrix}\]</span></p>
 <p><span class="math display">\[\begin{aligned}
-T_{GS} &amp;= n^{-1} \left[\sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta}) \right] \overset \sim V_{\psi_2}^{-1} \left[\sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta}) \right]  ~~~~~~~~~~~ \text{pg. 347 }\\
-\mathbf V_{\psi_1} &amp;= \mathbf{B_{11} - A_{12}A_{22}^{-1}B_{21}- B_{12}\{A_{22}^{-1}\}^TA_{12}^T+A_{12}A_{22}^{-1}B_{22}{\{A_{22}}^{-1}\}^TA_{12}^T}
+T_{GS} &amp;= n^{-1} \left[ \sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta} ) \right] \overset \sim V_{\psi_2}^{-1} \left[\sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta}) \right]  ~~~~~~~~~~~ \text{pg. 347 } \\
+\mathbf V_{\psi_1} &amp;= \mathbf{B_{11} - A_{12} A_{22}^{-1} B_{21}- B_{12}\{A_{22}^{-1}\}^T A_{12}^T+A_{12}A_{22}^{-1}B_{22}{\{A_{22}}^{-1}\}^T A_{12}^T}
 \end{aligned}\]</span></p>
 <p><span class="math display">\[\begin{aligned}
-\mathbf V_{\psi_2} &amp;= \mathbf{B_{22} - A_{21}A_{11}^{-1}B_{12}- B_{21}\{A_{11}^{-1}\}^TA_{21}^T+A_{21}A_{11}^{-1}B_{11}{\{A_{11}}^{-1}\}^TA_{21}^T} \\
+\mathbf V_{\psi_2} &amp;= \mathbf{B_{22} - A_{21}A_{11}^{-1}B_{12}- B_{21} \{A_{11}^{-1}\} ^T A_{21}^T + A_{21} A_{11} ^{-1} B_{11} \{{A_{11}}^{-1}\}^T A_{21}^T} \\
 \overset \sim {\mathbf V}_{\psi_2} &amp;= \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 - \left(\frac {-m_2}{n} \right)\left(\frac {n}{m_1+m_2} \right)\left(-\frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \right) \\
 &amp;~~~~~ - \left(-\frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \right)\left(\frac {n}{m_1+m_2} \right)\left(\frac {-m_2}{n} \right) \\
 &amp;~~~~~ + \left( \frac {-m_2}{n} \right)\left( \frac {n}{m_1+m_2}\right)\left( \frac 1 n\sum_{i=1}^{n+1} (Y_i - m_i p_1)^2+ \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i p_2)^2\right) \left(\frac {n}{m_1+m_2} \right) \left(\frac{-m_2}{n} \right) \\
 &amp;= \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 - \left(\frac {2m_2}{m_1+m_2} \right)\left(\frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \right) \\
 &amp;~~~~~ + \left( \frac {m_2^2}{(m_1+m_2)^2}\right)\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2^2}{(m_1+m_2)^2}\right)\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)
-\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
 &amp;=\left( 1-\frac {m_2}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2}{(m_1+m_2)}\right)^2\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)\\
 &amp;=\left( \frac {m_1}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)
 \end{aligned}\]</span></p>
