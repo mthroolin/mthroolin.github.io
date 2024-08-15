@@ -5,7 +5,7 @@ title: Work Samples
 
 ## Projects at the University of Utah
 
-[Selected Solutions to Boos and Stefanski](_book/index.html){:target="_blank"}
+[Selected Solutions to Boos and Stefanski](/BoosStefanski/index.html){:target="_blank"}
 
 [The Impact of Neurobehavior on Feeding Outcomes in Neonates with CHD](neonate_feeding.html){:target="_blank"}
 
