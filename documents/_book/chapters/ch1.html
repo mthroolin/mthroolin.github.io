@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Selected Solutions to Boos and Stefanski - Chapter 1: Roles of Modeling in Statistical Inference</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch2.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch1.html"><span class="chapter-title">Chapter 1: Roles of Modeling in Statistical Inference</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Selected Solutions to Boos and Stefanski</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Chapter 1: Roles of Modeling in Statistical Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 2: Likelihood Construction and Estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 3: Likelihood-Based Tests and Confidence Regions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 5: Large Sample Theory: The Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 6: Large Sample Results for Likelihood-Based Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 7: M-Estimation (Estimating Equations)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch8.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 8: Hypothesis Tests under Misspecification and Relaxed Assumptions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">1.12.</a>
+  <ul class="collapse">
+  <li><a href="#a." id="toc-a." class="nav-link" data-scroll-target="#a.">a.</a></li>
+  <li><a href="#b." id="toc-b." class="nav-link" data-scroll-target="#b.">b.</a></li>
+  <li><a href="#c." id="toc-c." class="nav-link" data-scroll-target="#c.">c.</a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">1.13</a>
+  <ul class="collapse">
+  <li><a href="#a" id="toc-a" class="nav-link" data-scroll-target="#a">a)</a></li>
+  <li><a href="#b" id="toc-b" class="nav-link" data-scroll-target="#b">b)</a></li>
+  <li><a href="#c" id="toc-c" class="nav-link" data-scroll-target="#c">c)</a></li>
+  <li><a href="#d" id="toc-d" class="nav-link" data-scroll-target="#d">d)</a></li>
+  <li><a href="#e" id="toc-e" class="nav-link" data-scroll-target="#e">e)</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">1.17.</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Chapter 1: Roles of Modeling in Statistical Inference</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">1.12.</h2>
+<p>Suppose that <span class="math inline">\(Y_1, \cdots, Y_n\)</span> are iid <span class="math inline">\(Poisson(\lambda)\)</span> and that <span class="math inline">\(\hat{\lambda} = \bar{Y}\)</span>. Define <span class="math inline">\(\sigma^2_{\hat{\lambda}} = var(\hat{\lambda})\)</span>. Consider the following two estimators of <span class="math inline">\(\sigma^2_{\hat{\lambda}}\)</span> : <span class="math display">\[\hat{\sigma}^2_{\hat{\lambda}} = \frac{\hat{\lambda}}{n}~~,~~\tilde{\sigma}^2_{\hat{\lambda}} = \frac{s^2}{n}\]</span></p>
+<section id="a." class="level3">
+<h3 class="anchored" data-anchor-id="a.">a.</h3>
+<p>When the Poisson model holds, are both estimators consistent?</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+n\hat{\sigma}^2_{\hat{\lambda}} &amp;= n\left(\frac{\hat{\lambda}}{n} \right) = \bar{Y} \overset{P}{\to} \lambda &amp;\text{ by weak law of large numbers} \\
+n{\sigma}^2_{{\lambda}} &amp;= n \, var(\hat{\lambda}) =n\,var(\bar{Y}) \overset{P}{\to} n\frac{\lambda}{n} = \lambda &amp; \overset{\text{ by Central Limit Theorem}}{\text{and } Y \sim POIS(\lambda)} \\
+\end{aligned}
+\]</span></p>
+<p>Thus <span class="math inline">\(n\hat{\sigma}^2_{\hat{\lambda}}\)</span> is a consistent estimator of <span class="math inline">\(n{\sigma}^2_{\hat{\lambda}}\)</span>.</p>
+<p>Now for the other estimator,</p>
+<p>Let <span class="math inline">\(\epsilon &gt; 0\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{n \to \infty}Pr(|n\tilde{\sigma}^2_{\hat{\lambda}} - n\sigma^2_{\hat{\lambda}}| \geq \epsilon)
+&amp;= \lim_{n \to \infty}Pr(|n \frac{s^2}n - n\sigma^2_{\hat{\lambda}}| \geq \epsilon) \\
+&amp;= \lim_{n \to \infty}Pr(|s^2 - n \, var(\hat{\lambda}) | \geq \epsilon) \\
+&amp;= \lim_{n \to \infty}Pr(|s^2 - n \, var(\bar{Y}) | \geq \epsilon) \\
+&amp;=\lim_{n \to \infty}Pr(|s^2 - n (\lambda/n)| \geq \epsilon) \\
+&amp;= \lim_{n \to \infty}Pr(|s^2 - \lambda | \geq \epsilon) \\
+&amp;\leq \frac{E[s^2-\lambda]^2}{\epsilon^2} &amp; \overset{\text{by Chebychev's Inequality}}{\text{(see page 233 Cassella-Berger )}} \\ \\
+&amp;= \frac{Var(s^2)}{\epsilon^2}
+\end{aligned}
+\]</span></p>
+<p>Note that <span class="math inline">\(lim_{n \to \infty}Var(s^2) = 0\)</span> under the Poisson model since the kurtosis is not a function of n.&nbsp;Thus <span class="math inline">\(\lim_{n \to \infty}Pr(|n\tilde{\sigma}^2_{\hat{\lambda}} - n\sigma^2_{\hat{\lambda}}| \geq \epsilon) = 0,\)</span> thus, by definition, <span class="math inline">\(n\tilde{\sigma}^2_{\hat{\lambda}}\)</span> is a consistent estimator of <span class="math inline">\(n\sigma^2_{\hat{\lambda}}\)</span>.</p>
+</section>
+<section id="b." class="level3">
+<h3 class="anchored" data-anchor-id="b.">b.</h3>
+<p>When the Poisson model holds, give the asymptotic relative efficiency of the two estimators. (Actually here you can compare exact variances since the estimators are so simple.)</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+RE(\hat{\sigma}^2_{\hat{\lambda}},\tilde{\sigma}^2_{\hat{\lambda}}) &amp;= \lim_{n \to \infty} VAR(\frac{\hat{\lambda}}{n})/VAR(\frac{s^2}{n}) \\
+&amp;= \lim_{n \to \infty} Var(\hat{\lambda})/Var({s^2}) \\
+&amp;= \lim_{n \to \infty}\frac{Var(\bar{Y})}{[Var(Y_1)]^2[\frac{2}{n-1}+\frac{Kurt -3}{n}]} \\
+&amp;= \lim_{n \to \infty}\frac{\lambda/n}{\lambda^2\left[\frac{2}{n-1}+\frac{1/\lambda}{n}\right]} \\
+&amp;= \lim_{n \to \infty}\frac{1}{n\lambda\left[\frac{2}{n-1}+\frac{1/\lambda}{n}\right]} \\
+&amp;= \lim_{n \to \infty}\frac{1}{\left[\frac{2n\lambda}{n-1}+1\right]} \\
+&amp;= \frac{1}{2\lambda + 1}
+\end{aligned}
+\]</span></p>
+<p>As the support for <span class="math inline">\(\lambda\)</span> is <span class="math inline">\(\mathbb N\)</span>, this indicates <span class="math inline">\(\hat{\sigma}^2_{\hat{\lambda}}\)</span> is more efficient.</p>
+</section>
+<section id="c." class="level3">
+<h3 class="anchored" data-anchor-id="c.">c.</h3>
+<p>When the Poisson model does not hold but assuming second moments exist, are both estimators consistent?</p>
+<p>Solution:</p>
+<p><span class="math inline">\(n\tilde{\sigma}^2_{\hat{\lambda}}\)</span> will always be consistent as long as <span class="math inline">\(Var(s^2) \overset{P}{\to} 0\)</span>.</p>
+<p><span class="math inline">\(n\hat{\sigma}^2_{\hat{\lambda}}\)</span> would no longer necessarily be a consistent estimator of <span class="math inline">\(n{\sigma}^2_{\hat{\lambda}}\)</span>. This is because</p>
+<p><span class="math display">\[\begin{aligned}
+n\hat{\sigma}^2_{\hat{\lambda}} &amp;= n\left(\frac{\hat{\lambda}}{n} \right) = \bar{Y} \overset{P}{\to} \mu &amp;\text{ by weak law of large numbers} \\
+n{\sigma}^2_{{\lambda}} &amp;= n \, var(\hat{\lambda}) =n\,var(\bar{Y}) \overset{P}{\to} n\frac{\sigma^2}{n} = \sigma^2 &amp; \text{ by Central Limit Theorem}
+\end{aligned}\]</span></p>
+<p>Therefore, for any distribution where the mean does not equal the variance (such as a standard normal distribution), <span class="math inline">\(n{\hat{\sigma}}^2_{\hat{\lambda}}\)</span> will not be a consistent estimator of <span class="math inline">\(n{\sigma}^2_{\hat{\lambda}}\)</span>.</p>
+<div style="page-break-after: always;"></div>
+</section>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">1.13</h2>
+<p>Define full model as <span class="math inline">\(N(\mu, c^2\mu^2)\)</span>, where <span class="math inline">\(c\)</span> is known. Define <span class="math inline">\(\hat{\mu}_{WLS}\)</span> as the value that minimizes <span class="math display">\[\rho(\mu) = \sum_{i=1}^n \frac{(Y_i- \mu)^2}{c^2\mu^2}\]</span>.</p>
+<section id="a" class="level3">
+<h3 class="anchored" data-anchor-id="a">a)</h3>
+<p>Show that <span class="math inline">\(\mu_{WLS}\)</span> converges in probability, but that its limit is not <span class="math inline">\(\mu\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+0 &amp;= \frac{\partial}{\partial \mu} \left\{\rho(\mu)\right\}
+= \frac{\partial }{\partial \mu} \left\{ \sum_{i=1}^n \frac{(Y_i- \mu)^2}{c^2\mu^2} \right\} = \frac{\partial }{\partial \mu} \left\{ \sum_{i=1}^n \frac{Y_i^2- 2Y_i\mu +\mu^2}{c^2\mu^2} \right\} \\
+&amp;= \frac{\partial }{\partial \mu} \left\{ \frac{nm_2'- 2n\bar{Y}\mu +n\mu^2}{c^2\mu^2} \right\} \\
+&amp;=\frac{c^2\mu^2(-2n\bar{Y}+2n\mu)-2c^2\mu(nm_2'- 2n\bar{Y}\mu +n\mu^2)}{c^4\mu^4} \\
+&amp;=\frac{\mu(-2n\bar{Y}+2n\mu)-2(nm_2'- 2n\bar{Y}\mu +n\mu^2)}{c^2\mu^3} \\
+&amp;=\frac{-2n\bar{Y}\mu+2n\mu^2-2nm_2'+ 4n\bar{Y}\mu -2n\mu^2}{c^2\mu^3} \\
+&amp;=\frac{2n\bar{Y}\mu -2nm_2'}{c^2\mu^3} = \frac{2n(\bar{Y}\mu -m_2')}{c^2\mu^3}\\
+\implies \mu &amp;= \frac{m_2'}{\bar{Y}}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial^2}{\partial^2 \mu} \left\{\rho(\mu)\right\}_{\mu=\frac{m_2'}{\bar{Y}}} &amp;= \frac{\partial^2 }{\partial^2 \mu} \left\{ \sum_{i=1}^n \frac{(Y_i- \mu)^2}{c^2\mu^2} \right\}_{\mu = \frac{m_2'}{\bar{Y}}}
+=\frac{\partial}{\partial \mu} \left\{ \frac{2n(\bar{Y}\mu -m_2')}{c^2\mu^3} \right\}_{\mu = \frac{m_2'}{\bar{Y}}} \\
+&amp;=\left\{ \frac{c^2\mu^3(2n\bar{Y})-3c^2\mu^2 2n(\bar{Y}\mu -m_2')}{c^4\mu^6} \right\}_{\mu = \frac{m_2'}{\bar{Y}}} \\
+&amp;=\left\{ \frac{2n\bar{Y}\mu-6n\bar{Y}\mu +6nm_2'}{c^2\mu^4} \right\}_{\mu = \frac{m_2'}{\bar{Y}}}
+=\left\{ \frac{-4n\bar{Y}\mu+6nm_2'}{c^2\mu^4} \right\}_{\mu = \frac{m_2'}{\bar{Y}}} \\
+&amp;=\frac{-4n\bar{Y}\frac{m_2'}{\bar{Y}}+6nm_2'}{c^2\mu^4} =\frac{2nm_2'}{c^2\mu^4}
+&gt; 0.
+\end{aligned}
+\]</span></p>
+<p>Thus <span class="math inline">\(\hat{\mu}_{WLS} = \frac{m_2'}{\bar{Y}}\)</span>. By the Strong Law of Large Numbers, <span class="math inline">\(m_2' \to E(m_2')\)</span> and <span class="math inline">\(\bar{Y} \to \mu\)</span>. Note that,</p>
+<p><span class="math display">\[
+\begin{aligned}E(m_2') &amp;= E\left(\frac{1}{n}\sum_{i=1}^n Y_i^2\right)=\frac{1}{n}\sum_{i=1}^nE\left( Y_i^2\right) \\ &amp;=\frac{1}{n}\sum_{i=1}^n \left(Var(Y_i) +[E(Y_i)]^2 \right) =\frac{1}{n}\sum_{i=1}^n \left( c^2\mu^2+\mu^2 \right)\\
+&amp;=c^2\mu^2+\mu^2 = (c^2+1)\mu^2
+\end{aligned}
+\]</span></p>
+<p>Thus, by the continuous mapping theorem, <span class="math inline">\(\hat{\mu}_{WLS}= \frac{m_2'}{\bar{Y}} \overset{P}{\to} = \frac{(c^2+1)\mu^2}{\mu}=(c^2+1)\mu\)</span></p>
+</section>
+<section id="b" class="level3">
+<h3 class="anchored" data-anchor-id="b">b)</h3>
+<p>Find <span class="math inline">\(E[\rho ' (\mu)]\)</span> and show that it does not equal zero.</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[\rho ' (\mu)] &amp;= E\left(\frac{2n(\bar{Y}\mu -m_2')}{c^2\mu^3} \right) \\
+&amp;= \frac{2n}{c^2\mu^3}\left[E(\bar{Y})\mu -E(m_2')\right] \\
+&amp;= \frac{2n}{c^2\mu^3}\left[\mu^2 -(c^2+1)\mu^2\right] \\
+&amp;= \frac{2n}{c^2\mu^3}\left[-c\mu^2\right] \\
+&amp;=\frac{-2n}{\mu} \neq 0.
+\end{aligned}
+\]</span></p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="c" class="level3">
+<h3 class="anchored" data-anchor-id="c">c)</h3>
+<p>Find the estimator obtained by minimizing <span class="math inline">\(\rho_*(\mu) = \sum_{i=1}^n \frac{(Y_i- \mu)^2}{c^2\mu^2} + 2log(\mu)\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[\begin{aligned}
+0 &amp;= \frac{\partial}{\partial \mu} \left\{\rho_*(\mu)\right\} \\
+&amp;= \frac{\partial}{\partial \mu} \left\{\left[ \sum_{i=1}^n \frac{(Y_i- \mu)^2}{c^2\mu^2} \right] + 2n\log(\mu)\right\}\\
+&amp;= \frac{2n(\bar{Y}\mu -m_2')}{c^2\mu^3} +\frac{2n}{\mu} \\
+&amp;= \frac{2n(\bar{Y}\mu -m_2'+c^2\mu^2)}{c^2\mu^3}\\
+\implies \mu &amp;= \frac{-\bar{Y} + \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2} &amp; \overset {\text{other solution cannot exist since }}{\mu &gt; 0}
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial^2}{\partial^2 \mu} \left\{\rho_*(\mu)\right\}_{\mu = \hat{\mu}}
+&amp;=\frac{\partial}{\partial \mu} \left\{ \frac{2n(\bar{Y}\mu -m_2'+c^2\mu^2)}{c^2\mu^3} \right\}_{\mu = \hat{\mu}}
+=\frac{\partial}{\partial \mu} 2n\left\{ \frac{\bar{Y}\mu -m_2'+c^2\mu^2}{c^2\mu^3} \right\}_{\mu = \hat{\mu}} \\
+&amp;=2n\left\{\frac{c^2\mu^3(\bar{Y}+2c^2\mu)-3c^2\mu^2(\bar{Y}\mu -m_2'+c^2\mu^2)}{c^4\mu^6} \right\}_{\mu = \hat{\mu}} \\
+&amp;=2n\left\{\frac{\mu(\bar{Y}+2c^2\mu)-3(\bar{Y}\mu -m_2'+c^2\mu^2)}{c^2\mu^4} \right\}_{\mu = \hat{\mu}} \\
+&amp;=2n\left\{\frac{-2\bar{Y}\mu - c^2\mu^2+3m_2'}{c^2\mu^4} \right\}_{\mu = \hat{\mu}} \\
+\end{aligned}
+\]</span></p>
+<p>We only need to show the numerator to be positive.</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;- c^2\mu^2-2\bar{Y}\mu +3m_2' \bigg|_{\mu = \left(\frac{-\bar{Y} + \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2}\right)}\\
+&amp;=-c^2\left(\frac{-\bar{Y} + \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2}\right)^2-2\bar{Y}\left(\frac{-\bar{Y} + \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2}\right)+3m_2' \\
+&amp;=-c^2\left(\frac{\bar{Y}^2 -2\bar{Y} \sqrt{\bar{Y}^2+4c^2m_2'}+\bar{Y}^2+4c^2m_2'}{4c^4}\right)-2\bar{Y}\left(\frac{-\bar{Y} + \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2}\right)+3m_2' \\
+&amp;=\frac{-\bar{Y}^2 +\bar{Y} \sqrt{\bar{Y}^2+4c^2m_2'}-2c^2m_2'}{2c^2}+\left(\frac{2\bar{Y}^2 -2\bar{Y} \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2}\right)+3m_2' \\
+&amp;=\frac{\bar{Y}^2+4c^2m_2' -\bar{Y} \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2} \\
+&amp;=\frac{\left(\sqrt{\bar{Y}^2+4c^2m_2'} -\bar{Y}\right)\sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2} \\
+&amp;&gt;0~\text{because } \sqrt{x^2+a} &gt; x~\forall a&gt;0.
+\end{aligned}
+\]</span></p>
+<p>Thus <span class="math inline">\(\hat{\mu}_{^*{WLS}}=\frac{-\bar{Y} + \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2}\)</span></p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="d" class="level3">
+<h3 class="anchored" data-anchor-id="d">d)</h3>
+<p>Is <span class="math inline">\(\hat{\mu}_{^*{WLS}}\)</span> a consistent estimator of <span class="math inline">\(\mu\)</span>? If so, find its asymptotic variance and compare to <span class="math inline">\(\hat{\mu}_{MLE}\)</span> and <span class="math inline">\(\hat{\mu}_{MOM}\)</span>.</p>
+<p>Solution:</p>
+<p>By continuous mapping theorem,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{\mu}_{^*{WLS}} =\frac{-\bar{Y} + \sqrt{\bar{Y}^2+4c^2m_2'}}{2c^2} &amp;\overset{P}{\to} \frac{-\mu + \sqrt{\mu^2+4c^2(c^2+1)\mu^2}}{2c^2}\\
+&amp;=\frac{-\mu +\mu \sqrt{1+4c^2(c^2+1)}}{2c^2} \\
+&amp;=\frac{-\mu +\mu \sqrt{1+4c^2+ 4c^4}}{2c^2} \\
+&amp;=\frac{-\mu +\mu \sqrt{(1+2c^2)^2}}{2c^2} \\
+&amp;=\frac{-\mu +\mu (1+2c^2)}{2c^2} \\
+&amp;=\mu.
+\end{aligned}
+\]</span></p>
+<p>Thus <span class="math inline">\(\hat{\mu}_{^*{WLS}}\)</span> is a consistent estimator of <span class="math inline">\(\mu\)</span>.</p>
+<p>Note that <span class="math inline">\(\hat{\mu}_{^*{WLS}} = \hat{\mu}_{MLE}\)</span>. Thus, <span class="math inline">\(Var(\hat{\mu}_{^*{WLS}}) = Var(\hat{\mu}_{MLE}) = \frac{c^2\mu^2}{n(1+2c^2)}\)</span>, and the relative efficiency between the two is 1. That is,</p>
+<p><span class="math inline">\(ARE(\hat{\mu}_{^*{WLS}}, \hat{\mu}_{MLE}) =1\)</span> And, according to (1.17, p.&nbsp;18) in the book, <span class="math inline">\(ARE(\hat{\mu}_{MOM}, \hat{\mu}_{^*WLS}) =1+2c^2\)</span>.</p>
+<p>Thus <span class="math inline">\(\hat{\mu}_{MLE}\)</span> and <span class="math inline">\(\hat{\mu}_{^*{WLS}}\)</span> are equally more efficient than <span class="math inline">\(\hat{\mu}_{MOM}\)</span></p>
+</section>
+<section id="e" class="level3">
+<h3 class="anchored" data-anchor-id="e">e)</h3>
+<p>Find <span class="math inline">\(E[\rho_* ' (\mu)]\)</span> and show that it does not equal zero.</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[\rho_* ' (\mu)] &amp;= E\left(\frac{2n(\bar{Y}\mu -m_2'+c^2\mu^2)}{c^2\mu^3}\right) \\
+&amp;= \frac{2n}{c^2\mu^3}\left[E(\bar{Y})\mu -E(m_2') +E(c^2\mu^2)\right] \\
+&amp;= \frac{2n}{c^2\mu^3}\left[\mu^2 -(c^2+1)\mu^2 +c^2\mu^2\right]\\
+&amp;= \frac{2n}{c^2\mu^3}(0) \\
+&amp;=0.
+\end{aligned}
+\]</span></p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">1.17.</h3>
+<p>To check on the asymptotic variance expression in (1.20, p.&nbsp;18), generate 1000 samples of size <span class="math inline">\(n=20\)</span> from the exponential density <span class="math inline">\((1/2)exp(-y/2)\)</span> that has mean <span class="math inline">\(\mu=2\)</span> and variance=4 so that in terms of the model <span class="math inline">\(\sigma^2=1\)</span>. For each sample, calculate <span class="math inline">\(\hat{\mu}_{MLE}\)</span> in (1.16, p.&nbsp;17). Then compute (1.20, p.&nbsp;18) for this exponential density and compare it to <span class="math inline">\(n=20\)</span> times the sample variance of the 1000 values of <span class="math inline">\(\hat{\mu}_{MLE}\)</span>. Repeat for <span class="math inline">\(n=50\)</span>.</p>
+<p>Solution:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Set constants</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pop_var <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>c<span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>skew <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>kurt <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#For sample = 20</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sample_size<span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Compute asymptotic variance as defined in book (1.21)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>a_var_20<span class="ot">&lt;-</span> (c<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>mu<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(sample_size<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>c<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>))<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>c<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>c<span class="sc">*</span>skew<span class="sc">+</span>c<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(kurt<span class="dv">-3</span>))</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulate mu_mle</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>mu_mle<span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    sample[[i]]<span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n=</span>sample_size,<span class="at">rate =</span><span class="fl">0.5</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    first_moment <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample[[i]])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    second_moment <span class="ot">&lt;-</span> <span class="fu">sum</span>(sample[[i]]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>sample_size</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    mu_mle[i] <span class="ot">&lt;-</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      (<span class="fu">sqrt</span>((first_moment<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>              <span class="dv">4</span><span class="sc">*</span>(c<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>second_moment)<span class="sc">-</span> first_moment)<span class="sc">/</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>      (<span class="dv">2</span><span class="sc">*</span>c<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>sample_var_20 <span class="ot">&lt;-</span> <span class="fu">var</span>(mu_mle)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>sample_size<span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#Compute asymptotic variance as defined in book (1.21)</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>a_var_50<span class="ot">&lt;-</span> (c<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>mu<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(sample_size<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>c<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>))<span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>c<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>c<span class="sc">*</span>skew<span class="sc">+</span>c<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(kurt<span class="dv">-3</span>))</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulate mu_mle</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>mu_mle<span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    sample[[i]]<span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n=</span>sample_size,<span class="at">rate =</span><span class="fl">0.5</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    first_moment <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample[[i]])</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    second_moment <span class="ot">&lt;-</span> <span class="fu">sum</span>(sample[[i]]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>sample_size</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    mu_mle[i] <span class="ot">&lt;-</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      (<span class="fu">sqrt</span>((first_moment<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>              <span class="dv">4</span><span class="sc">*</span>(c<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>second_moment)<span class="sc">-</span> first_moment)<span class="sc">/</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      (<span class="dv">2</span><span class="sc">*</span>c<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>sample_var_50 <span class="ot">&lt;-</span> <span class="fu">var</span>(mu_mle)</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>sample_size_20 <span class="ot">&lt;-</span> <span class="fu">c</span>(sample_var_20, a_var_20)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>sample_size_50 <span class="ot">&lt;-</span> <span class="fu">c</span>(sample_var_50, a_var_50)</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">rbind</span>(sample_size_20,sample_size_50),</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="fu">expression</span>(<span class="st">"Sample Variance"</span>), <span class="fu">expression</span>(<span class="st">"Asymptotic Variance"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Sample Variance</th>
+<th style="text-align: right;">Asymptotic Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">sample_size_20</td>
+<td style="text-align: right;">0.2465302</td>
+<td style="text-align: right;">0.2888889</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sample_size_50</td>
+<td style="text-align: right;">0.1007942</td>
+<td style="text-align: right;">0.1155556</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The sample variance approaches the asymptotic variance as sample size increases.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-title">Chapter 2: Likelihood Construction and Estimation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
