@@ -56,9 +56,9 @@ jobs:
         run: |
           Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "kableExtra", "numDeriv"), dependencies = TRUE, repos = "https://cloud.r-project.org")'
 
-      - name: Check installed R packages
+      - name: Load R packages
         run: |
-          Rscript -e 'installed <- installed.packages(); print(installed[, c("Package", "Version")])'
+          Rscript -e 'library(jsonlite); library(rmarkdown); library(kableExtra); library(numDeriv)'
 
       - name: Render Quarto project
         run: |
