@@ -5,6 +5,8 @@ on:
     branches:
       - main  # or your default branch
   pull_request:
+  workflow_dispatch:
+
 
 jobs:
   render-quarto:
