@@ -3,15 +3,13 @@ name: Render Quarto Book
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main  # Change this to your default branch
   pull_request:
   workflow_dispatch:
 
-
 jobs:
-  render-quarto:
+  render:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -19,19 +17,23 @@ jobs:
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
-          version: 'latest'  # Specify R version if needed
+          version: 'latest'
 
-      - name: Install dependencies
+      - name: Install Quarto
         run: |
-          install.packages("quarto")
-          # Install any other necessary packages
+          wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
+          sudo dpkg -i quarto-1.2.313-linux-amd64.deb
+
+      - name: Install R dependencies
+        run: |
+          Rscript -e 'install.packages(c("rmarkdown", "tidyverse"))'
 
       - name: Render Quarto project
         run: |
           quarto render documents/BoosStefanskiQMD/_quarto.yml --output-dir documents/BoosStefanskiQMD/_site
 
-      - name: Deploy Quarto site to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./documents/BoosStefanskiQMD/_site  # Adjust this if necessary
+          publish_dir: documents/BoosStefanskiQMD/_site
