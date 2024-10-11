@@ -24,10 +24,6 @@ jobs:
           wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
           sudo dpkg -i quarto-1.2.313-linux-amd64.deb
 
-      - name: Install R dependencies
-        run: |
-          Rscript -e 'install.packages(c("rmarkdown", "tidyverse"))'
-
       - name: Render Quarto project
         run: |
           quarto render documents/BoosStefanskiQMD/_quarto.yml --output-dir documents/BoosStefanskiQMD/_site
