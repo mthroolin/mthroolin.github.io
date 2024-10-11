@@ -29,9 +29,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive texlive-latex-extra texlive-xetex
 
-      - name: Install R dependencies
+       name: Install R dependencies
         run: |
-          Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "kableExtra", "numDeriv"))'
+          Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "kableExtra", "numDeriv"), dependencies = TRUE, repos = "https://cloud.r-project.org")'
 
       - name: Render Quarto project
         run: |
