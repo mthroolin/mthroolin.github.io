@@ -36,7 +36,7 @@ jobs:
 
       - name: Render Quarto project
         run: |
-          Rscript -e 'install.packages("kableExtra)'
+          Rscript -e 'install.packages("kableExtra")'
           quarto render documents/BoosStefanskiQMD
 
       - name: Deploy to GitHub Pages
