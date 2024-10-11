@@ -175,7 +175,7 @@ $$\begin{aligned}
 Solution:
 
 Define $\theta^* = E[g(\boldsymbol \theta)], \boldsymbol \beta = (\boldsymbol \theta, \theta^*)^T$
-
+{% raw %}
 $$\begin{aligned}
 \psi^* (Y_i, \boldsymbol \beta) &= \begin{pmatrix} \psi(Y, \boldsymbol \theta) \\ g(\boldsymbol \theta) - \theta^* \end{pmatrix} \\
 \mathbf A^* &= - E \begin{bmatrix} \frac{\partial \psi^* (Y_i, \boldsymbol \beta)}{\partial \boldsymbol \beta} \end{bmatrix} 
@@ -205,6 +205,7 @@ $$\begin{aligned}
 &= \begin{bmatrix} \mathbf {A^{-1}BA^{-1}}^T & \mathbf {A^{-1}BA^{-1}}^T g'(\boldsymbol \theta)^T \\
 g'(\boldsymbol \theta)\mathbf {A^{-1}BA^{-1}}^T  & g'(\boldsymbol \theta) \mathbf {A^{-1}BA^{-1}}^T g'(\boldsymbol \theta)^T\end{bmatrix} ~~~~\text{using Microsoft Mathematics for matrix multiplication}
 \end{aligned}$$
+{% endraw %}
 
 The $g'(\hat {\boldsymbol \theta})$ is $AN \left( \boldsymbol \theta_0, \frac{g'(\boldsymbol \theta)\mathbf V g'(\boldsymbol \theta)^T } n \right)$, where $\mathbf V = \mathbf {A^{-1}BA^{-1}}^T$
 
