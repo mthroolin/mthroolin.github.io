@@ -325,8 +325,7 @@ G_n'(\boldsymbol \theta_0) &amp;=  n^{-1} \sum_{i=1}^n \boldsymbol \psi' (Y_i, \
 <h2 class="anchored" data-anchor-id="section-2">7.6</h2>
 <p>(Delta Theorem via M-estimation). Suppose that <span class="math inline">\(\boldsymbol{\hat \theta}\)</span> is a b-dimensional M-estimator with defining function <span class="math inline">\(\boldsymbol \psi(y, \boldsymbol \theta)\)</span> such that the usual quantities <span class="math inline">\(\mathbf A\)</span> and <span class="math inline">\(\mathbf B\)</span> exist. Here we want to essentially reproduce Theorem 5.19 (p.&nbsp;238) for <span class="math inline">\(g(\boldsymbol{\hat \theta})\)</span>, where <span class="math inline">\(g\)</span> satisfies the assumptions of Theorem 5.19 and <span class="math inline">\(b_n^2 \boldsymbol \Sigma = n^{-1} \mathbf V(\boldsymbol \theta)\)</span>, where <span class="math inline">\(\mathbf V(\boldsymbol \theta )= \mathbf A(\boldsymbol \theta)^{-1} \mathbf B(\boldsymbol \theta)\{\mathbf A(\boldsymbol \theta)^{-1}\}^T\)</span> So add the <span class="math inline">\(\boldsymbol \psi\)</span> function <span class="math inline">\(g(\boldsymbol \theta) - \theta_{b+1}\)</span> to <span class="math inline">\(\boldsymbol \psi(y, \boldsymbol \theta)\)</span>, compute the relevant matrices, say <span class="math inline">\(\mathbf {A}^* , \mathbf{B}^*,\)</span> and <span class="math inline">\(\mathbf{V}^*\)</span>, and show that the last diagonal element of <span class="math inline">\(\mathbf{V}^*\)</span> is <span class="math inline">\(g'(\boldsymbol \theta) \mathbf V(\boldsymbol \theta)g'(\boldsymbol \theta)^T\)</span>.</p>
 <p>Solution:</p>
-<p>Define <span class="math inline">\(\theta^* = E[g(\boldsymbol \theta)], \boldsymbol \beta = (\boldsymbol \theta, \theta^*)^T\)</span></p>
-<p><span class="math display">\[\begin{aligned}
+<p>Define <span class="math inline">\(\theta^* = E[g(\boldsymbol \theta)], \boldsymbol \beta = (\boldsymbol \theta, \theta^*)^T\)</span> {% raw %} <span class="math display">\[\begin{aligned}
 \psi^* (Y_i, \boldsymbol \beta) &amp;= \begin{pmatrix} \psi(Y, \boldsymbol \theta) \\ g(\boldsymbol \theta) - \theta^* \end{pmatrix} \\
 \mathbf A^* &amp;= - E \begin{bmatrix} \frac{\partial \psi^* (Y_i, \boldsymbol \beta)}{\partial \boldsymbol \beta} \end{bmatrix}
 = - E \begin{bmatrix} \frac{\partial \psi(Y, \boldsymbol \theta)}{\partial \boldsymbol \theta}  &amp;
@@ -354,7 +353,7 @@ G_n'(\boldsymbol \theta_0) &amp;=  n^{-1} \sum_{i=1}^n \boldsymbol \psi' (Y_i, \
 \left\{\begin{bmatrix} \mathbf A^{-1} &amp; 0\\  g'(\boldsymbol \theta)\mathbf A^{-1}&amp; 1\end{bmatrix}\right\}^T \\
 &amp;= \begin{bmatrix} \mathbf {A^{-1}BA^{-1}}^T &amp; \mathbf {A^{-1}BA^{-1}}^T g'(\boldsymbol \theta)^T \\
 g'(\boldsymbol \theta)\mathbf {A^{-1}BA^{-1}}^T  &amp; g'(\boldsymbol \theta) \mathbf {A^{-1}BA^{-1}}^T g'(\boldsymbol \theta)^T\end{bmatrix} ~~~~\text{using Microsoft Mathematics for matrix multiplication}
-\end{aligned}\]</span></p>
+\end{aligned}\]</span> {% endraw %}</p>
 <p>The <span class="math inline">\(g'(\hat {\boldsymbol \theta})\)</span> is <span class="math inline">\(AN \left( \boldsymbol \theta_0, \frac{g'(\boldsymbol \theta)\mathbf V g'(\boldsymbol \theta)^T } n \right)\)</span>, where <span class="math inline">\(\mathbf V = \mathbf {A^{-1}BA^{-1}}^T\)</span></p>
 </section>
 <section id="section-3" class="level2">

@@ -837,14 +837,16 @@ f_{Y_i,T_i} (y_i,t_i) &amp;= f_{X_i,Y_i}\left(y_i,(t_i-y_i\beta)\left(\frac{\sig
 &amp;=\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\exp \left[\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right] \\
 \end{aligned}
 \]</span> Therefore, the conditional likelihood is: <span class="math display">\[\mathcal L =\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\exp \left[\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right]\]</span></p>
-<p>And the MLEs based on this are: <span class="math display">\[ \begin{aligned}
+<p>And the MLEs based on this are:</p>
+<p>{% raw %}</p>
+<p><span class="math display">\[ \begin{aligned}
 \ell (\alpha, \beta, \sigma_e^2, \sigma^2 ; Y_i, T_i) &amp;= \log \left(\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\right)+\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})} \\
 0 = \frac{\partial \ell}{\partial \alpha} &amp;= \frac{2t_i\sigma_e^{-2}\beta +2\sigma_e^{-4}\beta^2\alpha-2(\beta^2 \sigma_e^{-2}+ \sigma^{-2})(y_i-\alpha)}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\\
 &amp;= t_i\sigma_e^{-2}\beta -\beta^2 \sigma_e^{-2}y_i- \sigma^{-2}y_i +\beta^2 \sigma_e^{-2}\alpha+\sigma^{-2}\alpha\\
 \implies \alpha &amp;= \frac{t_i\sigma_e^{-2}\beta-\beta^2 \sigma_e^{-2}y_i- \sigma^{-2}y_i}{\sigma_e^{-4}\beta^2-\beta^2 \sigma_e^{-2}-\sigma^{-2}}\\
 0 = \frac{\partial \ell}{\partial \beta} &amp;=  \left(\frac{1}{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}\right)\left(\frac{{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}[-2t_i\sigma_2^{-2}\alpha+2\sigma_e^{-4}\alpha^2\beta-2\beta\sigma_e^{-4}[(y_i-\alpha)^2-(t_i-y_i\beta)^2\sigma^2\sigma_e^2]+2y_i(t_i-y_i\beta)\sigma^2\sigma_e^{-2}(\beta^2\sigma_e^{-2}+\sigma^{-2})]}{4(\beta^2\sigma_e^{-2}+\sigma^{-2})^2}\right)\\
 &amp;=  -2t_i\sigma_2^{-2}\alpha+2\sigma_e^{-4}\alpha^2\beta-\beta\sigma_e^{-4}[(y_i-\alpha)^2-(t_i-y_i\beta)^2\sigma^2\sigma_e^2]+y_i(t_i-y_i\beta)\sigma^2\sigma_e^{-2}(\beta^2\sigma_e^{-2}+\sigma^{-2})\\
-\end{aligned}\]</span></p>
+\end{aligned}\]</span> {% endraw %}</p>
 <p>Ran out of time to finish problem. but just taking derivatives to find MLEs of conditional likelihood from here.</p>
 <!-- \newpage -->
 <!-- ## Extra Problem: -->
