@@ -4,4 +4,3 @@ These are solutions of problems given from Essential Statistical Inference: Theo
 
 I am not affiliated with the authors of the book. The solutions are for self-study purposes only. Be aware that some of these solutions may not have been peer-reviewed or verified and as such may be incomplete or incorrect.
 
-Pushing quarto
