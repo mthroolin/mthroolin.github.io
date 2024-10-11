@@ -60,14 +60,16 @@ University of Washington
 - Typeset tutor qualification exams using LaTeX
 - Besides math, tutored Java, C++, and Algorithms
 
+## Preprints
+`2024`
+B. Tegner Jacobson, Jessica DeWit, LaShae Zanca, Sobha Sonar, Carol Hardy, **Michael Throolin**, Patricia C. Brewster, Kaitlyn Andujo, Kerri Jones, Jonathon Sago, Stephen Smith, Lizabeth Bowen, Diane Bimczok (2024). Pathogen delivery route impacts disease severity in experimental co-infection of sheep with Mycoplasma ovipneumoniae and Mannheimia haemolytica. [10.21203/rs.3.rs-4735328/v1](http://dx.doi.org/10.21203/rs.3.rs-4735328/v1). 
+
 ## Conference Posters
 
 `2024`
 Jacobson BT, Sebrell TA, Zanca L, DeWit J, Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Jones S, Bowen L, Sago J, Smith S, Bimczok D.
 Pathogen delivery route impacts disease severity in Mycoplasma ovipneumoniae and Mannheimia haemolytica coinfection.
 Conference of Research Workers in Animal Diseases, January 2024
-
-Jacobson, Bryan & Jessica, DeWit & LaShae, Zanca & Sonar, Sobha & Hardy, Carol & Throolin, Michael & Brewster, Patricia & Andujo, Kaitlyn & Jones, Kerri & Sago, Jonathon & Smith, Stephen & Bowen, Lizabeth & Bimczok, Diane. (2024). Pathogen delivery route impacts disease severity in experimental co-infection of sheep with Mycoplasma ovipneumoniae and Mannheimia haemolytica. [10.21203/rs.3.rs-4735328/v1](http://dx.doi.org/10.21203/rs.3.rs-4735328/v1). 
 
 `2023`
 Jacobson BT, DeWit J, Zanca L, Adams N, Jones K, **Throolin M**, Hardy C, Jones S, Kaker A, Sebrell A, Jutila M,  Rynda-Apple A, Bimczok D.
