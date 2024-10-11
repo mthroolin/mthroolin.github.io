@@ -1,4 +1,4 @@
-name: Build and Deploy Quarto Book
+name: Build and Deploy Quarto Book with Jekyll
 
 on:
   push:
@@ -11,6 +11,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Set up Ruby for Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'  # Specify the Ruby version for Jekyll
+
+      - name: Install Jekyll
+        run: gem install jekyll bundler
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
@@ -26,8 +34,13 @@ jobs:
         run: |
           quarto render documents/BoosStefanskiQMD/
 
+      - name: Build Jekyll Site
+        run: |
+          bundle install
+          bundle exec jekyll build
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./documents/BoosStefanskiQMD/_book
+          publish_dir: ./documents/BoosStefanskiQMD/_book  # Adjust if necessary
