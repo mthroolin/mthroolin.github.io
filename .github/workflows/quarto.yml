@@ -3,7 +3,7 @@ name: Render Quarto Book
 on:
   push:
     branches:
-      - main  # Change this to your default branch
+      - main
   pull_request:
   workflow_dispatch:
 
@@ -19,12 +19,28 @@ jobs:
         with:
           version: 'latest'
 
+      - name: Cache Quarto CLI
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/bin/quarto
+          key: ${{ runner.os }}-quarto-${{ hashFiles('quarto-version') }}
+          restore-keys: ${{ runner.os }}-quarto-
+
       - name: Install Quarto
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
           sudo dpkg -i quarto-1.2.313-linux-amd64.deb
 
+      - name: Cache LaTeX installation
+        uses: actions/cache@v2
+        with:
+          path: /usr/share/texlive
+          key: ${{ runner.os }}-latex-${{ hashFiles('latex-version') }}
+          restore-keys: ${{ runner.os }}-latex-
+
       - name: Install LaTeX
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive texlive-latex-extra texlive-xetex
@@ -35,6 +51,7 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
           restore-keys: ${{ runner.os }}-r-
+
       - name: Install R dependencies
         run: |
           Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "kableExtra", "numDeriv"))'
