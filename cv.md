@@ -153,8 +153,11 @@ tr:nth-child(even) {
 | **Course Title** | **Year** | **School/Organization** |
 |-----------------------|:-----------:|-----------------------:|
 | Advanced Statistical Inference | 2023-2024  | University of Utah |
+| EHR Data Analysis | 2024  | University of Utah |
+| High Dimensional Data Analysis | 2024  | University of Utah |
 | Survival Data Analysis | 2024  | University of Utah |
 | Epidemiology Theory and Methods | 2024  | University of Utah |
+| Adv. Computing in R | 2024  | University of Utah |
 | Multilevel Models | 2023 | University of Utah |
 | Statistical Practice | 2023 | University of Utah |
 | Experimental Design | 2023  | Montana State University |
