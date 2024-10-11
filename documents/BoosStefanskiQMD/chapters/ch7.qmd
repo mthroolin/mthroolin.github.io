@@ -192,7 +192,7 @@ $$\begin{aligned}
 \psi(Y, \boldsymbol \theta)[g(\boldsymbol \theta) - \theta^*] &
 [g(\boldsymbol \theta) - \theta^*]^2 \end{bmatrix} \\
 &= \begin{bmatrix} \mathbf B & 0 \\ 0 & 0 \end{bmatrix} \\
-\mathbf V^* &= {\mathbf A^*}^{-1}\mathbf B^* \left\{\\{{\mathbf A^*}\\}^{-1}\right\}^T \\
+\mathbf V^* &= \{{\mathbf A^*}\}^{-1}\mathbf B^* \left\{\{{\mathbf A^*}\}^{-1}\right\}^T \\
 &= \begin{bmatrix} \mathbf A & 0 \\ -g'(\boldsymbol \theta) & 1\end{bmatrix}^{-1}
 \begin{bmatrix} \mathbf B & 0 \\ 0 & 0 \end{bmatrix}
 \left\{\begin{bmatrix} \mathbf A & 0 \\ -g'(\boldsymbol \theta) & 1\end{bmatrix}^{-1}\right\}^T \\
