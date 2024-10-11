@@ -26,11 +26,7 @@ jobs:
 
       - name: Install R dependencies
         run: |
-          Rscript -e 'if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes", repos = "https://cloud.r-project.org"); remotes::install_github("haozhu233/kableExtra"); install.packages(c("jsonlite", "rmarkdown", "numDeriv"), dependencies = TRUE, repos = "https://cloud.r-project.org")'
-
-      - name: Load R packages
-        run: |
-          Rscript -e 'library(jsonlite); library(rmarkdown); library(kableExtra); library(numDeriv)'
+          Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "numDeriv", "kableExtra"))'
 
       - name: Render Quarto project
         run: |
