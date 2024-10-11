@@ -31,7 +31,7 @@ jobs:
 
       - name: Install R dependencies
         run: |
-          Rscript -e 'install.packages(c("jsonlite", "rmarkdown"))'
+          Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "kableExtra"))'
 
       - name: Render Quarto project
         run: |
