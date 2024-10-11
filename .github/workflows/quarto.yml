@@ -59,4 +59,12 @@ jobs:
         run: |
           Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "kableExtra", "numDeriv"))'
 
-      - name: Render Qu
+      - name: Render Quarto project
+        run: |
+          quarto render documents/BoosStefanskiQMD
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4  # Updated to v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: documents/BoosStefanskiQMD/_site
