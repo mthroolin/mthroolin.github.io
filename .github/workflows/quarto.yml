@@ -20,6 +20,7 @@ jobs:
           version: 'latest'
 
       - name: Cache Quarto CLI
+        id: quarto-cache
         uses: actions/cache@v2
         with:
           path: /usr/local/bin/quarto
@@ -27,12 +28,13 @@ jobs:
           restore-keys: ${{ runner.os }}-quarto-
 
       - name: Install Quarto
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.quarto-cache.outputs.cache-hit != 'true'
         run: |
           wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
           sudo dpkg -i quarto-1.2.313-linux-amd64.deb
 
       - name: Cache LaTeX installation
+        id: latex-cache
         uses: actions/cache@v2
         with:
           path: /usr/share/texlive
@@ -40,15 +42,16 @@ jobs:
           restore-keys: ${{ runner.os }}-latex-
 
       - name: Install LaTeX
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.latex-cache.outputs.cache-hit != 'true'
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive texlive-latex-extra texlive-xetex
 
       - name: Cache R packages
+        id: r-cache
         uses: actions/cache@v2
         with:
-          path: ${{ env.R_LIBS_USER }}
+          path: ~/.R/library
           key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
           restore-keys: ${{ runner.os }}-r-
 
