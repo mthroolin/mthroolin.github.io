@@ -67,6 +67,8 @@ Jacobson BT, Sebrell TA, Zanca L, DeWit J, Sonar S, Hardy C, **Throolin M**, Bre
 Pathogen delivery route impacts disease severity in Mycoplasma ovipneumoniae and Mannheimia haemolytica coinfection.
 Conference of Research Workers in Animal Diseases, January 2024
 
+Jacobson, Bryan & Jessica, DeWit & LaShae, Zanca & Sonar, Sobha & Hardy, Carol & Throolin, Michael & Brewster, Patricia & Andujo, Kaitlyn & Jones, Kerri & Sago, Jonathon & Smith, Stephen & Bowen, Lizabeth & Bimczok, Diane. (2024). Pathogen delivery route impacts disease severity in experimental co-infection of sheep with Mycoplasma ovipneumoniae and Mannheimia haemolytica. [10.21203/rs.3.rs-4735328/v1](http://dx.doi.org/10.21203/rs.3.rs-4735328/v1). 
+
 `2023`
 Jacobson BT, DeWit J, Zanca L, Adams N, Jones K, **Throolin M**, Hardy C, Jones S, Kaker A, Sebrell A, Jutila M,  Rynda-Apple A, Bimczok D.
 Health effects of Mycoplasma respiratory coinfection in a domestic sheep model.
