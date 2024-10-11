@@ -24,9 +24,14 @@ jobs:
           wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
           sudo dpkg -i quarto-1.2.313-linux-amd64.deb
 
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive texlive-latex-extra texlive-xetex
+
       - name: Render Quarto project
         run: |
-          quarto render documents/BoosStefanskiQMD/_quarto.yml --output-dir documents/BoosStefanskiQMD/_site
+          quarto render documents/BoosStefanskiQMD
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
