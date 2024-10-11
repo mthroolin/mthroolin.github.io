@@ -38,8 +38,8 @@ jobs:
           which quarto || echo "Quarto not found"
           quarto --version || echo "Quarto command not available"
 
-      - name: Add Quarto to PATH  # New step added
-        run: echo "/usr/local/bin" >> $GITHUB_ENV
+      - name: Add Quarto to PATH  # Corrected step
+        run: echo "PATH=$PATH:/usr/local/bin" >> $GITHUB_ENV
 
       - name: Cache LaTeX installation
         id: latex-cache
