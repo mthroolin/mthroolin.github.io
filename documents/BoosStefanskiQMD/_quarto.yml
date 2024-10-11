@@ -23,7 +23,6 @@ format:
     number-sections: false
     code-fold: true
     code-summary: "Show the code"
-    css: /assets/css/cvmain.scss
   pdf:
     documentclass: scrreprt
     number-sections: false
