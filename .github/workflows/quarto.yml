@@ -24,6 +24,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive texlive-latex-extra texlive-xetex texlive-fonts-recommended lmodern
 
+      - name: Install Quarto
+        run: |
+          wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
+          sudo dpkg -i quarto-1.2.313-linux-amd64.deb
+          sudo ln -s /usr/local/bin/quarto /usr/bin/quarto  # Create a symlink to ensure it's in the PATH
+
       - name: Install R dependencies
         run: |
           Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "numDeriv", "kableExtra"))'
