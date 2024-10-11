@@ -694,7 +694,10 @@ $$
 \end{aligned}
 $$
 Therefore, the conditional likelihood is:
-$$\mathcal L =\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\exp \left[\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right]$$
+
+$$
+\mathcal{L} = \frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3} \exp \left[\frac{t_i^2 - 2 t_i \sigma_e^{-2} \beta \alpha + \sigma_e^{-4} \beta^2 \alpha^2 - (\beta^2 \sigma_e^{-2}+ \sigma^{-2}) \left((y_i - \alpha)^2 + (t_i - y_i \beta)^2 \sigma^2 \sigma_e^{-2}\right) \sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2} + \sigma^{-2})}\right]
+$$
 
 And the MLEs based on this are:
 $$ \begin{aligned}
