@@ -23,10 +23,6 @@ format:
     number-sections: false
     code-fold: true
     code-summary: "Show the code"
-  pdf:
-    documentclass: scrreprt
-    number-sections: false
-    echo: false
-
+    jekyll: false
 
 
