@@ -48,3 +48,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: documents/BoosStefanskiQMD/_book
           publish_branch: master  # Deploy to the master branch
+          allow_empty_commit: false
+          keep_files: false
+          force_orphan: false
+          enable_jekyll: false
