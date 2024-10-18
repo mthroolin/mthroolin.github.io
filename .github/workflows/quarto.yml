@@ -40,10 +40,10 @@ jobs:
 
       - name: List rendered files
         run: |
-          ls -R documents/BoosStefanskiQMD/_site
+          ls -R documents/BoosStefanskiQMD/_book
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: documents/BoosStefanskiQMD/_site
+          publish_dir: documents/BoosStefanskiQMD/_book
