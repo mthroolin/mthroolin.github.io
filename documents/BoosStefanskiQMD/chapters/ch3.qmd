@@ -1,5 +1,7 @@
 ---
-title: "Chapter 3: Likelihood-Based Tests and Confidence Regions"
+title: "Selected Solutions to Boos and Stefanski"
+author: "Michael Throolin"
+subtitle: "Chapter 3: Likelihood-Based Tests and Confidence Regions"
 author: "Michael Throolin"
 format: pdf
 geometry:

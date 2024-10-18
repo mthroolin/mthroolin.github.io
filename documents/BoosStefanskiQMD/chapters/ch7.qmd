@@ -1,5 +1,7 @@
 ---
-title: "Chapter 7: M-Estimation (Estimating Equations)"
+title: "Selected Solutions to Boos and Stefanski"
+author: "Michael Throolin"
+subtitle: "Chapter 7: M-Estimation (Estimating Equations)"
 format:
   pdf:
     mathspec: true

@@ -1,5 +1,7 @@
 ---
-title: "Chapter 5: Large Sample Theory: The Basics"
+title: "Selected Solutions to Boos and Stefanski"
+author: "Michael Throolin"
+subtitle: "Chapter 5: Large Sample Theory: The Basics"
 ---
 ## 5.1
 

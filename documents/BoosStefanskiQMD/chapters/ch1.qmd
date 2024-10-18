@@ -1,5 +1,7 @@
 ---
-title: "Chapter 1: Roles of Modeling in Statistical Inference"
+title: "Selected Solutions to Boos and Stefanski"
+author: "Michael Throolin"
+subtitle: "Chapter 1: Roles of Modeling in Statistical Inference"
 geometry:
       - top=0.75 in
       - left=0.5in

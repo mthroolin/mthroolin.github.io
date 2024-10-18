@@ -1,5 +1,7 @@
 ---
-title: "Chapter 2: Likelihood Construction and Estimation"
+title: "Selected Solutions to Boos and Stefanski"
+author: "Michael Throolin"
+subtitle: "Chapter 2: Likelihood Construction and Estimation"
 geometry:
       - top=0.75 in
       - left=0.5in
