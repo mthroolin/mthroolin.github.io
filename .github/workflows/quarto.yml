@@ -46,10 +46,6 @@ jobs:
         run: |
           quarto render documents/BoosStefanskiQMD
 
-      - name: Remove existing files in destination_dir
-        run: |
-          rm -rf documents/BoosStefanski/*
-
       - name: List rendered files
         run: |
           ls -R documents/BoosStefanskiQMD/_book
