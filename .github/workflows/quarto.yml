@@ -42,9 +42,9 @@ jobs:
         run: |
           quarto render documents/BoosStefanskiQMD
 
-      - name: List rendered files
+      - name: Remove existing files in destination_dir
         run: |
-          ls -R documents/BoosStefanskiQMD/_book
+          rm -rf documents/BoosStefanski/*
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -52,7 +52,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: documents/BoosStefanskiQMD/_book  # Directory with rendered files
           publish_branch: master  # Deploy to the master branch
-          dest_dir: documents/BoosStefanski  # Target subdirectory in the master branch
+          destination_dir: documents/BoosStefanski  # Target subdirectory in the master branch
           allow_empty_commit: false
           keep_files: true  # clear dest_dir before adding files
           force_orphan: false
