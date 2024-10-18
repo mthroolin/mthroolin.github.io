@@ -1,7 +1,6 @@
 ---
-title: "Selected Solutions to Boos and Stefanski"
 author: "Michael Throolin"
-subtitle: "Chapter 3: Likelihood-Based Tests and Confidence Regions"
+title: "Chapter 3: Likelihood-Based Tests and Confidence Regions"
 geometry:
       - top=30mm
       - left=20mm
