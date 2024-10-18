@@ -1,0 +1,54 @@
+name: Render Quarto Book
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          version: 'latest'
+
+      - name: Install LaTeX and fonts for kableExtra
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive texlive-latex-extra texlive-xetex texlive-fonts-recommended lmodern
+
+      - name: Install Quarto
+        run: |
+          wget $(curl -s https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | grep browser_download_url | grep linux-amd64.deb | cut -d '"' -f 4)
+          sudo dpkg -i quarto-*-linux-amd64.deb
+          sudo ln -s /usr/local/bin/quarto /usr/bin/quarto  # Ensure Quarto is in the PATH
+
+      - name: Install R dependencies
+        run: |
+          Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "numDeriv", "kableExtra"))'
+
+      - name: Render Quarto project
+        run: |
+          quarto render documents/BoosStefanskiQMD
+
+      - name: List rendered files
+        run: |
+          ls -R documents/BoosStefanskiQMD/_book
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: documents/BoosStefanskiQMD/_book
+          publish_branch: master  # Deploy to the master branch
+          allow_empty_commit: false
+          keep_files: false
+          force_orphan: false
+          enable_jekyll: false

@@ -1,0 +1,77 @@
+
+# Site wide configuration
+
+title: Michael Throolin
+locale: en_US
+logo: #logo.png # filename of a logo image that has been placed into your images directory
+
+# Enter the following platform usernames if you would like for them to appear on your site.
+owner:
+  name: Michael Throolin
+  avatar: bio-photo.jpg
+  bio: An outdoorsy statistician
+  website: #
+  email: michael.throolin@utah.edu #personal email
+  twitter: #mthroolin
+  linkedin: mthroolin
+  github: mthroolin
+  orcid: #orcid id
+  researchgate: # Michael-Throolin #researchgate username 
+  mendeley: #mendeley username 
+  google:
+    plus: #username
+    analytics:
+    verify: 
+    scholar: #google scholar 'user' id 
+  facebook: #mthroolin
+  instagram: #mthroolin
+  bing-verify:
+  stackoverflow: #123456/username from a "https://stackoverflow.com/users/123456/username" link
+  xing: #username
+  lastfm: #username
+  tumblr: #username
+  pinterest: #username
+  foursquare: #username
+  steam: #username
+  dribbble: #username
+  youtube: "@mtwanderings"
+  strava: #"65358162"
+  soundcloud: #username
+  weibo: #username
+  flickr: #username
+  codepen: #username
+  disqus-shortname: #username
+  resume: https://mthroolin.github.io/documents/Throolin_Resume.pdf #link to a resume
+
+# The following adjust the accents for your site. If you would like to further edit colors, fonts, font sizes, etc.
+# you may do so in _sass/variables.scss
+highlight-color: '#145A32' #green '#FFC70A' #UR gold
+lowlight-color: '#073661' #UR navy
+
+  # NOTE: If you would like your site to be licensed under a creative commons license, uncomment the 'yes' next to the type of license you wish to use.
+creative-commons:
+  cc-by: #yes
+  cc-by-nc: #yes
+
+#DO NOT EDIT BEYOND THIS POINT
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: compressed
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
+include: [".htaccess"]
+exclude: ["documents/BoosStefanskiQMD","lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]

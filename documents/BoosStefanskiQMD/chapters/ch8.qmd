@@ -1,0 +1,197 @@
+---
+title: "Chapter 8: Hypothesis Tests under Misspecification and Relaxed Assumptions"
+---
+
+## Extra Problem 1
+
+Prove Equation (8.9) on Page 341
+
+Solution: 
+
+Note that $\frac \partial {\partial \boldsymbol \theta^T} \log f(y;\boldsymbol \theta_g) = \mathbf 0$ as it is a score equation.
+
+Also note that $\frac {\partial^2} {\partial \boldsymbol \theta \partial \boldsymbol \theta^T} \{\log f(y;{\boldsymbol \theta}_g)\} \overset p \to E \left( \frac {\partial^2} {\partial \boldsymbol \theta \partial \boldsymbol \theta^T} \{\log f(y;{\boldsymbol \theta}_g)\} \right)= - \mathbf A$
+
+Begin by taking a Taylor expansion of the score function of $S(y;\boldsymbol \theta) =  \frac \partial {\partial \boldsymbol \theta^T} \log f(y;\boldsymbol \theta)$.
+
+$$\begin{aligned}
+\frac \partial {\partial \boldsymbol \theta^T} \log f(y;\boldsymbol \theta) &= \frac \partial {\partial \boldsymbol \theta^T} \log f(y;\boldsymbol \theta_g) + n\frac {\partial^2} {\partial \boldsymbol \theta \partial \boldsymbol \theta^T} \{\log f(y;{\boldsymbol \theta}_g)\}(\boldsymbol \theta -  {\boldsymbol \theta}_g) \\
+\sqrt n(\boldsymbol \theta -  {\boldsymbol \theta}_g) &= \left[\frac {\partial^2} {\partial \boldsymbol \theta \partial \boldsymbol \theta^T} \{\log f(y;{\boldsymbol \theta}_g)\}\right]^{-1}\begin{pmatrix} \mathbf S_1 (\boldsymbol \theta)/ \sqrt n \\ 0 \end{pmatrix} \\
+& \overset d \to -\mathbf A^{-1} \begin{pmatrix} \mathbf Z \\ \mathbf 0 \end{pmatrix} ~~~~ where~ Z \sim MVN\left(\mathbf 0,\mathbf V_{gS_1}\right)
+\end{aligned}$$
+
+Taking a Taylor Expansion of $\log f(y;\boldsymbol \theta)$, we get:
+
+$$\begin{aligned}
+\log f(y;\boldsymbol \theta) &= \log f(y;{\boldsymbol \theta}_g) + \frac \partial {\partial \boldsymbol \theta^T} \{\log f(y;  {\boldsymbol \theta}_g)\}(\boldsymbol \theta - {\boldsymbol \theta}_g) + \sqrt n(\boldsymbol \theta - \boldsymbol \theta_g)^T\frac {\partial^2} {\partial \boldsymbol \theta \partial \boldsymbol \theta^T} \{\log f(y;{\boldsymbol \theta}_g)\}\sqrt n(\boldsymbol \theta -  {\boldsymbol \theta}_g) \\
+\implies T_{LR} &= -2[\ell(\boldsymbol \theta)- \ell (\boldsymbol \theta_g)] \\
+&= -\sqrt n(\boldsymbol \theta - \boldsymbol \theta_g)^T\frac {\partial^2} {\partial \boldsymbol \theta \partial \boldsymbol \theta^T} \{\log f(y;  {\boldsymbol \theta}_g)\}\sqrt n(\boldsymbol \theta -  {\boldsymbol \theta}_g) \\
+& \overset d \to \begin{pmatrix} \mathbf Z & \mathbf 0 \end{pmatrix} {\mathbf A^{-1}}^T{\mathbf {AA}^{-1}} \begin{pmatrix} \mathbf Z \\ \mathbf 0 \end{pmatrix} \\
+& \overset d \to  \mathbf Z ^T{\mathbf {A}^{-1}}_{11} \mathbf Z \\
+& \overset d \to  \mathbf Z ^T[\mathbf{A_{11}- A_{12}A_{22}^{-1}A_{21}}]^{-1} \mathbf Z
+\end{aligned}$$
+
+\newpage
+
+## 8.10
+
+Suppose we have data $X_1, \dots, X_n$ that are iid. The sign test for $H_0: median = 0$ is to count the number of $X$'s above $0$, say $Y$, and compare $Y$ to a binomial($n,p=1/2$) distribution. Starting with the defining M-estimator equation for the sample median (see Example 7.4.2),
+
+Defining M-estimator for the sample median (Example 7.4.2):
+
+$\hat \theta = \hat \eta_{1/2} = F_n^{-1}(1/2)$ satisfies $\sum \left[\frac 1 2 - I(Y_i \leq \hat \theta) \right] = c_n$, where $|c_n| = n\left|F_n^{-1}(\hat \theta)- \frac 1 2\right| \leq 1$.
+
+$$\begin{aligned}
+\implies \psi(X_i, \theta) &= \frac 1 2 - I(X_i \leq \theta) \\
+A(\theta_0) = f(\theta_0) ~~~~&,~~~B(\theta_0) = \frac 1 2\left(1-\frac 1 2\right)=\frac 1 4 \\
+V(\theta_0) &= \frac{1/4}{f^2(\theta_0)}
+\end{aligned}$$
+
+
+### a.
+
+Derive the generalized score statistic $T_{GS}$ for $H_0: median = 0$ and note that it is the large sample version of the two-sided sign test statistic.
+
+Solution:
+
+$$\begin{aligned}
+T_{GS} &= n^{-1} \left[\sum \psi(X_i, \overset \sim \theta) \right] \overset \sim V_{\psi}^{-1} \left[\sum \psi(X_i, \overset \sim \theta) \right]  & \text{(8.20) pg. 347, scalar } \psi \text{ so no transpose}\\
+V_{\psi} &= B = \frac 1 4  & \text{one dimensional case reduction, pg. 347} \\
+\implies T_{GS} &= \frac {1/\overset \sim B} n \left(\sum \frac 1 2 - I(X_i \leq \overset \sim \theta) \right)^2 \\
+&= \frac {1} {n \overset \sim p(1- \overset \sim p)} \left(\frac n 2 - \sum I(X_i \leq 0) \right)^2\\
+&= \frac {1} {n\bar X \left(1- \bar X \right)} \left(\frac n 2 - \sum I(X_i \leq 0) \right)^2
+\end{aligned}$$
+
+### b.
+
+Using the expression for the asymptotic variance of the sample median, write down the form of a generalized Wald statistic $T_{GW}$, and explain why it is not as attractive to use her as $T_{GS}$
+
+Solution:
+
+$$\begin{aligned}
+T_{GW} &= n(\hat \theta - \hat \theta_0)\hat V^{-1}(\hat \theta - \theta_0)\\
+&=\frac{n \hat p(1-\hat p)(\hat p- 1/2)^2}{f^2(\hat p)} \\
+\end{aligned}$$
+
+
+The generalized score statistic is more attractive as we don't rely on $f$, which could be misspecified.
+
+
+\newpage
+
+## Extra Problem 2
+
+Derive the generalized score test for the two independent samples of clustered binary data as described in Example 8.5.
+
+Solution:
+
+$$\begin{aligned}
+\boldsymbol \psi(\mathbf x_i,Y_i, \boldsymbol \beta) &= (Y_i - m_i \mathbf x_i^T \boldsymbol \beta) \mathbf x_i = \mathbf 0
+\end{aligned}$$
+
+$\mathbf x_i^T = (1,0)$ for first sample, $(1,-1)$ for second sample.
+$\boldsymbol \beta^T = (\beta_1, \beta_2)=(p_1,p_1-p_2)$
+
+$\overset \sim p = \sum_{i=1}^n Y_i/\sum_{i=1}^n m_i, \hat p_1 = \sum_{i=1}^{n_1} Y_i/m_1, , \hat p_2 = \sum_{i=1+n_1}^{n} Y_i/m_1$
+
+where $n = n_1+n_2, m_1 = \sum_{i=1}^{n_1} m_i, m_2 = \sum_{i=1+n_1}^{n} m_i$
+
+$$\begin{aligned}
+\boldsymbol {\psi \psi}^T  &=(Y_i - m_i \mathbf x_i^T \boldsymbol \beta) \mathbf x_i \mathbf x_i^T(Y_i - m_i \mathbf x_i^T \boldsymbol \beta)^T \\
+&=(Y_i - m_i \mathbf x_i^T \boldsymbol \beta) (Y_i - m_i \boldsymbol \beta^T\mathbf x_i)\mathbf x_i \mathbf x_i^T & (Y_i - m_i \mathbf x_i^T \boldsymbol \beta) \text{ is scalar}\\
+&=(Y_i^2 -Y_i m_i  \boldsymbol \beta^T\mathbf x_i- Y_im_i \mathbf x_i^T \boldsymbol \beta + m_i^2 \mathbf x_i^T \boldsymbol \beta \boldsymbol \beta^T\mathbf x_i)\mathbf x_i \mathbf x_i^T \\
+&=(Y_i^2 -2Y_i m_i  \boldsymbol \beta^T\mathbf x_i + m_i^2 \mathbf x_i^T \boldsymbol \beta \boldsymbol \beta^T\mathbf x_i)\mathbf x_i \mathbf x_i^T & \beta^T\mathbf x_i \text{ is scalar} \\
+\boldsymbol \psi'  &= - m_i \mathbf x_i^T \mathbf x_i & \text{product rule}
+\end{aligned}$$
+
+Using Microsoft Mathematics for matrix multiplication,
+
+$$\begin{aligned}
+\beta^T \mathbf x_i &= \begin{cases} \beta_1  \\
+\beta_1 - \beta_2 \end{cases}
+= \begin{cases} p_1 \text{ if first sample} \\
+p_2 \text{ if second sample}\end{cases} \\ \\ 
+\mathbf x_i^T \boldsymbol \beta \boldsymbol \beta^T\mathbf x_i &= \begin{cases}
+\beta_1^2  \\
+(\beta_1 - \beta_2)^2 \end{cases}
+=\begin{cases}
+p_1^2 \text{ if first sample} \\
+p_2^2 \text{ if second sample}\end{cases} \\
+\mathbf x_i \mathbf x_i^T &= \begin{cases}
+\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \text{ if first sample} \\
+\begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix} \text{ if second sample}
+\end{cases}
+\end{aligned}$$
+
+Also note that $E(Y_i) =m_ip_j$ and $E(Y_i^2) = m_ip_j(1-p_j) + m_i^2p_j^2$ for sample $j$.
+
+
+Therefore,
+
+$$\begin{aligned}
+\mathbf A &= - \frac 1 n \sum_{i=1}^n \boldsymbol \psi' &\text{p. 301}\\
+&= \frac 1 n \sum_{i=1}^n m_i \mathbf x_i^T \mathbf x_i \\
+&= \frac 1 n \sum_{i=1}^{n_1} m_i \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} + \frac 1 n \sum_{i=1+n_1}^{n} m_i \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix} \\
+&= \frac 1 n \begin{pmatrix} m_1+m_2 & -m_2 \\ -m_2 & m_2 \end{pmatrix}
+\end{aligned}$$
+
+$$\begin{aligned}
+\mathbf B &= \frac 1 n \sum_{i=1}^n \boldsymbol \psi \boldsymbol \psi^T \\
+&= \frac 1 n \sum_{i=1}^n (Y_i^2 -2Y_i m_i  \boldsymbol \beta^T\mathbf x_i + m_i^2 \mathbf x_i^T \boldsymbol \beta \boldsymbol \beta^T\mathbf x_i)\mathbf x_i \mathbf x_i^T \\
+&= \frac 1 n \sum_{i=1}^n (Y_i^2 -2Y_i m_i p_{j[i]} + m_i^2 p_{j[i]}^2)\mathbf x_i \mathbf x_i^T ~~~ j \text{ indicates sample 1 or 2}\\
+&= \frac 1 n \sum_{i=1}^{n+1} (Y_i - m_i p_1)^2 \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} + \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i p_2)^2 \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}\\
+&= \frac 1 n \begin{pmatrix} \sum_{i=1}^{n+1} (Y_i - m_i p_1)^2+  \sum_{i=1+n_1}^{n} (Y_i - m_i p_2)^2&
+- \sum_{i=1+n_1}^{n} (Y_i - m_i p_2)^2 \\ - \sum_{i=1+n_1}^{n} (Y_i - m_i p_2)^2 &  \sum_{i=1+n_1}^{n} (Y_i - m_i p_2)^2 \end{pmatrix}
+\end{aligned}$$
+
+Under $\beta_2 = p_1- p_2 =0$, we get $p_1 = p_2 = \overset \sim p= \beta_1$, thus,
+
+$$\overset \sim {\mathbf B} = \frac 1 n \begin{pmatrix} \sum_{i=1}^{n+1} (Y_i - m_i \overset \sim p )^2+  \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2&
+- \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \\ - \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 &  \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \end{pmatrix}$$
+
+$$\begin{aligned}
+T_{GS} &= n^{-1} \left[ \sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta} ) \right] \overset \sim V_{\psi_2}^{-1} \left[\sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta}) \right]  ~~~~~~~~~~~ \text{pg. 347 } \\
+\mathbf V_{\psi_1} &= \mathbf{B_{11} - A_{12} A_{22}^{-1} B_{21}- B_{12}\{A_{22}^{-1}\}^T A_{12}^T+A_{12}A_{22}^{-1}B_{22}{\{A_{22}}^{-1}\}^T A_{12}^T}
+\end{aligned}$$
+
+
+$$\begin{aligned}
+\mathbf V_{\psi_2} &= \mathbf{B_{22} - A_{21}A_{11}^{-1}B_{12}- B_{21} \{A_{11}^{-1}\} ^T A_{21}^T + A_{21} A_{11} ^{-1} B_{11} \{{A_{11}}^{-1}\}^T A_{21}^T} \\
+\overset \sim {\mathbf V}_{\psi_2} &= \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 - \left(\frac {-m_2}{n} \right)\left(\frac {n}{m_1+m_2} \right)\left(-\frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \right) \\
+&~~~~~ - \left(-\frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \right)\left(\frac {n}{m_1+m_2} \right)\left(\frac {-m_2}{n} \right) \\
+&~~~~~ + \left( \frac {-m_2}{n} \right)\left( \frac {n}{m_1+m_2}\right)\left( \frac 1 n\sum_{i=1}^{n+1} (Y_i - m_i p_1)^2+ \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i p_2)^2\right) \left(\frac {n}{m_1+m_2} \right) \left(\frac{-m_2}{n} \right) \\
+&= \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 - \left(\frac {2m_2}{m_1+m_2} \right)\left(\frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2 \right) \\
+&~~~~~ + \left( \frac {m_2^2}{(m_1+m_2)^2}\right)\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2^2}{(m_1+m_2)^2}\right)\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)
+\end{aligned}$$
+
+$$\begin{aligned}
+&=\left( 1-\frac {m_2}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2}{(m_1+m_2)}\right)^2\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)\\
+&=\left( \frac {m_1}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)
+\end{aligned}$$
+
+Again, using Microsoft mathematics:
+
+In the first sample, $$\boldsymbol \psi =(Y_i - m_i \mathbf x_i^T \boldsymbol \beta) \mathbf x_i = \begin{pmatrix} Y_i -m_i \beta_1 \\0 \end{pmatrix}$$
+
+In the second sample, $$\boldsymbol \psi =(Y_i - m_i \mathbf x_i^T \boldsymbol \beta) \mathbf x_i = \begin{pmatrix} Y_i -m_i (\beta_1- \beta_2) \\ -Y_i +m_i (\beta_1- \beta_2)\end{pmatrix}$$
+
+Combining those samples,
+$$\boldsymbol \psi =(Y_i - m_i \mathbf x_i^T \boldsymbol \beta) \mathbf x_i =
+\begin{pmatrix} \sum_{i=1}^{n_1} Y_i -m_i \beta_1 + \sum_{i=1+ n_1}^{n} Y_i -m_i (\beta_1- \beta_2) \\ \sum_{i=1+ n_1}^{n} -Y_i +m_i (\beta_1- \beta_2)\end{pmatrix}$$
+
+
+Thus,
+$$\begin{aligned}
+T_{GS} &= n^{-1} \left[\sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta}) \right] \overset \sim V_{\psi_2}^{-1} \left[\sum \boldsymbol \psi_2(Y_i, \overset \sim {\boldsymbol \beta}) \right] \\
+&=  \frac{n^{-1}\left[\sum_{i= 1+n_1}^{n_2}-Y_i +m_i (\overset \sim \beta_1- \overset \sim \beta_2) \right]^2}{\left( \frac {m_1}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)} \\
+&=  \frac{n^{-1}\left[\sum_{i= 1+n_1}^{n_2}-Y_i +m_i \overset \sim p \right]^2}{\left( \frac {m_1}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2\right)+ \left( \frac {m_2}{m_1+m_2}\right)^2\left( \frac 1 n \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2\right)} \\
+&=  \frac{(m_1+ m_2)^2\left[m_2 \overset \sim p -\sum_{i= 1+n_1}^{n_2}Y_i \right]^2}{m_1^2 \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2+ m_2^2  \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2} \\
+&=  \frac{(m_1+ m_2)^2\left[m_2 \frac{\sum_{i=1}^{n_1} Y_i+\sum_{i=1+n_1}^{n} Y_i}{m_1 + m_2} -\frac{(m_1+m_2)\sum_{i= 1+n_1}^{n_2}Y_i}{m_1+m_2} \right]^2}{m_1^2 \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2+ m_2^2  \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2} \\
+&=  \frac{\left[m_2 (\sum_{i=1}^{n_1} Y_i+\sum_{i=1+n_1}^{n} Y_i) -(m_1+m_2)\sum_{i= 1+n_1}^{n_2}Y_i \right]^2}{m_1^2 \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2+ m_2^2  \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2} \\
+&=  \frac{\left[m_2 \sum_{i=1}^{n_1} Y_i -m_1\sum_{i= 1+n_1}^{n_2}Y_i \right]^2}{m_1^2 \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2+ m_2^2  \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2} \\
+&=  \frac{\left[m_1m_2 \hat p_1 -m_1 m_2 \hat p_2 \right]^2}{m_1^2 \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2+ m_2^2  \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2} \\
+&=  \frac{m_1^2m_2^2\left[\hat p_1 -\hat p_2 \right]^2}{m_1^2 \sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2+ m_2^2  \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2} \\
+&=  \frac{\left[\hat p_1 -\hat p_2 \right]^2}{\sum_{i=1+n_1}^{n} (Y_i - m_i \overset \sim p )^2/m_2^2+  \sum_{i=1}^{n_1} (Y_i - m_i \overset \sim p )^2/m_1^2} \\
+\end{aligned}$$
+
+Which matches the book. (8.25 pg. 350).
