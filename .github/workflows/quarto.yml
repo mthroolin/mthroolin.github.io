@@ -50,6 +50,11 @@ jobs:
         run: |
           ls -R documents/BoosStefanskiQMD/_book
 
+      - name: Disable Jekyll for subdirectory
+        run: |
+          echo '' > documents/BoosStefanski/.nojekyll
+
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4  # Updated to v4 to support Node.js 20
         with:
