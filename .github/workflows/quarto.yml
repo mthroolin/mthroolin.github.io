@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'documents/BoosStefanskiQMD/**'  # Trigger workflow only when changes occur in this directory
   pull_request:
+    paths:
+      - 'documents/BoosStefanskiQMD/**'  # Trigger workflow only when pull requests modify this directory
   workflow_dispatch:
 
 jobs:
