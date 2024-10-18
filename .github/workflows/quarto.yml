@@ -47,7 +47,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: documents/BoosStefanskiQMD/_book
-          publish_branch: gh-pages  # Deploy to the master branch
+          publish_branch: master  # Deploy to the master branch
           allow_empty_commit: false
           keep_files: true
           force_orphan: false
