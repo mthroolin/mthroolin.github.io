@@ -1,7 +1,6 @@
 ---
-title: "Selected Solutions to Boos and Stefanski"
 author: "Michael Throolin"
-subtitle: "Chapter 6: Large Sample Results for Likelihood-Based Methods"
+title: "Chapter 6: Large Sample Results for Likelihood-Based Methods"
 ---
 
 ## 6.2
