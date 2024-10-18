@@ -1,0 +1,28 @@
+project:
+  type: book
+
+book:
+  title: "Selected Solutions to Boos and Stefanski"
+  author: "Michael Throolin"
+  chapters:
+    - index.qmd
+    - chapters/ch1.qmd
+    - chapters/ch2.qmd
+    - chapters/ch3.qmd
+    - chapters/ch5.qmd
+    - chapters/ch6.qmd
+    - chapters/ch7.qmd
+    - chapters/ch8.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    number-sections: false
+    code-fold: true
+    code-summary: "Show the code"
+    jekyll: false
+
+

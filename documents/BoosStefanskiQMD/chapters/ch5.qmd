@@ -1,0 +1,573 @@
+---
+title: "Chapter 5: Large Sample Theory: The Basics"
+---
+## 5.1
+
+Suppose that $Y_1, \dots, Y_n$ are identically distributed with mean $E(Y_1)= \mu$, $Var(Y_1)= \sigma^2$ and covariances given by $Cov(Y_{i},Y_{i+j})= \begin{cases} \rho\sigma^2, & |j| \leq2 \\ 0, &|j| >2 \end{cases}$. Prove that $\bar Y \overset{p}{\to} \mu$ as $n \to \infty$.
+
+Solution:
+
+$$
+\begin{aligned}
+Var(\bar Y) &= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma_i^2 + 2\sum_{i=1}^{n-1}\sum_{j=i+1}^{n} \sigma_{ij}\right] \\
+&= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma^2 + 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^{n} \sigma_{ij}\right]\\
+&= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma^2 + 2 \sum_{i=1}^{n-1}\left(\sigma_{i,i+1} +\sigma_{i,i+2}+\sigma_{i,i+3} + \dots+\sigma_{i,n}\right)\right] \\
+&= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma^2 + 2 \sum_{i=1}^{n-1}\left(\rho \sigma^2 +\rho \sigma^2\right)\right] \\
+&= \frac{1}{n^2}\left[n\sigma^2 + 4 (n-1) \rho \sigma^2\right] \\
+& \to 0 \text{ as } n \to \infty.
+\end{aligned}
+$$
+Thus, by Theorem 5.3, $\bar Y - \bar \mu \overset p \to 0$ as $n \to \infty$. As, in this case, $\bar \mu = \mu$, it is shown that $\bar Y \overset p \to \mu$ as $n \to \infty$.
+
+\newpage
+
+## 5.2
+
+Suppose that $Y_1, \dots, Y_n$ are independent random variables with $Y_n \sim N(\mu,\sigma_n^2)$, where the sequence $\sigma_n^2 \to \sigma^2 >0$ as $n \to \infty$. Prove that there is no random variable $Y$ such that $Y_n \overset{p}{\to}Y$. (Hint: Assume there is such a $Y$ and obtain a contradiction from $|Y_n-Y_{n+1}| \leq |Y_n-Y|+|Y_{n+1}-Y|$.)
+
+Solution:
+
+Assume $Y_n \overset{p}{\to}Y$, then $|Y_n-Y_{n+1}| \leq |Y_n-Y|+|Y_{n+1}-Y|$ by the triangle inequality. 
+
+Note that
+$$\begin{aligned}
+Y_n - Y_{n+1} &\sim N(0,\sigma_n^2+ \sigma_{n+1}^2) \\
+\implies \lim_{n \to \infty} Y_n - Y_{n+1} &\sim N(0,2\sigma^2) \\
+&\sim \sqrt{2\sigma}N(0,1) \\
+\implies \lim_{n \to \infty} (Y_n - Y_{n+1})^2 &\sim {2\sigma^2}\chi^2(1) \\
+\implies E \left[\lim_{n \to \infty}(Y_n - Y_{n+1})^2\right] &= {2\sigma^2} > 0.
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+|Y_n-Y_{n+1}| &\leq |Y_n-Y|+|Y_{n+1}-Y| \\
+\implies |Y_n-Y_{n+1}|^2 &\leq (|Y_n-Y|+|Y_{n+1}-Y|)^2 \\
+\implies (Y_n-Y_{n+1})^2 &\leq (Y_n-Y)^2+2|Y_n-Y||Y_{n+1}-Y|+(Y_{n+1}-Y)^2 \\
+\end{aligned}
+$$
+Thus,
+$$
+\begin{aligned}
+0 < {2 \sigma^2} &= E\left[\lim_{n\to \infty}(Y_n-Y_{n+1})^2\right] \\
+&\leq E\left[\lim_{n\to \infty}(Y_n-Y)^2+2|Y_n-Y||Y_{n+1}-Y|+(Y_{n+1}-Y)^2\right] \\
+&\leq E\left[\lim_{n\to \infty}(0)^2+2|0||0|+(0)^2\right] ~~~~~~~~~~~~~~~~~~~~~~~(Y_n \overset p \to Y) \\
+&= 0
+\end{aligned}
+$$
+
+We have achieved a contradiction. Thus, there is no random variable $Y$ such that $Y_n \overset{p}{\to}Y$.
+
+\newpage
+
+## 5.3
+
+Show that $Y_n \overset d \to c$ for some constant $c$ implies $Y_n \overset p \to c$ by directly using the definitions of convergence in probability and in distribution. Start with $P(|Y_n-c| > \epsilon)$.
+
+Solution:
+
+Assume $Y_n \overset d \to c$, then $\lim_{n \to \infty} F_{Y_n}(y) = c$ for all points $y$ where $F_{Y_n}(y)$ is continuous.
+
+$$ \begin{aligned}
+\lim_{n \to \infty}P(|Y_n-c| > \epsilon) &\leq \lim_{n \to \infty}\frac{E(Y_n-c)^2}{\epsilon^2} \\
+&\leq \lim_{n \to \infty}\frac{\int_y(Y_n-c)^2 \frac{d}{dy}\left\{F_{Y_n}(y)\right\}dy}{\epsilon^2} \\
+&\leq \lim_{n \to \infty}\frac{\int_y(Y_n-c)^2 (0)dy}{\epsilon^2} ~~~since~\lim_{n \to \infty} F_{Y_n}(y) = c\\
+&= 0
+\end{aligned}$$
+
+Thus, $Y_n \overset p \to c$ by definition.
+
+\newpage
+## 5.5
+
+Consider the simple linear regression setting, $Y_i = \alpha + \beta x_i + e_i, ~~~i=1,\dots, n$, where the $x_i$ are known constants and $e_1, \dots, e_n$ are iid with mean $0$ and finite variance $\sigma^2$. After a little algebra, the least squares estimator has the following representation, $\hat \beta - \beta = \frac{\sum_{i=1}^n (x_i-\bar x)e_i}{\sum_{i=1}^n (x_i-\bar x)^2}$. Using that representation, prove that $\hat \beta \overset p \to \beta$ as $n \to \infty$ if $\sum_{i=1}^n(x_i-\bar x)^2 \to \infty$
+
+Solution:
+
+$$ \begin{aligned}
+\lim_{n \to \infty} P(|\hat \beta - \beta| > \epsilon) &\leq \lim_{n \to \infty} \frac{E|\hat \beta - \beta|^r}{\epsilon^r} & \text{ by the Markov Inequality} \\
+&\leq \lim_{n \to \infty} E \left|\frac{\sum_{i=1}^n (x_i-\bar x)e_i}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r \\
+&\leq \lim_{n \to \infty}E \left |\frac{\sum_{i=1}^n x_ie_i- n\bar x \bar e}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r \\
+&\leq \lim_{n \to \infty}E \left |\frac{\sum_{i=1}^n x_ie_i}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r & \bar e \to 0 ~ by ~ WLLN\\
+&\leq \lim_{n \to \infty}\left |\frac{\sum_{i=1}^n x_iE(e_i)}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r & note,~E(e_i) =0, so~\lim_{n \to \infty}\sum_{i=1}^n x_iE(e_i)=0\\
+&=0 & \text{ if } \lim_{n \to \infty} \sum_{i=1}^n (x_i-\bar x)^2= \infty
+\end{aligned}$$
+
+Thus, by definition, $\hat \beta \overset p \to \beta$ as $n \to \infty$ if $\sum_{i=1}^n(x_i-\bar x)^2 \to \infty$.
+
+## 5.9
+
+Let $X_1, \dots, X_n$ be iid from a distribution with mean $\mu$, variance $\sigma^2$, and finite central moments $\mu_3$ and $\mu_4$. Consider $\hat \theta = \bar X /s_n$, a measure of “effect size” used in meta-analysis. Prove that $\hat \theta \overset p \to \theta = \mu/\sigma$ as $n \to \infty$.
+
+Solution:
+
+$$ \begin{aligned}
+\bar X  & \overset p \to \mu  & (WLLN) \\
+s_n^2 & \overset p \to \sigma^2 & (Example~5.12,~p.~ 227) \\
+\frac{1}{s_n} & \overset p \to \frac 1 \sigma & (Continuous~Mapping~Theorem) \\
+\implies \frac{\bar X}{s_n} & \overset p \to \frac{\mu} \sigma & (Slutsky's~Theorem)
+\end{aligned}$$
+
+\newpage
+
+## 5.24
+
+When two independent binomials, $X_1$ is binomial$(n_1,p_1)$ and $X_2$ is binomial$(n_2,p_2)$, are put in the form of a $2\times 2$ table (see Example 5.31, p. 240), then one often estimates the odds ratio $$\theta = \frac{\frac{p_1}{1-p_1}}{\frac{p_2}{1-p_2}} = \frac{p_1(1-p_2)}{p_2(1-p_1)}.$$ The estimate $\hat \theta$ is obtained by inserting $\hat{p_1} = X_1/n_1$ and $\hat p_2 = X_2/n_2$ in the above expression. Show that $\log(\hat \theta)$ has asymptotic variance $$\frac{1}{n_1p_1(1-p_1)}+\frac{1}{n_1p_2(1-p_2)}.$$
+
+Solution:
+
+Let $\lambda = \frac{n_1}{n_1+n_2}= \frac{n_1}{n}$ Then, following class notes and by central limit theorem,
+
+$$
+\sqrt n  \ \begin{pmatrix} \left(\frac{X_1}{n_1} - p_1 \right) \\
+\left( \frac{X_2}{n_2} - p_2 \right) \end{pmatrix} \overset d \to MVN \left(\mathbf 0, \begin{bmatrix} \frac{p_1 \left(1 - p_1 \right)}{\lambda} & 0 \\
+0 & \frac{p_2 \left(1 - p_2 \right)}{1-\lambda} \end{bmatrix}  \right)
+$$
+Define
+$$ \begin{aligned}
+g \begin{pmatrix} p_1 \\ p_2 \end{pmatrix} &= \log \left(\frac{p_1(1-p_2)}{p_2(1-p_1)}\right) \\
+\implies g' \begin{pmatrix} p_1 \\ p_2 \end{pmatrix}  &= \begin{pmatrix} \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{p_2(1-p_1)(1-p_2)- p_1(1-p_2)(-p_2)}{p_2^2(1-p_1)^2} \\ \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{p_2(1-p_1)(-p_1)- p_1(1-p_2)(1-p_1)}{p_2^2(1-p_1)^2}  \end{pmatrix} \\
+&=\begin{pmatrix} \frac{p_2(1-p_1)}{p_1(1-p_2)}  \frac{(1-p_1)(1-p_2)+ p_1(1-p_2)}{p_2(1-p_1)^2} \\ \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{p_2(-p_1)- p_1(1-p_2)}{p_2^2(1-p_1)}  \end{pmatrix} \\
+&=\begin{pmatrix} \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{1-p_2}{p_2(1-p_1)^2} \\ \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{-p_1}{p_2^2(1-p_1)}  \end{pmatrix} \\
+&=\begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}
+\end{aligned}$$
+
+Thus, by delta method,
+$$\begin{aligned}
+\log(\hat \theta) &= g \begin{pmatrix} \frac{X_1}{n_1} - p_1 \\ \frac{X_2}{n_2} - p_2 \end{pmatrix} \\
+&\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}^T \begin{pmatrix} \frac{p_1 \left(1 - p_1 \right)}{\lambda} & 0 \\
+0 &  \frac{p_2 \left(1 - p_2 \right)}{1-\lambda} \end{pmatrix} \begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}/n\right) \\
+&\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\begin{pmatrix} \frac{1}{\lambda} & \frac{1}{1-\lambda}  \end{pmatrix} \begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}/n\right)\\
+&\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\left( \frac{1}{\lambda p_1(1-p_1)} + \frac{1}{(1-p_2)p_2 (1-\lambda)}\right)/n\right)\\
+&\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\left( \frac{1}{\left(\frac{n_1}{n}\right) p_1(1-p_1)} + \frac{1}{(1-p_2)p_2 \left(1-\left(\frac{n_1}{n_1+n_2}\right)\right)}\right)/n\right)\\
+&\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\left( \frac{1}{n_1 p_1(1-p_1)} + \frac{1}{n_2p_2(1-p_2) }\right)\right)\\
+\end{aligned}$$
+
+\newpage
+
+## 5.27 a)
+
+For an iid sample $Y_1,\dots, Y_n$, consider finding the asymptotic joint distribution of $(\bar Y, s_n, s_n/ \bar Y)$ using Theorem 5.20 (p. 239) and (5.34, p. 256). Find the matrices  $\mathbf{g'(\boldsymbol \theta)}$ and $\boldsymbol \Sigma$ used to compute the asymptotic covariance $\mathbf{g'(\boldsymbol \theta) \boldsymbol \Sigma g'(\boldsymbol \theta)^T}$.
+
+Solution:
+
+By Theorem 5.20,
+$$ \begin{aligned}
+\sqrt n \begin{pmatrix} \bar Y - \mu \\  s_n^2-\sigma^2\end{pmatrix} &\overset d \to N\left(\mathbf 0, \begin{pmatrix} \sigma^2 & \mu_3 \\ \mu_3 & \mu_4-\sigma^4 \end{pmatrix} \right) \\
+\implies \begin{pmatrix} \bar Y \\  s_n^2 \end{pmatrix} & is~ AN\left( \begin{pmatrix} \mu \\  \sigma^2\end{pmatrix}, \begin{pmatrix} \sigma^2 & \mu_3 \\ \mu_3 & \mu_4-\sigma^4 \end{pmatrix}/n \right)
+\end{aligned}$$
+
+Define $g \begin{pmatrix} a \\b \end{pmatrix} = \begin{pmatrix} a \\ \sqrt b \\ \frac {\sqrt b} a \end{pmatrix}$ Then, $g' \begin{pmatrix} a \\b \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} & \frac{1}{2a\sqrt b}\end{pmatrix}$.
+
+By Delta Method,
+
+$$\begin{aligned}
+g\begin{pmatrix} \bar Y \\  s_n^2 \end{pmatrix} & is~ AN\left( g \begin{pmatrix} \mu \\  \sigma^2\end{pmatrix}, \begin{pmatrix} 1 & 0 \\ 0 & \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} & \frac{1}{2a\sqrt b}\end{pmatrix}\begin{pmatrix} \sigma^2 & \mu_3 \\ \mu_3 & \mu_4-\sigma^4 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} & \frac{1}{2a\sqrt b}\end{pmatrix}^T/n\right)
+\end{aligned}$$
+
+In conclusion,
+$$ \begin{aligned}
+g'(\boldsymbol \theta) =\begin{pmatrix} 1 & 0 \\ 0 & \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} & \frac{1}{2a\sqrt b}\end{pmatrix} \\
+\boldsymbol \Sigma = \begin{pmatrix} \sigma^2 & \mu_3 \\ \mu_3 & \mu_4-\sigma^4 \end{pmatrix} \\
+g'(\boldsymbol \theta)^T =\begin{pmatrix} 1 & 0 &  \frac{-\sqrt b}{a^2} \\ 0 & \frac{1}{2 \sqrt b} & \frac{1}{2a\sqrt b}\end{pmatrix} \\
+ \end{aligned}$$
+
+\newpage
+## 5.29
+
+In most of Chapter 5 we have dealt with iid samples of size $n$ of either univariate or multivariate random variables. Another situation of interest is when we have a number of different independent samples of different sizes. For simplicity, consider the case of two iid samples, $X_1, \dots, X_m$ and $Y_1, \dots Y_n$, with common variance $\sigma^2$ and under a null hypothesis they have a common mean, say $\mu$. Then the two-sample pooled t statistic is $$t_p = \frac{\bar X- \bar Y}{\sqrt{s_p^2(\frac{1}{m}+ \frac 1 n)}},$$ where $$s_p^2= \frac{(m-1)s_X^2 +(n-1)s_Y^2}{m+n-2}$$ and $$s_X^2 = \frac{1}{m-1} \sum_{i=1}^m (X_i-\bar X)^2,~~s_Y^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i-\bar X)^2.$$ It can be shown that $t_p \overset d \to N(0,1)$ as $\min(m,n) \to \infty$. However, the proof is fairly tricky. Instead it is common to assume that both sample sizes go to 1 at a similar rate, i.e., $\lambda_{m,n} = m/(m+n) \to \lambda >0$ as $\min(m,n) \to \infty$. Under this assumption prove that $t_p \overset d \to N(0,1)$. Hint: show that $t_p = \left[\sqrt{1- \lambda_{m,n}}\sqrt m (\bar X-\mu)- \sqrt{1- \lambda_{m,n}}\sqrt n (\bar Y-\mu) \right]/s_p$.
+
+Solution:
+
+$$\begin{aligned}
+t_p &= \frac{\bar X- \bar Y}{\sqrt{s_p^2(\frac{1}{m}+ \frac 1 n)}} \\
+&= \frac{(\bar X - \mu)- (\bar Y-\mu)}{s_p\sqrt{\frac{n+m}{nm}}} \\
+&= \frac{\sqrt{\frac{nm}{n+m}}(\bar X - \mu)- \sqrt{\frac{nm}{n+m}}(\bar Y-\mu)}{s_p} \\
+&= \frac{\sqrt{\frac{n+m-m}{n+m}} \sqrt m(\bar X - \mu)- \sqrt{\frac{m}{n+m}}\sqrt n(\bar Y-\mu)}{s_p} \\
+&= \frac{\sqrt{1-\lambda_{m,n}} \sqrt m(\bar X - \mu)- \sqrt{\lambda_{m,n}}\sqrt n(\bar Y-\mu)}{s_p} \\ 
+\end{aligned}$$
+
+Note that:
+$$\begin{aligned}
+s_p^2 &= \frac{(m-1)s_X^2 +(n-1)s_Y^2}{m+n-2} \\
+&\overset P \to \frac{(m-1)\sigma^2 +(n-1)\sigma^2}{m+n-2} \\
+&= \frac{(m+n-2)\sigma^2}{m+n-2} = \sigma^2 \\
+\implies s_p &\overset P \to \sigma \\
+\sqrt m(\bar X - \mu) &\overset d \to N(0,\sigma^2) \\
+\sqrt n(\bar Y - \mu) &\overset d \to N(0,\sigma^2)
+\end{aligned}$$
+
+$$\begin{aligned}
+t_p &= \frac{\sqrt{1-\lambda_{m,n}} \sqrt m(\bar X - \mu)- \sqrt{\lambda_{m,n}}\sqrt n(\bar Y-\mu)}{s_p} \\
+& \overset d \to \frac{\sqrt{1-\lambda}N(0,\sigma^2)- \sqrt{\lambda}N(0,\sigma^2)} \sigma \\
+& \overset d \to N(0,1-\lambda)-N(0, \lambda) \\
+& \overset d \to N(0,1)
+\end{aligned}$$
+
+\newpage
+
+## 5.33
+
+Let $(X_1,Y_1),\dots ,(X_n,Y_n)$ be iid pairs with $E(X_1) = \mu_1$, $E(Y_1) =\mu_2$, $Var(X_1) = \sigma_1^2$, $Var(Y_1) = \sigma_2^2$, and $Cov(X_1, Y_1) = \sigma_{12}$.
+
+### a.
+
+What can we say about the asymptotic distribution of $(\bar X, \bar Y)^T$?
+
+Solution:
+
+By Central Limit theorem, $(\bar X, \bar Y)^T$is $AN\left( \begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix}, \begin{pmatrix} \sigma_1^2 & \sigma_{12} \\ \sigma_{12} & \sigma_2^2 \end{pmatrix} \bigg/n \right)$.
+
+### b. Suppose that $\mu_1=\mu_2=0$ and let $T = (\bar X)(\bar Y)$. Show that $nT \overset d \to Q$ as $n \to \infty$ and describe the random variable Q.
+
+Solution:
+
+**Attempt 1: INCORRECT  if X and Y are correlated**
+
+By CLT, $\sqrt n \bar X \overset d \to N(0,\sigma_1^2)$, $\sqrt n \bar Y \overset d \to N(0,\sigma_2^2)$. Thus,
+$$\begin{aligned}\frac{\sqrt n \bar X}{\sigma_1} &\overset d \to N(0,1)\\
+\frac{\sqrt n \bar Y}{\sigma_2} &\overset d \to N(0,1)\\
+\implies \left(\frac{\sqrt n \bar X}{\sigma_1} \right)\left(\frac{\sqrt n \bar Y}{\sigma_2} \right) &\overset d \to \chi^2(1) ~~~ \mathbf{assumes}~~ \sigma_{12}=0\\
+\implies n \bar X \bar Y &\overset d \to \sigma_1\sigma_2\chi^2(1)
+\end{aligned} $$
+
+**Attempt 2: INCORRECT if $\sigma_{12} =0$, we should get a $\chi^2$ distribution**
+
+Note that $\bar X -0= \frac{1}{n} \sum_{i=1}^n h_1(X_i,Y_i) + R_{n1}$, where $h_1(X_i) = X_i$ and $R_{n1} = 0$. Similarly, $\bar Y - 0 = \frac{1}{n} \sum_{i=1}^n h_2(X_i,Y_i) + R_{n2}$, where $h_2(Y_i) = Y_i$ and $R_{n2} = 0$. Note, in this case $E(h_1(X_i,Y_i)) =E(h_2(X_i,Y_i)) =0$.
+
+Define $g((a,b)^T) = ab$, which implies $g'(a,b) = (b,a)^T$. Note that g is a real valued function with partial derivatives existing in the neighborhood of $\mathbf 0$ and is continuous at $\mathbf 0$. By Thm 5.27,
+$$\begin{aligned}
+g((\bar X, \bar Y)) -g(\boldsymbol{\theta}) &= \frac{1}{n} \sum_{i=1}^n \left[g_1' (\boldsymbol \theta)h_1(X_i,Y_i)+g_2'(\boldsymbol \theta)h_2(X_i,Y_i)\right] + R_n, ~~where~\sqrt n R_n \overset p \to 0 \\
+\bar X \bar Y -g(\mathbf 0) &= \frac{1}{n} \sum_{i=1}^n \left[g_1' (\mathbf 0)X_i+g_2'(\mathbf 0)Y_i\right] + R_n \\
+&= \frac{1}{n} \sum_{i=1}^n [0] + R_n \\
+\end{aligned}$$
+Thus, by Theorem 5.23, $\bar X \bar Y \overset d \to N(0,0)$
+
+**Attempt 3: LEADS NOWHERE**
+
+Define $g((a,b)^T) = ab$. Then, by (Taylor, 1712)
+
+$$\begin{aligned}
+g((\bar X,  \bar Y)^T) - g((\mu_1,\mu_2)^T) &= \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} \mu_2 \\ \mu_1 \end{pmatrix} + \frac 1 2 \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix} \\
+&~~~~~~~~~+ \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} 0 & 0 & 0 & 0\\ 0 & 0& 0 &0 \end{pmatrix} \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix} \otimes\begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix} \\
+&= \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} \mu_2 \\ \mu_1 \end{pmatrix} + \frac 1 2 \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix} 
+\end{aligned}$$
+Thus, in the case where $\mu_1=\mu_2= 0$
+$$\begin{aligned}
+g((\bar X,  \bar Y)^T) - g((0,0)^T) &=  \begin{pmatrix} \bar X  & \bar Y \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \frac 1 2 \begin{pmatrix} \bar X & \bar Y\end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} \bar X  \\ \bar Y \end{pmatrix} \\
+\implies \bar X \bar Y &= 0 + \frac 1 2 \begin{pmatrix} \bar Y & \bar X\end{pmatrix} \begin{pmatrix} \bar X  \\ \bar Y \end{pmatrix} =  \bar X \bar Y
+\end{aligned}$$
+
+So doing a Taylor expansion is not useful.
+
+### c.
+
+Suppose that $\mu_1 = 0, \mu_2 \neq 0$ and let $T = (\bar X) (\bar Y)$. Show that $\sqrt n T \overset d \to R$ as $n \to \infty$ and describe the random variable $R$.
+
+Solution:
+
+Define $g (a , b)^T = ab \implies g( \bar X, \bar Y)= \bar X \bar Y$,
+$g'\begin{pmatrix} a\\ b \end{pmatrix} = \begin{pmatrix} b \\ a \end{pmatrix}$. By Theorem 5.26,
+
+$$\begin{aligned}
+g\begin{pmatrix} \bar X \\ {\bar Y} \end{pmatrix} - g\begin{pmatrix} {0} \\ \mu_2 \end{pmatrix} 
+&= \frac 1 n \sum_{i=1}^n \begin{pmatrix} \mu_2 & 0 \end{pmatrix} \begin{pmatrix} X_i \\ Y_i - \mu_2 \end{pmatrix} + R_n,  ~~ where \sqrt n R_n \overset p \to 0 \\
+&= \mu_2 \bar X + R_n \\
+\implies  \sqrt n \left( g\begin{pmatrix} \bar X \\ {\bar Y} \end{pmatrix} - g\begin{pmatrix} {0} \\ \mu_2 \end{pmatrix} \right) &=  \mu_2(\sqrt n \bar X) +\sqrt n R_n \\
+\implies  \sqrt n  \bar X {\bar Y}  &=  \mu_2(\sqrt n \bar X) +\sqrt n R_n \\
+& \overset d \to N(0, \sigma_1^2 + \mu_2^2)
+\end{aligned}$$
+
+## 5.32
+
+Suppose that $\hat \theta_1, \dots, \hat \theta_k$ each satisfy the assumptions of Theorem 5.23 (p. 242): $$\hat \theta_i - \theta_i = \frac 1 n \sum_{j=1}^n h_i(X_j) + R_{in},~~~\sqrt n R_{in} \overset p \to 0,$$ and $E[h_i(X_1)] = 0$ and $var[h_i(X_1)] = \sigma_{hi}^2 < \infty$. Let $T = \sum_{i=1}^k c_i \hat \theta_i$ for any set of constants $c_1, \dots, c_k$. Find the correct approximating function $h_T$ for $T$, show that Theorem 5.23 may be used (verify directly without using later theorems), and find the limiting distribution of $T$.
+
+Solution:
+
+$$\begin{aligned}
+\hat \theta_i - \theta_i &= \frac 1 n \sum_{j=1}^n h_i(X_j) + R_{in},~~~\sqrt n R_{in} \overset p \to 0 \\
+\implies c_i(\hat \theta_i - \theta_i) &= c_i\left(\frac 1 n \sum_{j=1}^n h_i(X_j) + R_{in} \right),~~~\sqrt n R_{in} \overset p \to 0 \\
+\implies c_i \hat \theta_i - c_i\theta_i &= \frac 1 n \sum_{j=1}^n c_ih_i(X_j) + c_iR_{in},~~~\sqrt n R_{in} \overset p \to 0 \\
+\end{aligned}$$
+
+Note that $c_i \sqrt nR_{in} \overset p \to 0$ by Slutsky's Theorem.
+$E[c_i h_i (X_i)] = 0$, $Var[c_i h_i (X_1)] = c_i^2 \sigma_{hi}^2 < \infty$.
+
+$$\begin{aligned}
+c_i \hat \theta_i - c_i\theta_i &= \frac 1 n \sum_{j=1}^n c_ih_i(X_j) + c_iR_{in},~~~\sqrt n c_iR_{in} \overset p \to 0 \\
+\implies \sum_{i=1}^k c_i \hat \theta_i - c_i\theta_i &= \sum_{i=1}^k \frac 1 n \sum_{j=1}^n c_ih_i(X_j) + c_iR_{in},~~~\sqrt n c_iR_{in} \overset p \to 0 \\
+\implies T -\sum_{i=1}^k c_i\theta_i &= \frac 1 n \sum_{j=1}^n \left(\left[\sum_{i=1}^k c_ih_i(X_j) \right] + \left[\sum_{i=1}^k c_iR_{in} \right]\right),~~~\sqrt n c_iR_{in} \overset p \to 0 \\
+\end{aligned}$$
+
+As $\left[\sum_{i=1}^k c_iR_{in} \right] \overset p \to 0$ because a finite sum of random variables that converge in probability to zero will converge in probability to 0 by Slutsky's Theorem.
+
+Therefore, the correct approximating of T is $h_T =\left[\sum_{i=1}^k c_ih_i(X_j) \right]$, which has mean 0 and variance $\sum_{i=1}^k c_i^2 \sigma_{hi}^2 < \infty$.
+
+Thus, all conditions apply to use Theorem 5.23 and $\sqrt n\left(T -\sum_{i=1}^k c_i\theta_i \right) \overset d \to N\left(0,  \sum_{i=1}^k c_i^2 \sigma_{hi}^2\right)$. In other words, the limiting distribution of $T$ is $AN\left(0, \frac 1 n \sum_{i=1}^k c_i^2 \sigma_{hi}^2\right)$.
+
+\newpage
+
+## 5.40
+
+Formulate an extension of Theorem 5.27 (p. 247) for the situation of two independent samples $X_1, \dots, X_m$ and $Y_1, \dots, Y_n$. The statistic of interest is $T = g(\hat \theta_1, \hat \theta_2)$, and the conclusion is $$g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) = \frac 1 m \sum_{i=1}^m g_1'(\boldsymbol \theta) h_1(X_i) + \frac 1 n \sum_{i=1}^n g_2'(\boldsymbol \theta) h_2(Y_i) + R_{mn},~~ \sqrt{\max(m,n)} R_{m,n} \overset p \to 0.$$
+
+Solution:
+
+I define $\boldsymbol \theta = (\theta_1, \theta_2)^T$ 
+
+$$ \begin{aligned}
+g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) &= (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g'(\theta_1,\theta_2) + \frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T \\
+\end{aligned}
+$$
+For some $\boldsymbol \theta^*$ in the neighborhood between $\boldsymbol {\hat  \theta}$ and $\boldsymbol \theta$.
+Looking carefully at the first component of the right hand side,
+$$ \begin{aligned}
+(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g'(\theta_1,\theta_2) &=
+(\hat \theta_1 - \theta_1)g_1'(\boldsymbol \theta) +(\hat \theta_2 - \theta_2)g_2'(\boldsymbol \theta) \\
+by~ Theorem~5.27&= \left(\frac 1 m \sum_{i=1}^m h_1(X_i) +R_{m1} \right)g_1'(\boldsymbol \theta) +\left(\frac 1 n \sum_{i=1}^n h_2(Y_i) +R_{n2} \right)g_2'(\boldsymbol \theta),~~where~ \substack{\sqrt n R_{n2} \overset p \to 0 \\ \sqrt m R_{m1} \overset p \to 0 } \\
+&= \frac 1 m \sum_{i=1}^m h_1(X_i)  g_1'(\boldsymbol \theta) +\frac 1 n \sum_{i=1}^n h_2(Y_i)  g_2'(\boldsymbol \theta)+R_{m1}g_1'(\boldsymbol \theta)+R_{n2}g_2'(\boldsymbol \theta)
+\end{aligned}
+$$
+Combining this with the second component, we get:
+
+$$g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) = \frac 1 m \sum_{i=1}^m h_1(X_i)  g_1'(\boldsymbol \theta) +\frac 1 n \sum_{i=1}^n h_2(Y_i)  g_2'(\boldsymbol \theta) + R_{mn}$$
+where, $$R_{mn} = R_{m1}g_1'(\boldsymbol \theta)+R_{n2}g_2'(\boldsymbol \theta) + \frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T.$$
+
+Note that $\sqrt m R_{m1}g_1'(\boldsymbol \theta) \overset p \to 0$ and $\sqrt n R_{n2}g_2'(\boldsymbol \theta) \overset p \to 0$ by Slutsky's Theorem. To finish this prove I only need to show $\frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T \overset p \to 0$
+
+$$
+\begin{aligned}
+\frac{1}{2}&(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\boldsymbol \theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T = \frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)\begin{pmatrix}g_{11}^{(2)}(\boldsymbol \theta^*) &g_{12}^{(2)}(\boldsymbol \theta^*) \\ g_{21}^{(2)}(\boldsymbol \theta^*) &g_{22}^{(2)}(\boldsymbol \theta^*)\end{pmatrix} (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T \\
+&= \frac{1}{2}\left((\hat \theta_1  - \theta_1)g_{11}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)g_{21}^{(2)}(\boldsymbol \theta^*), (\hat \theta_1  - \theta_1)g_{12}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)g_{22}^{(2)}(\boldsymbol \theta^*)\right) \begin{pmatrix} \hat \theta_1  - \theta_1 \\ \hat \theta_2  - \theta_2\end{pmatrix} \\
+&= \frac{1}{2}\left((\hat \theta_1  - \theta_1)^2g_{11}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{21}^{(2)}(\boldsymbol \theta^*) + (\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{12}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)^2g_{22}^{(2)}(\boldsymbol \theta^*)\right) 
+\end{aligned}
+$$
+We know that $\sqrt m (\hat \theta_1 - \theta_1) \to 0$ and $\sqrt n (\hat \theta_2 - \theta_2) \to 0$.
+This implies  $\sqrt {\max(m,n)} (\hat \theta_1 - \theta_1) \to 0$ and $\sqrt {\max(m,n)} (\hat \theta_2 - \theta_2) \to 0$.
+
+Accordingly, $\max(m,n) (\hat \theta_1 - \theta_1)^2 \to 0$, $\max(m,n) (\hat \theta_2 - \theta_2)^2 \to 0$, and $\max(m,n) (\hat \theta_1 - \theta_1)(\hat \theta_2 - \theta_2)  \to 0$.
+
+Thus, $$\frac{\max(m,n)}{2}\left((\hat \theta_1  - \theta_1)^2g_{11}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{21}^{(2)}(\boldsymbol \theta^*) + (\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{12}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)^2g_{22}^{(2)}(\boldsymbol \theta^*)\right) \overset p \to 0$$
+
+I have shown $$g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) = \frac 1 m \sum_{i=1}^m h_1(X_i)  g_1'(\boldsymbol \theta) +\frac 1 n \sum_{i=1}^n h_2(Y_i)  g_2'(\boldsymbol \theta) + R_{mn},$$ where $\sqrt{max(m,n)} R_{mn} \overset p \to 0$.
+
+
+## 5.42
+
+Thinking of the $k^{th}$ central moment as a functional, $T_k(F)= \int (t-\mu)^k d F(t)$, show that the Gateaux derivative is given by $T_k(F;\Delta) = \int \left\{t-T_1(F)\right\}^k d \Delta(t) - T_1(F;\Delta) \int k \left\{t-T_1(F) \right\}^{k-1} d F(t)$, where $T_1(F;\Delta) = \int t d \Delta(t)$ is the Gateaux derivative for the mean functional diven in Example 5.5.8i (p.253). Then, substitute $\Delta(t)= \delta_x(t)- F(t)$ and obtain $h_k$ given in Theorem 5.24 (p. 243).
+
+Solution:
+
+$$
+\begin{aligned}
+T_k(F) &= \int (t-\mu)^k d F(t) =\int \left(t-\int_s s dF(s)\right)^k dF(t) \\
+\implies T_k(F;\Delta) &= \frac{\partial}{\partial \epsilon} T_k(F+\epsilon \Delta) \bigg|_{\epsilon = 0^+} = \int\frac{\partial}{\partial \epsilon} \left\{ \left(t-\int_s s d\{F(s)+\epsilon \Delta(s) \}\right)^k d \{F(t)+\epsilon \Delta(t) \} \right\}  \bigg|_{\epsilon = 0^+} \\
+&= \int k\left(t-\int_s s d\{F(s)+\epsilon \Delta(s) \}\right)^{k-1}\left(-\int_s s d \Delta(s)\right) d \{F(t)+\epsilon \Delta(t) \} \\
+&~~~~~~~~~~~~~~~~~~~+\left(t-\int_s s d\{F(s)+\epsilon \Delta(s) \}\right)^k d\Delta(t) \bigg|_{\epsilon = 0^+} \\
+&= \int k\left(t-\int_s s dF(s)\right)^{k-1}\left(-\int_s s d \Delta(s)\right) d F(t) +\left(t-\int_s s dF(s)\right)^k d\Delta(t)  \\
+&=\int \left(t-T_1(F)\right)^k d\Delta(t) -T_1(F;\Delta)\int k\left(t-T_1(F)\right)^{k-1} d F(t)   \\
+\end{aligned}
+$$
+Substituting $\Delta(t)= \delta_x(t)- F(t)$, and noting that $T_1(F;\Delta) = x-\mu$
+$$
+\begin{aligned}
+&= \int \left(t-T_1(F)\right)^k d\left\{\delta_x(t)- F(t)\right\} -T_1(F;\Delta)\int k\left(t-T_1(F)\right)^{k-1} d F(t) \\
+&= \int \left(t-\mu\right)^k d\delta_x(t)- \int \left(t-\mu\right)^kdF(t) -(x-\mu)\int k\left(t-\mu\right)^{k-1} d F(t) \\
+&= \left(x-\mu\right)^k - \mu_k -k (x-\mu)\mu_{k-1}  
+\end{aligned}
+$$
+Which is the same  $h_k$ given in Theorem 5.24 (p. 243).
+
+\newpage
+
+## 5.44
+
+A location M-estimator may be represented as $T(F_n)$, where $T(\cdot)$ satisfies $$\int \psi (t- T(F)) d F(t) = 0,$$ and $\psi$ is a known differentiable function. Using implicit differentiation, show that the Gateaux derivative is $T(F;\Delta) = \frac{\int \psi (t- T(F))d\Delta(t)}{\int \psi' (t- T(F))dF(t)}$, then substitute $\Delta(t) = \delta_x (t) - F(t)$ and obtain the influence function $h(x)$.
+
+Solution:
+
+$$
+\begin{aligned}
+0=T(F;\Delta)  &= \frac{\partial}{\partial \epsilon} T(F+\epsilon \Delta) \bigg|_{\epsilon = 0^+}=\frac{\partial}{\partial \epsilon} \int \psi (t- T(F(t)+\epsilon \Delta(t))) d \{F(t)+\epsilon \Delta(t) \}  \bigg|_{\epsilon = 0^+}\\
+&=\int \psi' (t- T(F(t)+\epsilon \Delta(t)))\left(-T'(F(t)+\epsilon \Delta(t))\right)\Delta(t)d \{F(t)+\epsilon \Delta(t) \}  \bigg|_{\epsilon = 0^+}\\ 
+&~~~~~~~~~~~~~~~~~+\int \psi (t- T(F(t)+\epsilon \Delta(t)))d \Delta(t)  \bigg|_{\epsilon = 0^+}\\
+0&=\int -T'(F(t))\psi' (t- T(F(t)))\Delta(t)dF(t)  +\int \psi (t- T(F(t)))d \Delta(t)
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\implies \int T'(F)\psi' (t- T(F))\Delta(t)dF&= \int \psi (t- T(F(t)))d \Delta(t)\\
+\\
+\implies T'(F) = T(F; \Delta) &= \frac{\int \psi (t- T(F))d\Delta(t)}{\int \psi' (t- T(F))dF(t)}
+\end{aligned}
+$$
+Substituting $\Delta(t) = \delta_x (t) - F(t)$,
+
+$$
+\begin{aligned}
+\frac{\int \psi (t- T(F))d\Delta(t)}{\int \psi' (t- T(F))dF(t)} &= \frac{\int \psi (t- T(F))d\{\delta_x (t) - F(t)\}}{\int \psi' (t- T(F))dF(t)} \\
+&= \frac{\psi (x- T(F)) - \int \psi (t- T(F))dF(t)}{\int \psi' (t- T(F))dF(t)} \\
+&= \frac{\psi (x- T(F))}{\int \psi' (t- T(F))dF(t)} \\
+\end{aligned}
+$$
+
+Thus, $h(x) = \frac{\psi (x- T(F))}{\int \psi' (t- T(F))dF(t)}$
+
+
+\newpage
+
+## 5.45
+
+One representation of a "smooth" linear combination of order statistics is $T(F_n)$, where $T(F)= \int_0^1 J(p) F^{-1} (p)dp$, and $J$ is a weighting function. Using the results in Example 5.5.8j (p. 254), find the influence function $h(x)$.
+
+Solution:
+
+$$
+\begin{aligned}
+T(F)&= \int_0^1 J(p) F^{-1} (p)dp \\
+T(F;\Delta)  &= \frac{\partial}{\partial \epsilon} T(F+\epsilon \Delta) \bigg|_{\epsilon=0^+} \\
+&= \frac{\partial}{\partial \epsilon} \int_0^1 J(p) (F+\epsilon \Delta)^{-1} (p)dp \bigg|_{\epsilon=0^+} \\
+&=\int_0^1 \left[\frac{\partial}{\partial \epsilon} \{J(p)\} (F+\epsilon \Delta)^{-1} (p)\right] +\left[ J(p) \frac{\partial}{\partial \epsilon}\{(F+\epsilon \Delta)^{-1} (p)\}\right]dp \bigg|_{\epsilon=0^+} \\
+&=\int_0^1  J(p) \frac{\partial}{\partial \epsilon}\{(F+\epsilon \Delta)^{-1} (p)\}dp \bigg|_{\epsilon=0^+} \\
+&=-\int_0^1  J(p) \frac{\Delta (p)}{F'(p)} dp ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \text{by Example 5.5.8j results}\\ 
+\end{aligned}
+$$
+Setting $\Delta(p) =  \delta_{x}(p) - F(p)$
+$$
+\begin{aligned}
+h(x) &= -\int_0^1  J(p) \frac{\Delta (p)}{F'(p)} dp \\
+&= -\int_0^1  J(p) \frac{\delta_{x}(p) - F(p)}{F'(p)} dp \\
+&= \int_0^1  J(p) \frac{F(p)-\delta_{x}(p)}{F'(p)} dp
+\end{aligned}
+$$
+
+\newpage
+
+## 5.48
+
+Use Theorem 5.4 (p. 219), the univariate CLT and Theorem 5.31 (p. 256) to prove Theorem 5.7 (p. 255, the multivariate CLT).  Perhaps it is easier to use an alternate statement of the conclusion of the univariate CLT than given in Theorem 5.4: $\sqrt n (\bar X - \mu) \overset d \to Y$, where $Y \sim N(0,\sigma^2)$.
+
+Solution:
+
+CLT: $\sqrt n (\bar X - \mu ) \overset d \to Y, Y \sim N(0,\sigma^2)$.
+
+Cramer-Wold Device: $\mathbf Y_n \overset d \to \mathbf Y$ iff $\mathbf c^T \mathbf Y_n \overset d \to \mathbf c ^T \mathbf Y ,~ \forall \mathbf c \in \mathbb R^K$.
+
+
+Proof: Let $\mathbf{X_1,\dots, X_n}$ be iid random k-vectors with finite mean $E(\mathbf X_1)= \boldsymbol \mu$ and covariance matrix $\boldsymbol \Sigma$.
+
+Consider a vector $\mathbf c \in \mathbb R ^k$. Then $\mathbf c^T \mathbf X_n$ is some scalar and
+$$E(\mathbf c^T \mathbf X_n) = \mathbf c^T E(\mathbf X_n) = \mathbf c^T \boldsymbol  \mu$$
+$$Var(\mathbf c^T \mathbf X_n) = \mathbf c^T Var(\mathbf X_n) \mathbf c = \mathbf c^T \boldsymbol \Sigma \mathbf c$$
+Thus, by the CLT (scalar case):
+
+$$
+\begin{aligned}
+\sqrt n \left(\frac {\sum_{i=1}^n \mathbf c^T \mathbf X_i}{n} - \mathbf c^T \boldsymbol  \mu \right) &\overset d \to W,~~~~W \sim N(0,\mathbf c^T \boldsymbol \Sigma \mathbf c) \\
+\implies \mathbf c^T \sqrt n \left(\frac {\sum_{i=1}^n\mathbf X_i}{n} - \boldsymbol  \mu \right)& \overset d \to \mathbf c^T Y,~~~~Y \sim N(0, \boldsymbol \Sigma) &\text{by properties of normal distribution}\\
+\implies \sqrt n \left(\mathbf {\bar X} - \boldsymbol  \mu \right)& \overset d \to \mathbf Y,~~~~Y \sim MVN(\mathbf 0, \boldsymbol \Sigma) & \text{by Cramer-Wold Device}
+\end{aligned}
+$$
+\newpage
+
+## 5.52
+
+Consider a Gauss-Markov linear model $\mathbf{Y= X} \boldsymbol{\beta} + \boldsymbol{\epsilon}$ where $\mathbf Y$ is $n \times 1$, the components of $\mathbf e = (e_1,\dots, e_n)^T$ are $iid(0,\sigma^2)$, and $\mathbf X$ is $n \times p_n$. Note that the number of predictors, $p_n$ depends on $n$. Let $\mathbf{H=X(X^TX)^{-1}X^T}$ denote the projection (or "hat") matrix with entries $h_{i,j}$. Note that $h_{i,j}$ also depend on $n$. We are interested in the asymptotic properties of the $i^{th}$ residual, $Y_i- \hat{Y}_i$, from this regression model, for a fixed $i$. Prove that if $n$ and $p_n \to \infty$ such that $h_{i,i} \to c_i$ for some $0\leq c_i <1$, and $\max_{\overset{1\leq j \leq n}{j\neq i}} |h_{i,j}| \to 0$, then $Y_i- \hat{Y}_i \overset d \to (1-c_i)e_i+\{(1-c_i)c_i\}^{1/2}\sigma Z$, where $Z$ is a standard normal random variable independent of $e_i$. There is a hint in the textbook.
+
+Solution:
+
+
+$$\begin{aligned}
+Y_i - \hat{Y}_i &=  Y_i - HY_i \\
+&= \mathbf{(I-H)Y}_i\\
+&= \mathbf{(I-H)(X \boldsymbol \beta + e)}_i \\
+&=\mathbf{[(IX-HX) \boldsymbol \beta + (I-H)e]}_i\\
+&=\mathbf{[(X-X(X^TX)^{-1}X^TX) \boldsymbol \beta + (I-H)e]}_i \\
+&=\mathbf{[(I-H)e]}_i \\
+&= \left[\mathbf e - \begin{bmatrix} h_{1,1} & \dots & h_{1,n} \\
+\vdots &\ddots &\vdots \\
+h_{n1} & \dots &h_{n,n}
+\end{bmatrix} \begin{pmatrix} e_1 \\ \vdots \\e_n \end{pmatrix} \right]_i\\
+&= e_i - \sum_{j=1}^n h_{i,j}e_i \\
+&= (1-h_{i,i})e_i - \sum_{j=1, i \neq j}^n h_{i,j}e_i
+\end{aligned}$$
+
+From Slutsky's $(1-h_{i,i})e_i \overset d \to (1-c_i) e_i$.
+
+So I need to figure out what $\sum_{j=1, i \neq j}^n h_{i,j}e_i$ converges to. This is a double-array, so I will need to use the Lindberg Condition, which requires the variance to be finite and the mean to be zero. The mean is zero by Slutsky's Theorem.
+
+So, to show the variance is finite I can compute the variance.
+
+First, I want to show $\mathbf H$ is idempotent:
+
+$$\begin{aligned}
+\mathbf H^2 &= \mathbf{[X(X^TX)^{-1}X^T][X(X^TX)^{-1}X^T]} \\
+&=\mathbf{X(X^TX)^{-1}X^TX(X^TX)^{-1}X^T} \\
+&=\mathbf{X(X^TX)^{-1}X^T} \\
+&= \mathbf H
+\end{aligned}$$
+
+Thus,
+
+$$
+\begin{aligned}
+\mathbf H^2  &= \begin{bmatrix} h_{1,1} & \dots & h_{1,n} \\
+\vdots &\ddots &\vdots \\
+h_{n1} & \dots &h_{n,n}
+\end{bmatrix} \begin{bmatrix} h_{1,1} & \dots & h_{1,n} \\
+\vdots &\ddots &\vdots \\
+h_{n1} & \dots &h_{n,n}
+\end{bmatrix}\\
+&=\begin{bmatrix} \sum_{i=1}^n h_{1,i}^2 & \sum_{i=1}^n h_{1,i}h_{2,i}  &\dots & \sum_{i=1}^n h_{1,i}h_{n,i} \\
+\vdots &\ddots &&\vdots \\
+\sum_{i=1}^n h_{n,i}h_{1,i}  && \dots &\sum_{i=1}^n h_{n,i}^2 
+\end{bmatrix} \\
+&= \mathbf H =  \begin{bmatrix} h_{1,1} & \dots & h_{1,n} \\
+\vdots &\ddots &\vdots \\
+h_{n1} & \dots &h_{n,n}
+\end{bmatrix}
+\end{aligned}
+$$
+
+From the main diagonal, it is clear that $\sum_{i=1}^n{h_{j,i}^2}=h_{j,j}$.
+
+Thus, $\sum_{i=1}^n{h_{j,i}^2} = h_{i,i}^2+\sum_{i=1,i\neq j}^n{h_{i,j}^2}=h_{i,i}$ and 
+$\sum_{i=1,i\neq j}^n{h_{i,j}^2} = h_{i,i} -h_{i,i}^2$.
+
+
+Therefore, because of independence,
+$$ \begin{aligned}
+Var \left( \sum_{i=1,i\neq j}^n h_{i,j} e_j  \right) &= (h_{i,i} -h_{i,i}^2)Var(e_j) \\ 
+&=(h_{i,i} -h_{i,i}^2)\sigma^2
+\end{aligned}
+$$
+
+Now that I have shown the variance is finite, and it is clear that the mean $E(h_{i,j} e_j) =0$, I can move on to setting up the Lindeberg-Feller Condition.
+
+I will define $X_{j,i} = \frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}$, (denominator is just the sqrt of variance found earlier)
+
+$$
+\begin{aligned}
+\lim_{n \to \infty} \sum_{j=1, i \neq j}^n  E\left[X_{j,i}^2 I(|X_{j,i}|> \delta)\right] 
+&=\lim_{n \to \infty} \sum_{j=1, i \neq j}^n  E\left[\left(\frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}\right)^2 I\left(\left|\frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}\right| > \delta\right)\right] \\
+&=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n E\left[h_{i,j}^2e_i^2 I\left(\left|h_{i,j}e_i\right| > \delta \left|\sigma\sqrt{h_{i,i}-h_{i,i}^2} \right| \right)\right] \\
+&=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2E\left[e_i^2 I\left(\left|e_i\right| > \frac{\delta \left|\sigma\sqrt{h_{i,i}-h_{i,i}^2} \right|}{|h_{i,j}|}\right)\right] \\
+\end{aligned}
+$$
+
+Noting that if $\max_{\overset{1\leq j \leq n}{j\neq i}} |h_{i,j}| \to 0$, then all $|h_{i,j}| \to 0$. Therefore, we get:
+
+$$\begin{aligned}
+&\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2E\left[e_i^2 I\left(\left|e_i\right| > \frac{\delta \left|\sigma\sqrt{c_i-c_i^2} \right|}{|h_{i,j}|}\right)\right]\\
+&=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2E\left[e_i^2 I\left(\left|e_i\right| > \infty \right)\right] \\
+&=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2 \cdot 0 \\
+&= 0
+\end{aligned}$$
+
+Therefore, by Lindberg-Feller, $\lim_{n \to \infty} \sum_{j=1, i \neq j}^n \frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}  \overset d \to N(0,1)$, 
+
+And so, $\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}e_i \overset d \to N(0,(c_i -c_i^2)\sigma^2)$
+
+
+Thus, $Y_i- \hat{Y}_i \overset d \to (1-c_i)e_i+\{(1-c_i)c_i\}^{1/2}\sigma Z$.
+

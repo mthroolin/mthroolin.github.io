@@ -1,0 +1,1102 @@
+---
+title: "Chapter 2: Likelihood Construction and Estimation"
+geometry:
+      - top=0.75 in
+      - left=0.5in
+      - right=0.5in
+      - bottom=0.5in
+---
+
+## 2.1
+
+Let $Y_1,\dots, Y_n$ be iid positive random variables such that $Y^{(\lambda)}$ is assumed to
+have a normal$(\mu,\sigma^2)$ distribution, where
+
+$$ Y^{(\lambda)} =
+\begin{cases}
+\frac{Y^\lambda-1}{\lambda} &when~ \lambda \neq 0 \\
+\log(Y)& when~ \lambda =0.
+\end{cases}
+$$
+Derive the log likelihood $\ell_n(\mu,\sigma, \lambda | \mathbf{Y})$ of the observed data $Y_1,\dots, Y_n$.
+
+Solution:
+
+$$ \begin{aligned}
+P\left(\frac{Y^{(\lambda)}-1} \lambda \leq \frac{y^{(\lambda)}-1} \lambda  \right) &= P\left(Y^{(\lambda)}\leq \frac{y^{(\lambda)}-1} \lambda \right)  & \text{for } \lambda \neq0\\
+&=  \Phi \left(\frac{\frac{y^{(\lambda)}-1} \lambda  - \mu}{\sigma} \right) \\
+\implies f_{\frac{Y^{(\lambda)}-1} \lambda} &= \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left\{-\frac{1}{2}\left(\frac{\frac{y^{(\lambda)}-1} \lambda  - \mu}{\sigma}\right)^2\right\}\left(\frac{1}{\lambda\sigma}\right)
+\end{aligned}
+$$
+
+$$ \begin{aligned}
+P\left(\log(Y) \leq \log(y\right) &= P\left( Y^{(\lambda)} <\log(y) \right) \text{ for }\lambda =0\\
+&= \Phi \left( \frac{\log (y)- \mu}{\sigma} \right)\\
+\implies f_{\log(Y)} &= \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left\{-\frac{1}{2}\left(\frac{\log (y)- \mu}{\sigma}\right)^2\right\}\left(\frac{1}{y\sigma}\right)
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\mathcal{L} (\mu,\sigma |\mathbf{Y}) &= \prod_{i=1}^n \left[\frac{1}{\sqrt{2\pi \sigma^2}}\exp\left\{-\frac{1}{2}\left(\frac{\frac{y_i^{(\lambda)}-1} \lambda  - \mu}{\sigma}\right)^2\right\}\left(\frac{1}{\lambda\sigma}\right)\right]^{I(\lambda \neq0)} \left[\frac{1}{\sqrt{2\pi \sigma^2}}\exp\left\{-\frac{1}{2}\left(\frac{\log (y_i)- \mu}{\sigma}\right)^2\right\}\left(\frac{1}{y_i\sigma}\right)\right]^{I(\lambda =0)} \\
+&= \left[\frac{1}{\sigma^2\sqrt{2\pi }}\right]^n\prod_{i=1}^n \left[\exp\left\{-\frac{1}{2}\left(\frac{\frac{y_i^{(\lambda)}-1} \lambda  - \mu}{\sigma}\right)^2\right\}\left(\frac{1}{\lambda}\right)\right]^{I(\lambda \neq0)} \left[\exp\left\{-\frac{1}{2}\left(\frac{\log (y_i)- \mu}{\sigma}\right)^2\right\}\left(\frac{1}{y_i}\right)\right]^{I(\lambda =0)} \\
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\implies \ell (\mu,\sigma |\mathbf{Y}) &=\sum_{i=1}^n\left[ \left( -\frac{1}{2}\left(\frac{\frac{y_i^{(\lambda)-\mu}} \lambda- \mu}{\sigma}\right)^2 - \log(\lambda)\right){I(\lambda \neq0)} +
+\left(-\frac{1}{2}\left(\frac{\log (y_i)- \mu}{\sigma}\right)^2-\log(y_i)\right){I(\lambda =0)} \right] \\
+&~~~~~~~~~~~~~~~~~~~~~~~+n \log\left(\frac{1}{\sigma^2\sqrt{2\pi}}\right)
+\end{aligned}$$
+
+\newpage
+
+## 2.3
+
+Recall the ZIP model
+
+$$
+\begin{aligned}
+P(Y = 0) &= p+(1-p)e^{-\lambda} \\
+P(Y=y) &= (1-p)\frac{\lambda^y e^{-\lambda}}{y!} & y=1,2,...
+\end{aligned}
+$$
+
+### a)
+
+Reparametrize the model by defining $\pi \equiv P(Y =0) = p+(1-p)e^{-\lambda}$. Solve for $p$ in terms of $\pi$ and $\lambda$, then substitute so that the density only depends on them.
+
+Solution:
+
+$$
+\begin{aligned}
+\pi &= p+(1-p)e^{-\lambda} \\
+&=p (1-e^{-\lambda}) + e^{-\lambda} \\
+\implies p &= \frac{\pi-e^{-\lambda}}{1-e^{-\lambda}}
+\end{aligned}
+$$
+
+$$ \begin{aligned}
+P(Y = y) &= \left(p+(1-p)e^{-\lambda}\right)^{I(y=0)}\left((1-p)\frac{\lambda^y e^{-\lambda}}{y!}\right)^{I(y \in \mathbb{N}^+)} \\
+&= \left[\left( \frac{\pi-e^{-\lambda}}{1-e^{-\lambda}} \right)+ \left(1-\left( \frac{\pi-e^{-\lambda}}{1-e^{-\lambda}} \right)\right)e^{-\lambda}\right]^{I(y=0)}
+\left[\left(1-\left( \frac{\pi-e^{-\lambda}}{1-e^{-\lambda}} \right)\right)\frac{\lambda^y e^{-\lambda}}{y!}\right]^{I(y \in \mathbb{N}^+)} \\
+&= \left[\left( \frac{\pi-e^{-\lambda}}{1-e^{-\lambda}} \right)+ \left( \frac{1-e^{-\lambda}-\pi+e^{-\lambda}}{1-e^{-\lambda}}\right)e^{-\lambda}\right]^{I(y=0)}
+\left[\left( \frac{1-e^{-\lambda}-\pi+e^{-\lambda}}{1-e^{-\lambda}}\right)\frac{\lambda^y e^{-\lambda}}{y!}\right]^{I(y \in \mathbb{N}^+)}\\
+&= \left[\left( \frac{\pi-e^{-\lambda}}{1-e^{-\lambda}} \right)+ \left( \frac{1-\pi}{1-e^{-\lambda}}\right)e^{-\lambda}\right]^{I(y=0)}
+\left[\left( \frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^y e^{-\lambda}}{y!}\right]^{I(y \in \mathbb{N}^+)} \\
+&= \left[\left( \frac{\pi-\pi e^{-\lambda}}{1-e^{-\lambda}}\right)\right]^{I(y=0)}
+\left[\left( \frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^y e^{-\lambda}}{y!}\right]^{I(y \in \mathbb{N}^+)} \\
+&= \pi^{I(y=0)}
+\left[\left( \frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^y e^{-\lambda}}{y!}\right]^{I(y \in \mathbb{N}^+)}
+\end{aligned}
+$$
+\newpage
+
+### b)
+
+Let  $n_0$ represent the number of samples in an iid sample of size $n$. Assuming the complete data is available, show that the likelihood factors into two pieces and that $\hat{\pi} = n_0/n$. Also show that the MLE for $\lambda$ is the solution to a simple nonlinear equation involving $\bar{Y}_+$.
+
+Solution:
+
+$$ \begin{aligned}
+\mathcal{L}(\lambda, p | \mathbf{Y}) &= \prod_{i=1}^n\pi^{I(y_i=0)}
+\left[\left( \frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^y e^{-\lambda}}{y!}\right]^{I(y_i \in \mathbb{N}^+)} \\
+&= \pi^{n_0}(1-\pi)^{n-n_0}\prod_{Y_i\in \mathbb{N}^+}\frac{\lambda^{y_i} e^{-\lambda}}{y_i! ( 1-e^{-\lambda})}
+\end{aligned}
+$$
+
+To find $\hat{\pi}$, we only need to maximize $g(\pi) = \pi^{n_0}(1-\pi)^{n-n_0}$.
+
+$$\begin{aligned}
+\log g(\pi) &= n_0 \log (\pi) +(n-n_0)\log(1-\pi) \\
+\frac{d \log g}{d\pi} &= \frac{n_0}{\pi } -\frac{n-n_0}{1-\pi } \\
+\frac{d^2 \log g}{d\pi^2} &=-\frac{n_0}{\pi^2 } - \frac{n-n_0}{(1-\pi)^2}  > 0
+\end{aligned}
+$$
+
+
+$$\begin{aligned}
+0 =\frac{d \log g}{d\pi} &= \frac{n_0}{\pi } -\frac{n-n_0}{1-\pi }  \\
+\implies \frac{\pi}{1-\pi} &= \frac{n_0}{n-n_0} \\
+\implies \pi\left(1+ \frac{n_0}{n-n_0}\right) &= \frac{n_0}{n-n_0} \\
+\implies \pi &= \frac{n_0}{(n-n_0)\left(1+ \frac{n_0}{n-n_0}\right)} \\
+&= \frac{n_0}{n}
+\end{aligned}
+$$
+
+Thus, $\hat{\pi} = n_0/n$.
+
+ To find $\hat{\lambda}$, we need to maximize $h(\lambda) =\prod_{Y_i\in \mathbb{N}^+}\frac{\lambda^{y_i} e^{-\lambda}}{y_i! ( 1-e^{-\lambda})}$
+ 
+$$
+\begin{aligned}
+\log h(\lambda) &= \sum_{Y_i \in \mathbb{N}^+} y_i\log(\lambda) -\lambda - \log(y_i!) -\log(1-e^{-\lambda}) \\
+\implies \frac{d \log h}{d \lambda} &=  (n-n_0) \left(\frac{\bar{y}_+}{\lambda}-1-\frac{ e^{-\lambda}}{1-e^{-\lambda}} \right) \\
+0= \frac{d \log h}{d \lambda} &=  (n-n_0) \left(\frac{\bar{y}_+}{\lambda}-1-\frac{ e^{-\lambda}}{1-e^{-\lambda}} \right) \\
+&=  \bar{y}_+-\lambda -\frac{ \lambda e^{-\lambda}}{1-e^{-\lambda}}
+\end{aligned}
+$$
+
+Thus, $\hat{\lambda}_{MLE}$ will be a solution to the above simple non-linear equation, which involves $\bar{y}_+$.
+
+### c)
+
+Now consider the truncated or conditional sample consisting of the $n- n_0$ nonzero values. Write down the conditional likelihood for these values and obtain the same equation for $\hat{\lambda}_{MLE}$ as in a)
+
+Solution:
+
+$$
+\begin{aligned}
+P(Y=y |Y>0) &= \frac{P(Y>0 \cap Y=y)}{P(Y>0)} \\
+&= \frac{
+\left[\left( \frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^y e^{-\lambda}}{y!}\right]^{I(y \in \mathbb{N}^+)}}{1-\pi}
+\\
+&= \left[\frac{\lambda^y e^{-\lambda}}{y!(1-e^{-\lambda})}\right]^{I(y \in \mathbb N^+)}
+\end{aligned}
+$$
+
+ Thus, we need to maximize the same function we found in part b), which will be the solution to a non-simple linear equation involving $\bar{y}$.
+
+\newpage
+
+## 2.4
+
+In sampling land areas for counts of an animal species, we obtain an iid sample
+of counts $Y_1, \dots, ,Y_n$, where each $Y_i$ has a Poisson distribution with parameter $\lambda$
+
+### a) Derive the maximum likelihood estimator of $\lambda$. Call it $\hat{\lambda}_{MLE_1}$
+
+Solution:
+
+$$ \begin{aligned}
+\mathcal{L} (\lambda, \mathbf{Y}) &= \prod_{i=1}^n \frac{e^{-\lambda} \lambda^{y_i}}{y_i!} \\
+\implies \ell (\lambda, \mathbf{Y}) &= \sum_{i=1}^n -\lambda + y_i\log(\lambda)- \log(y_i!) \\
+&=  -n\lambda + n\bar{y}\log(\lambda)- \sum_{i=1}^n \log(y_i!) \\
+\implies \frac{d \ell}{d \lambda} &= -n+ \frac{n\bar{y}}{\lambda} \\
+\implies \frac{d^2 \ell}{d \lambda^2} &= -\frac{n\bar{y}}{\lambda^2}
+ < 0 \text{ because } \bar{y}, \lambda, n >0.
+ \end{aligned}
+$$
+
+$$ \begin{aligned}
+0=\frac{d \ell}{d \lambda} &= -n+ \frac{n\bar{y}}{\hat{\lambda}_{MLE_1}}\\
+\implies \hat{\lambda}_{MLE_1}= \bar{y}
+\end{aligned}
+$$
+
+### b)
+
+For simplicity in quadrat sampling, sometimes only the presence or absence of
+a species is recorded. Let $n_0$ be the number of $Y_i$’s that are zero. Write down the binomial likelihood based only on $n_0$. Show that the maximum likelihood estimator of $\lambda$ based only on $n_0$ is $\hat{\lambda}_{MLE_2}= -\log(n_0/n)$.
+
+Solution:
+
+$$
+\begin{aligned}
+P(Y=0)&= e^{-\lambda} \\
+\implies \mathcal L (\lambda | \mathbf Y) &= {n \choose n_0} (e^{-\lambda})^{n_0}(1-e^{-\lambda})^{n-n_o} \\
+\implies \ell (\lambda | \mathbf Y) &=\log{n \choose n_0}- n_0\lambda+(n-n_0)\log(1-e^{-\lambda}) \\
+\implies \frac{ d\ell (\lambda | \mathbf Y)}{d \lambda} &= - n_0+\frac{(n-n_0)e^{-\lambda}}{1-e^{-\lambda}} \\
+\implies \frac{ d^2 \ell (\lambda | \mathbf Y)}{d \lambda^2} &=  (n-n_0) \frac{-(1-e^{-\lambda})e^{-\lambda} -e^{-\lambda}(e^{-\lambda})}{(1-e^{-\lambda})^2} \\
+&=  \frac{-e^{-\lambda}(n-n_0)}{(1-e^{-\lambda})^2} < 0 ~\text{since}~ n_0<n
+\end{aligned}
+$$
+$$
+\begin{aligned}
+0= \frac{ d\ell (\lambda | \mathbf Y)}{d \lambda} &= - n_0+\frac{(n-n_0)e^{-\lambda}}{1-e^{-\lambda}} \\
+\implies e^{-\lambda} &= \frac{n_0}{n-n_0}(1-e^{-\lambda}) \\
+\implies e^{-\lambda} \left(1+ \frac{n_0}{n-n_0} \right) &= \frac{n_0}{n-n_0} \\
+\implies e^{-\lambda}  &= \frac{n_0}{n-n_0}\left(\frac{n-n_0}{n} \right) \\
+\implies \hat{\lambda}_{MLE_2} &= -\log(n_0/n)
+\end{aligned}
+$$
+
+### c)
+
+Use the delta theorem from Ch. 1 to show that the asymptotic relative efficiency of $\hat{\lambda}_{MLE_1}$ to $\hat{\lambda}_{MLE_2}$ is $\frac{e^{\lambda}-1}{\lambda}$.
+
+Solution:
+
+$$
+\begin{aligned}
+\sqrt n [\bar{y} - \lambda] &\overset {d}{\to} N(0,\lambda) &\text{CLT, poisson distribution}\\
+\sqrt n [n_0/n - e^{-\lambda}] &\overset {d}{\to} N(0,e^{-\lambda}(1-e^{-\lambda})) &\text{CLT, bernoulli distribution} \\
+\sqrt n [-\log(n_0/n) - \log(e^{-\lambda}/n)] &\overset {d}{\to} N\left(0,ne^{-\lambda}(1-e^{-\lambda})\left[-\frac{1}{e^{-\lambda}/n}\frac{1}{n}\right]^2 \right) & \text{by Delta Method} \\
+&\overset {d}{\to} N\left(0,\frac{(1-e^{-\lambda})}{e^{-\lambda}} \right) \\
+&\overset {d}{\to} N\left(0,e^{\lambda}-1 \right) \\
+\end{aligned}
+$$
+
+Thus,
+
+$$ARE (\hat{\lambda}_{MLE_1},\hat{\lambda}_{MLE_2}) = \frac{AVAR(\hat{\lambda}_{MLE_2})}{AVAR(\hat{\lambda}_{MLE_1})}= \frac{e^\lambda-1}{\lambda}$$
+
+### d)
+
+The overall goal of the sampling is to estimate the mean number of the species per unit land area. Comment on the use of $\hat{\lambda}_{MLE_2}$ in place of $\hat{\lambda}_{MLE_1}$. That is, explain to a researcher for what  values and under what distributional assumptions is it reasonable?
+
+Solution:
+
+Since $e^{\lambda}-1 > \lambda$, $\hat{\lambda}_{MLE_2}$ will always be more efficient. However, the distributional assumptions behind when to use which estimator are inherently different. $\hat{\lambda}_{MLE_2}$ presumes that we have presence-absence data, or zero inflated poisson data at the worst, and is looking to predict the number of land units with the absence of a species. However, if we know the data absolutely comes from a poisson distribution,  $\hat{\lambda}_{MLE_1}$ will fit the distributional assumptions better.
+
+\newpage
+
+## 2.9
+
+The sample $Y_1,\dots, Y_n$ is iid with distribution $F_Y(y;p_o,p_1,\alpha, \beta)= p_0I(0 \leq y) + (1-p_0-p_1)F(y;\alpha,\beta) + p_1I(y\geq 1)$, where $F(y;\alpha,\beta)$ is the beta distribution. Use the $2h$ method to show that the likelihood is $p_0^{n_0}p_1^{n_1}(1-p_0-p_1)^{n-n_0-n_1} \prod_{0<Y_i<1} f(Y_i;\alpha,\beta)$.
+
+Solution:
+
+$$
+\begin{aligned}
+\mathcal L(p_0,p_1,\alpha, \beta | \mathbf{Y}) &= \lim_{h \to 0^+} (2h)^{-n} \prod_{i=1}^n P_{p_0,p_1,p_2}\left(Y_i^* \in (Y_i-h,Y_i+h] |Y_i \right) \\
+&= \lim_{h \to 0^+} (2h)^{-n} \prod_{i=1}^n F_i(Y_i+h;p_o,p_1,\alpha, \beta)-F_i(Y_i-h;p_o,p_1,\alpha, \beta) \\
+&= \lim_{h \to 0^+} (2h)^{-n} \prod_{i=1}^n \big\{ p_0I(0 \leq y_i+h) + (1-p_0-p_1)F(y_i+h;\alpha,\beta) + p_1I(y_i+h\geq 1) \\
+&~~~~~~~~~-[p_0I(0 \leq y_i-h) + (1-p_0-p_1)F(y_i-h;\alpha,\beta) + p_1I(y_i-h\geq 1)] \big\} \\
+&= \lim_{h \to 0^+} (2h)^{-n} \prod_{i=1}^n \big\{ p_0[I(0 \leq y_i+h)-I(0 \leq y_i-h)] \\
+&~~~~~~~~~+ (1-p_0-p_1)[F(y_i+h;\alpha,\beta)-F(y_i-h;\alpha,\beta)] \\
+&~~~~~~~~~+ p_1[I(y_i+h\geq 1)-I(y_i-h\geq 1)] \big\} \\
+&=\prod_{i=1}^n \big\{ p_0\lim_{h \to 0^+} (2h)^{-n}[I(0 \leq y_i+h)-I(0 \leq y_i-h)]\\
+&~~~~~~~~~+ p_1\lim_{h \to 0^+} (2h)^{-n}[I(y_i+h\geq 1)-I(y_i-h\geq 1)] \big\} \\
+&~~~~~~~~~+ (1-p_0-p_1)\lim_{h \to 0^+} (2h)^{-n}[F(y_i+h;\alpha,\beta)-F(y_i-h;\alpha,\beta)]\big\}  \\
+&=\prod_{i=1}^n \big\{ p_0 I(y_i=0) + p_1I(y_i=1) + (1-p_0-p_1)f(y_i;\alpha,\beta)I(0<y_i<1) \\
+&=p_0^{n_0}p_1^{n_1}(1-p_0-p_1)\prod_{0<Y_i<1} f(y_i;\alpha,\beta) \\
+\end{aligned}
+$$
+
+\newpage
+
+## 2.12
+For an iid sample $Y_1,\dots, Y_n$, Type II censoring occurs when we observe only the smallest $r$ values. For example, in a study of light bulb lifetimes, we might stop the study after the first $r=10$ bulbs have failed. Assuming a continuous distribution with density $f(y;\mathbf{\theta})$, the likelihood is just the joint density of the smallest $r$ order statistics evaluated at those order statistics: $$\mathcal L\left(\mathbf \theta; Y_{(1)}, \dots, Y_{(r)}\right) = \frac {n!}{(n-r)!}\left[\prod_{i=1}^r f\left(Y_{(i)}; \mathbf \theta \right) \right]\left[1-F\left(Y_{(r)}; \mathbf \theta \right)\right]^{n-r}$$ For this situation, let $f(y;\sigma) = e^{-y/\sigma}/\sigma$ and find the MLE of $\sigma$.
+
+Solution:
+
+$$ \begin{aligned}
+\mathcal L\left(\sigma; Y_{(1)}, \dots, Y_{(r)}\right) &= \frac {n!}{(n-10)!}\left[\prod_{i=1}^{10} \frac {e^{-y_{(i)}/\sigma}} \sigma \right]\left[1-\left(1- e^{-y_{(10)}/\sigma}\right) \right]^{n-10} \\
+&= \frac {n!}{(n-10)!\sigma^{10}}\left[\prod_{i=1}^{10} {e^{-y_{(i)}/\sigma}} \right]\left[e^{-y_{(10)}/\sigma} \right]^{n-10} \\
+\implies \ell \left(\sigma; Y_{(1)}, \dots, Y_{(r)}\right) &= \log \left[\frac {n!}{(n-10)!} \right] - 10 \log(\sigma) -  \frac{\sum_{i=1}^{10}y_{(i)}} {\sigma} - \frac{(n-10)y_{(10)}}{\sigma}\\
+\implies \frac {\partial \ell \left(\sigma; Y_{(1)}, \dots, Y_{(r)}\right)}{\partial \sigma} &= - \frac{10}{\sigma} +  \frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}} {\sigma^2} \\
+\implies \frac {\partial^2 \ell \left(\sigma; Y_{(1)}, \dots, Y_{(r)}\right)}{\partial \sigma^2} &= \frac{10}{\sigma^2} -  2\frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}} {\sigma^3}
+\end{aligned}$$
+$$ \begin{aligned}
+0= \frac {\partial \ell \left(\sigma; Y_{(1)}, \dots, Y_{(r)}\right)}{\partial {\sigma}} &= - \frac{10}{\hat{\sigma}} +  \frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}} {\hat{\sigma}^2} \\
+\implies  \hat{\sigma} &= \frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}}{10}
+\end{aligned}
+$$
+Verifying this is a maximum,
+$$\begin{aligned}
+\frac {\partial^2 \ell \left(\sigma; Y_{(1)}, \dots, Y_{(r)}\right)}{\partial \sigma^2} \bigg|_{\sigma = \hat \sigma}&= \frac{10}{\left(\frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}}{10}\right)^2} - 2 \frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}} {\left( \frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}}{10} \right)^3} \\
+&=  \frac{-10^3}{\left({(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}}\right)^2}\\
+&< 0. ~~~~~~~~~~~\text{(denominator is clearly positive)}
+\end{aligned}$$
+Conclusively,
+
+$$\hat{\sigma}_{MLE} = \frac{(n-10)y_{(10)}+ \sum_{i=1}^{10}y_{(i)}}{10}$$
+
+More generally, I can follow the same steps outside this specific situation to find
+
+$$\hat{\sigma}_{MLE} = \frac{(n-r)y_{(r)}+ \sum_{i=1}^{r}y_{(i)}}{r}$$
+
+\newpage
+
+## 2.16
+
+The standard Box-Cox regression model (Box and Cox 1964) assumes that after transformation of the observed $Y_i$ to $Y_i^{(\lambda)}$. we have the linear model $$ Y_i^{(\lambda)} = \mathbf{x_i^T \beta} + e_i,~~~~~ i =1,\dots,n $$ where $Y_i$ is assumed positive and the $x_i$ $i= 1, \dots, n$. In addition assume that $e_1,\dots,e_n$ are iid normal$(0, \sigma^2)$ errors. Recall that the Box-Cox transformation is defined in Problem 2.1 (p. 107) and is strictly increasing for all $\lambda$ Show that the likelihood is $$\mathcal L \left(\beta,\sigma,\lambda| \{Y_i, \mathbf x_i\}_{i=1}^n \right) = \left(\sqrt{2\pi}\sigma\right)^n \exp\left[-\sum_{i=1}^n \frac{ \left(Y_i^{(\lambda)} - \mathbf{x}_i^T\mathbf \beta \right)^2}{2 \sigma^2}  \right] \prod_{i=1}^n \left|\frac{\partial t^{(\lambda)}}{\partial t} \bigg\rvert_{t= Y_i} \right|$$
+
+Solution:
+
+
+We know from the Jacobian method of transformations that $$f_Y(y;\theta) = f_{Y^{(\lambda)}} (y^{(\lambda)};\theta)\left|J\right|=f_{Y^{(\lambda)}} (y;\theta)\left|\frac{\partial t^{(\lambda)}}{\partial t} \bigg\rvert_{t= Y}\right|$$.
+
+Thus, since $Y_i^{(\lambda)} \overset {iid}\sim N(\mathbf{x^T \beta}, \sigma^2)$,
+
+$$f\left(Y_i, \mathbf x_i|\beta,\sigma,\lambda \right) = \left(\sqrt{2\pi}\sigma\right) \exp\left[\frac{- \left(Y_i^{(\lambda)} - \mathbf{x}_i^T\mathbf \beta \right)^2}{2 \sigma^2}  \right] \left|\frac{\partial t^{(\lambda)}}{\partial t} \bigg\rvert_{t= Y_i} \right|$$
+which implies, 
+$$\begin{aligned}\mathcal L \left(\beta,\sigma,\lambda| \{Y_i, \mathbf x_i\}_{i=1}^n \right)
+&= \prod_{i=1}^n \left(\sqrt{2\pi}\sigma\right) \exp\left[\frac{- \left(Y_i^{(\lambda)} - \mathbf{x}_i^T\mathbf \beta \right)^2}{2 \sigma^2}  \right] \left|\frac{\partial t^{(\lambda)}}{\partial t} \bigg\rvert_{t= Y_i} \right|\\
+&= \left(\sqrt{2\pi}\sigma\right)^n \exp\left[-\sum_{i=1}^n \frac{ \left(Y_i^{(\lambda)} - \mathbf{x}_i^T\mathbf \beta \right)^2}{2 \sigma^2}  \right] \prod_{i=1}^n \left|\frac{\partial t^{(\lambda)}}{\partial t} \bigg\rvert_{t= Y_i} \right|
+\end{aligned}$$
+
+\newpage
+
+## 2.20
+
+One version of the negative binomial probability mass function is given by $$f(y;\mu,k) = \frac{\Gamma(y+k)}{\Gamma(k)\Gamma(y+1)} \left( \frac{k}{\mu+k}\right)^k \left( 1- \frac{k}{\mu+k}\right)^y I(y \in \mathbb N)$$ where $\mu$ and $k$ are parameters. Assume that $k$ is known and put $f(y; \mu,k)$ in the GLM form (2.14, p. 53), identifying $b(\theta)$, etc., and derive the mean and variance of $Y, E(Y) = \mu, Var(Y)= \mu + \mu^2/k$.
+
+Solution:
+
+$$ \begin{aligned}
+f(y;\mu,k) &= \frac{\Gamma(y+k)}{\Gamma(k)\Gamma(y+1)} \left( \frac{k}{\mu+k}\right)^k \left( 1- \frac{k}{\mu+k}\right)^y  \\
+&= \frac{\Gamma(y+k)}{\Gamma(k)\Gamma(y+1)} \left( \frac{k}{\mu+k}\right)^k \left( \frac{\mu}{\mu+k}\right)^y\\
+\log f(y;\mu,k) &= \log \left({\Gamma(y+k)} \right)- \log \left( \Gamma(k)\right)- \log \left({\Gamma(y+1)} \right) + k \log \left({k}\right) -k \log \left({\mu+k} \right)+ y \log \left( \frac{\mu}{\mu+k}\right) \\
+&= \{y \log \left( \frac{\mu}{\mu+k}\right)-k \log \left({\mu+k}\right)\}+\log \left({\Gamma(y+k)} \right)- \log \left( \Gamma(k)\right)- \log \left({\Gamma(y+1)} \right) + k \log \left({k}\right)
+\end{aligned}$$
+
+Let $\theta = \log \left( \frac{\mu}{\mu+k}\right)$. Then, setting $a(\phi) = 1$,
+
+$$\begin{aligned}
+c(y)&=\log \left({\Gamma(y+k)} \right)- \log \left( \Gamma(k)\right)- \log \left({\Gamma(y+1)} \right) + k \log \left({k}\right) \\
+b(\theta) &= k \log \left({\mu+k}\right) \\
+&= k \log \left((\mu + k)\frac{k}{k}\right) \\
+&= k \log \left(\frac{k}{\frac{k}{(\mu + k)}}\right) \\
+&= k \log \left(\frac{k}{\frac{\mu+k - \mu}{(\mu + k)}}\right) \\
+&= k \log \left(\frac{k}{1-\frac{\mu}{(\mu + k)}}\right) \\
+&= k \log \left(\frac{k}{1-e^{\theta}}\right)
+\end{aligned}$$
+
+Because $k$ is known, I have shown this parametrization of the negative binomial distribution can be manipulated to be in Generalized Linear Model form.
+
+Thus, $E(y) = b'(\theta) = \frac{ke^{\theta}}{1-e^\theta} = \frac{\frac{k\mu}{\mu+k}}{1- \frac{\mu}{\mu+k}} = \frac{\frac{k\mu}{\mu+k}}{1- \frac{\mu}{\mu+k}}= \frac{\frac{k\mu}{\mu+k}}{\frac{k}{\mu+k}}= \mu$.
+
+And, $Var(Y)= b''(\theta)= \frac{(1-e^\theta)ke^\theta - ke^\theta(-e^\theta)}{(1-e^\theta)^2}= \frac{\left(\frac{k}{\mu+k}\right)k\left(\frac{\mu}{\mu+k}\right)+ k\left(\frac{\mu}{\mu+k}\right)^2}{\left(\frac{k}{\mu+k}\right)^2}= \mu+ \frac{\mu^2}{k}$.
+
+\newpage
+
+## 2.21
+
+The usual gamma density is given by $$f(y;\alpha,\beta) = \frac{1}{\Gamma (\alpha)\beta^\alpha}y^{\alpha-1}e^{-y/\beta} I(0 \leq y < \infty) ~~~ \alpha,\beta>0$$ and has mean $\alpha \beta$ and variance $\alpha \beta^2$. First reparameterize by letting $\mu= \alpha \beta$ so that the parameter vector is now $(\mu, \alpha)$. Now put this gamma family in the form of a generalized linear model, identifying $\theta, b(\theta), a_i(\phi)$, and $c(y,\phi)$. Note that $\alpha$ is unknown here and should be related to $\phi$ Make sure that $b(\theta)$ is actually a function of $\theta$ and take the first derivative to verify that $b(\theta)$ is correct.
+
+Solution:
+
+$$\begin{aligned}
+f(y;\alpha,\beta) &= \frac{1}{\Gamma (\alpha)\left(\frac{\mu}{\alpha}\right)^\alpha}y^{\alpha-1}e^{-y (\alpha/\mu)} \\
+\log f(y;\alpha,\beta) &= -\log \left(\Gamma (\alpha) \right) -\alpha \log (\mu) +\alpha \log(\alpha)+ (\alpha-1) \log(y) -y (\alpha/\mu) \\
+&= \left[y \left(\frac{-\alpha}{\mu} \right) -\alpha \log (\mu) \right]  +(\alpha-1)\log(y)+\alpha \log(\alpha)-\log \left(\Gamma (\alpha) \right)  \\
+&= \left[ \frac{y(-1/\mu)- \log (\mu)}{1/\alpha} \right]  +(\alpha-1)\log(y)+\alpha \log(\alpha)-\log \left(\Gamma (\alpha) \right)  \\
+\end{aligned}$$
+
+Let $\theta = -1/\mu$, $\phi = 1/\alpha$.Then, 
+
+$$
+\log f(y;\alpha,\beta) = \left[ \frac{y\theta- \log \left(-1/\theta\right)}{\phi} \right]  +\left(\frac{1}{\phi}-1\right)\log(y)+\left(\frac{1}{\phi}\right) \log\left(\frac{1}{\phi}\right)-\log \left(\Gamma \left(\frac{1}{\phi}\right) \right)
+$$
+
+Thus,
+$$ \begin{aligned}
+b(\theta) &= \log(-1/\theta) \\
+a(\phi) &= \phi \\
+c(y, \phi) &= \left(\frac{1}{\phi}-1\right)\log(y)+\left(\frac{1}{\phi}\right) \log\left(\frac{1}{\phi}\right)-\log \left(\Gamma \left(\frac{1}{\phi}\right) \right)
+\end{aligned}
+$$
+
+And, $b'(\theta) = \left(\frac{1}{-1/\theta}\right)\left(\frac{-1}{\theta^2}\right) = 1/\theta = \mu$.
+
+\newpage
+
+## 2.22
+
+Consider the standard one-way ANOVA situation with $Y_{ij}$ distributed as $N(\mu_i,\sigma^2)$, $i=1,\dots,k$, $j=1,\dots,n_i$ and all the random variables are independent.
+
+### a.
+
+Form the log likelihood, take derivatives, and show that the MLEs are $\hat \mu_i = \bar{Y_i}$, $i=1,\dots,k$, $\hat \sigma^2 = SSE/N$, where $SSE= \sum_{i=1}^k \sum_{j=1}^{n_i} (Y_{ij}-\bar{Y_i})^2$ and $N=\sum_{i=1}^k n_i$.
+
+Solution:
+
+$$
+\begin{aligned}
+\mathcal L (\mu_i, \sigma^2) &= \prod_{i=1}^k \prod_{j=1}^{n_i} \frac{1}{\sqrt{2\pi\sigma^2}} {\exp\left(\frac{-(y_{ij}-\mu_i)^2}{2\sigma^2}\right)} \\
+\ell(\mu_i, \sigma^2) &= \sum_{i=1}^k \sum_{j=1}^{n_i} \frac{1}{\sqrt{2\pi\sigma^2}} {\exp\left(\frac{-(y_{ij}-\mu_i)^2}{2\sigma^2}\right)} \\
+&= -\frac{N}{2}\log(2\pi)-\frac{N}{2}\log(\sigma^2)-\sum_{i=1}^k \sum_{j=1}^{n_i}  \frac{(y_{ij}-\mu_i)^2}{2\sigma^2} \\
+\end{aligned}
+$$
+Finding $\hat \mu_i$,
+$$
+\begin{aligned}
+0 =\frac{\partial \ell}{\partial \mu_i}&=\sum_{i=1}^k \sum_{j=1}^{n_i}  \frac{2(y_{ij}-\mu_i)}{2\sigma^2} \\
+&=\sum_{i=1}^k \sum_{j=1}^{n_i}  y_{ij}-\mu_i \\
+&= \sum_{i=1}^N \bar y_i- n_i\mu_i \\
+\implies \mu_i &= \bar y_i \\
+\frac{\partial^2 \ell}{\partial \mu_i^2} \bigg|_{\mu_i= \bar{Y_i}}&=\sum_{i=1}^k \sum_{j=1}^{n_i}  -2 <0 \\
+\implies \hat \mu_i &= \bar y_i 
+\end{aligned}
+$$
+
+Finding $\hat \sigma^2$,
+$$
+\begin{aligned}
+0 =\frac{\partial \ell}{\partial \sigma^2} \bigg|_{\mu_i = \bar y_i}&=-\frac{N}{2\sigma^2}+\sum_{i=1}^k \sum_{j=1}^{n_i}  \frac{(y_{ij}-\bar y_i)^2}{2(\sigma^2)^2} \\
+&=-N\sigma^2+\sum_{i=1}^k \sum_{j=1}^{n_i}(y_{ij}-\bar y_i)^2 \\
+\implies \sigma^2&=\frac{\sum_{i=1}^k \sum_{j=1}^{n_i}(y_{ij}-\bar y_i)^2}{N} \\
+&= SSE/N \\
+\frac{\partial^2 \ell}{\partial \left(\sigma^2 \right)^2} \bigg|_{\mu_i = \bar y_i, \sigma^2 = SSE/N}&=\frac{N}{2(\sigma^2)^2}-2\sum_{i=1}^k \sum_{j=1}^{n_i}  \frac{(y_{ij}-\bar y_i)^2}{2(\sigma^2)^3}  \bigg|_{\sigma^2 = SSE/N} \\
+&=\frac{N}{2(SSE/N)^2}-\frac{SSE}{(SSE/N)^3} \\
+&=\frac{N}{2(SSE/N)^2}-\frac{N}{(SSE/N)^2} <0. \\
+\implies \hat \sigma^2 &= SSE/N
+\end{aligned}
+$$
+\newpage 
+
+### b.
+
+Now define $\mathbf V_i^T = (Y_{i1} -\bar {Y_i}, \dots, Y_{i,n_i-1}- \bar{Y_i})$. Using standard matrix manipulations with the multivariate normal distribution, the density of $\mathbf V_i$ is given by $$(2 \pi)^{-(n_i-1)/2}n_i^{1/2}\sigma^{-(n_i-1)} \exp \left(- \frac{1}{2 \sigma ^2} \mathbf v_i^t [I_{n_i-1} + J_{n_i -1}] \mathbf v_i \right) $$ where $I_{n_i-1}$ is the $n_i-1$ by $n_i-1$ identity matrix and $J_{n_i-1}$ is an $n_i-1$ by $n_i-1$ matrix of 1’s. Now form the (marginal) likelihood based on $\mathbf V_1, \dots, \mathbf V_k$ and show that the MLE for $\sigma^2$ is now $\sigma^2 = SSE/(N-k)$.
+
+Solution:
+
+$$
+\begin{aligned}
+\mathcal L (\sigma^2; \mathbf V_1,\dots \mathbf V_k) &= \prod_{i=1}^k(2 \pi)^{-(n_i-1)/2}n_i^{1/2}(\sigma^2)^{-(n_i-1)/2} \exp \left(- \frac{1}{2 \sigma ^2} \mathbf v_i^t [I_{n_i-1} + J_{n_i -1}] \mathbf v_i \right) \\
+\ell (\sigma^2; \mathbf V_1,\dots \mathbf V_k) &= \sum_{i=1}^k\frac{-(n_i-1)\log(2 \pi)+n_i}{2}-\frac{(n_i-1)}{2}\log(\sigma^2) - \frac{1}{2 \sigma ^2} \mathbf v_i^t [I_{n_i-1} + J_{n_i -1}] \mathbf v_i \\
+0=\frac{d \ell}{d \sigma^2}&=\sum_{i=1}^k \frac{-(n_i-1)}{\sigma^2}+\frac{1}{2 (\sigma^2)^2}  \mathbf v_i^t [I_{n_i-1} + J_{n_i -1}] \mathbf v_i \\
+&=\sum_{i=1}^k -2\sigma^2(n_i-1)+ \mathbf v_i^t [I_{n_i-1} + J_{n_i -1}] \mathbf v_i \\
+&=-2\sigma^2(N-k)+\sum_{i=1}^k\sum_{j=1}^{n_i} 2(y_{ij} - \bar y_i)^2\\
+\implies  \sigma^2 &= SSE/(N-k)
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\frac{\partial^2 \ell}{\partial (\sigma^2)^2} \bigg|_{\sigma^2 = SSE/(N-k)}&=\sum_{i=1}^k \frac{(n_i-1)}{(\sigma^2)^2}-\frac{1}{(\sigma^2)^3}  \mathbf v_i^t [I_{n_i-1} + J_{n_i -1}] \mathbf v_i \\
+&=\sum_{i=1}^k \frac{(n_i-1)}{(\sigma^2)^2}-\frac{1}{(\sigma^2)^3} \sum_{i=1}^k\sum_{j=1}^{n_i} 2(y_{ij} - \bar y_i)^2 \\
+&=\frac{N-k}{(SSE/(N-k))^2}-\frac{1}{(SSE/(N-k))^3}\sum_{i=1}^k\sum_{j=1}^{n_i} 2(y_{ij} - \bar y_i)^2\\
+&=\frac{N-k}{(SSE/(N-k))^2}-2\frac{(N-k)}{(SSE/(N-k))^2}\\ 
+&=-1 \\
+\implies  \hat \sigma^2 &= SSE/(N-k)
+\end{aligned}
+$$
+
+### c.
+
+Finally, let us take a more general approach and assume that $Y$ has an $N$ dimensional multivariate normal distribution with mean $X \mathbf{\beta}$ and covariance matrix $\Sigma = \sigma^2 Q(\boldsymbol{\theta})$, where X is an $N\times p$ full rank matrix of known constants, $\boldsymbol \beta$ is a $p$-vector of regression parameters, and $Q(\boldsymbol{\theta})$ is an $N\times N$ standardized covariance matrix depending on the unknown parameter $\boldsymbol{\theta}$. Typically $\boldsymbol{\theta}$ would consist of variance component and/or spatial correlation parameters. We can concentrate the likelihood by noting that if $Q(\boldsymbol{\theta})$ were known, then the generalized least squares estimator would be $\boldsymbol{\hat \beta(\theta)} =(X^T Q(\boldsymbol{\theta})^{-1}X)^{-1}X^TQ(\boldsymbol{\theta})^{-1} \mathbf Y$. Substituting for $\boldsymbol \beta$ yields the profile log likelihood $$-\frac{N}{2} \log(2\pi) - N \log \sigma- \frac{1}{2} \log |Q(\boldsymbol{\theta})| - \frac{GSSE(\boldsymbol{\theta})}{2\sigma^2},$$ where $GSSE(\boldsymbol{\theta}) =(\mathbf Y - X \boldsymbol{\hat{\beta}}(\boldsymbol{\theta}))^T Q(\boldsymbol{\theta})^{-1}(\mathbf Y -X\boldsymbol{\hat \beta}(\boldsymbol{\theta}))$. To connect with part a), let $Q(\boldsymbol{\theta})$ be the identity matrix (so that $GSSE(\boldsymbol{\theta})$ is just $SSE$) and find the maximum likelihood estimator of $\sigma^2$.
+
+Solution:
+
+$$
+\begin{aligned}
+\ell(\sigma^2 | Y) &= -\frac{N}{2} \log(2\pi) - \frac{N}{2} \log \sigma^2- \frac{1}{2} \log |Q(\boldsymbol{\theta})| - \frac{GSSE(\boldsymbol{\theta})}{2\sigma^2} \\
+0=\frac{\partial \ell}{\partial \sigma^2} &= - \frac{N}{2 \sigma^2}+ \frac{GSSE(\boldsymbol{\theta})}{2(\sigma^2)^2}\\
+&=-N\sigma^2 +GSSE(\boldsymbol \theta) \\
+\implies \sigma^2 &= GSSE(\boldsymbol \theta)/N \\
+\frac{\partial^2 \ell}{\partial (\sigma^2)^2} \bigg|_{\sigma^2=GSSE(\boldsymbol \theta)/N}&= \frac{N}{2 (\sigma^2)^2}-\frac{GSSE(\boldsymbol{\theta})}{(\sigma^2)^3}\bigg|_{\sigma^2=GSSE(\boldsymbol \theta)/N}\\
+&= \frac{N}{2 (GSSE(\boldsymbol \theta)/N)^2}-\frac{GSSE(\boldsymbol{\theta})}{(GSSE(\boldsymbol \theta)/N)^3} \\
+&= -1/2 \\
+\implies \hat \sigma^2 &= GSSE(\boldsymbol \theta)/N \\
+\end{aligned}
+$$
+\newpage 
+
+### d.
+
+Continuing part c), the REML approach is to transform to $\mathbf V = A^T \mathbf Y$, where the $N \times p$ columns of $A$ are linearly independent and $A^T X =0$ so that $\mathbf V$ is $MN(0;A^T \Sigma A)$ A special choice of $A$ leads to the REML log likelihood $$-\frac{N-p}{2}\log(2\pi) -(N-p)\log \sigma - \frac{1}{2} \log |X^T Q(\boldsymbol{\theta} )^{-1}X|-\frac{1}{2} \log |Q(\boldsymbol{\theta})| - \frac{GSSE(\boldsymbol{\theta})}{2 \sigma^2}.$$ To connect with part b), let $Q(\boldsymbol{\theta})$ be the identity matrix and find the maximum likelihood estimator of $\sigma^2$.
+
+Solution:
+
+$$\ell(\sigma^2 | Y) = -\frac{N-p}{2}\log(2\pi) -\frac{(N-p)}{2}\log (\sigma^2) - \frac{1}{2} \log |X^T Q(\boldsymbol{\theta} )^{-1}X|-\frac{1}{2} \log |Q(\boldsymbol{\theta})| - \frac{GSSE(\boldsymbol{\theta})}{2 \sigma^2}$$
+$$
+\begin{aligned}
+0=\frac{\partial \ell}{\partial \sigma^2} &= - \frac{N-p}{2 \sigma^2}+ \frac{GSSE(\boldsymbol{\theta})}{2(\sigma^2)^2}\\
+&=-(N-p)\sigma^2 +GSSE(\boldsymbol \theta) \\
+\implies \sigma^2 &= GSSE(\boldsymbol \theta)/(N-p) \\
+\frac{\partial^2 \ell}{\partial (\sigma^2)^2} \bigg|_{\sigma^2=GSSE(\boldsymbol \theta)/(N-p)}&= \frac{N}{2 (\sigma^2)^2}-\frac{GSSE(\boldsymbol{\theta})}{(\sigma^2)^3}\bigg|_{\sigma^2=GSSE(\boldsymbol \theta)/(N-p)}\\
+&= \frac{N-p}{2 (GSSE(\boldsymbol \theta)/(N-p))^2}-\frac{GSSE(\boldsymbol{\theta})}{(GSSE(\boldsymbol \theta)/(N-p))^3} \\
+&= -1/2 \\
+\implies \hat \sigma^2 &= GSSE(\boldsymbol \theta)/(N-p) \\
+\end{aligned}
+$$
+
+\newpage
+## 2.25 
+
+If $\mathbf Y$ is from an exponential family where $(\mathbf W, \mathbf V)$ are jointly sufficient for $(\boldsymbol \theta_1, \boldsymbol \theta_2)$, then the conditional density of  $\mathbf W | \mathbf V$ is free of the nuisance parameter $\boldsymbol \theta_2$ and can be used as a conditional likelihood for estimating $\boldsymbol \theta_1$. In some cases it may be difficult to find the conditional density. However, from (2.19, p. 57) we have $$\frac{f_{\mathbf Y}(\mathbf y; \boldsymbol \theta_1, \boldsymbol \theta_2)}{f_{\mathbf V}(\mathbf y; \boldsymbol \theta_1, \boldsymbol \theta_2)}= f_{\mathbf{W|V}}(\mathbf{w|v}; \boldsymbol \theta_1).$$ Thus, if you know the density of $\mathbf Y$ and of $\mathbf V$, then you can get a conditional likelihood equation.
+
+
+### a.
+
+Now let $\mathbf Y_1, \dots, \mathbf Y_n$ be iid $N(\mu,\sigma^2)$, $V=\bar Y$, and $\boldsymbol \theta = (\sigma, \mu)^T$. Form the ratio above and note that it is free of $\mu$. (It helps to remember that $\sum (Y_i-\mu)^2= \sum (Y_i- \bar Y)^2 + n(\bar Y - \mu)^2$.)
+
+Solution:
+
+By Central Limit Theorem, $\mathbf V = \bar Y \sim N(\mu, \sigma^2/n)$. Thus,
+$$ \begin{aligned}
+\frac{f_{\mathbf Y}(\mathbf y; \boldsymbol \sigma, \boldsymbol \mu)}{f_{\mathbf V}(\mathbf y; \boldsymbol \sigma, \boldsymbol \mu)} &= \frac{\prod_{i=1}^n(2\pi)^{-1/2}\sigma^{-1}\exp(-(y_i- \mu)^2/2\sigma^2)}{(2\pi)^{-1/2}\sigma^{-1}n^{1/2}\exp(-n(\bar y- \mu)^2/2\sigma^2)} \\
+&= \frac{(2\pi)^{-n/2}\sigma^{-n}\exp(-\sum_{i=1}^n(y_i- \mu)^2/2\sigma^2)}{(2\pi)^{-1/2}\sigma^{-1}n^{1/2}\exp(-n(\bar y- \mu)^2/2\sigma^2)} \\
+&= \frac{(2\pi)^{-n/2}\sigma^{-n}\exp(-\sum_{i=1}^n[(y_i- \bar y)^2 + n(\bar y - \mu)^2]/2\sigma^2)}{(2\pi)^{-1/2}\sigma^{-1}n^{1/2}\exp(-n(\bar y- \mu)^2/2\sigma^2)} \\
+&=(2\pi)^{-(n-1)/2}\sigma^{-(n-1)}n^{-1/2}\exp\left({-\sum_{i=1}^n (Y_i- \bar Y)^2}/{2\sigma^2}\right) &\text{This is free of}~\mu.
+\end{aligned}$$
+
+### b.
+
+Find the conditional maximum likelihood estimator of $\sigma^2$.
+
+Solution:
+
+$$\begin{aligned}
+\mathcal L (\sigma^2| \mathbf Y)&=(2\pi)^{-(n-1)/2}(\sigma^2)^{-(n-1)/2}n^{-1/2}\exp\left({-\sum_{i=1}^n (Y_i- \bar Y)^2}/{2\sigma^2}\right) \\
+\ell (\sigma^2| \mathbf Y)&=\frac{-(n-1)}{2}\log(2\pi)-\frac{n-1}{2}\log(\sigma^2) -\frac{\log n}{2} -\frac{\sum_{i=1}^n (Y_i- \bar Y)^2}{2\sigma^2} \\
+0 = \frac{\partial \ell}{\partial \sigma^2}&=-\frac{n-1}{2(\sigma^2)} +\frac{\sum_{i=1}^n (Y_i- \bar Y)^2}{2(\sigma^2)^2}\\
+\implies \sigma^2 &= \frac{\sum_{i=1}^n (Y_i- \bar Y)^2}{n-1}= SSE/(n-1) \\
+\frac{\partial^2 \ell}{\partial (\sigma^2)^2} \bigg|_{\sigma^2 = SSE/(n-1)}&=\frac{n-1}{2(\sigma^2)^2} -\frac{\sum_{i=1}^n (Y_i- \bar Y)^2}{(\sigma^2)^3} \bigg|_{\sigma^2 = SSE/(n-1)} \\
+&=\frac{n-1}{2(SSE/(n-1))^2} -\frac{SSE}{(SSE/(n-1))^3}\\
+&= -1/2 <0. \\
+\implies \hat \sigma^2 &= \frac{\sum_{i=1}^n (Y_i- \bar Y)^2}{n-1}= SSE/(n-1) 
+\end{aligned}$$
+
+\newpage
+
+## 2.26
+
+Consider the normal theory linear measurement error model $$\begin{aligned} Y_i = \alpha + \beta U_i +\sigma_e e_i, & X_i =U_i+ \sigma Z_i, & i = 1,\dots,n \end{aligned}$$ where $e_1, \dots, e_n$, $Z_1,\dots, Z_n$ are iid $N(0,1)$ random variables, $\sigma^2$ is known, and $\alpha,\beta, \sigma_e$, and $U_1, \dots, U_n$ are unknown parameters.
+
+### a.
+
+Let $s_X^2$ denote the sample variance of $X_1,\dots, X_n$. Show that $E(s_X^2)=s_U^2+\sigma^2$ where $s_U^2$ is the sample variance of $\{U_i\}_1^n$.
+
+Solution:
+
+$$
+\bar X = \sum_{i=1}^n (U_i+\sigma Z_i)/n = \bar U + \sigma \bar Z, \bar Z \sim N(0,1/n) 
+$$
+$$\begin{aligned}
+E(s_X^2) &= E \left(\frac{\sum_{i=1}^n (X_i -\bar X)^2}{n-1} \right).
+= E \left(\frac{\sum_{i=1}^n X_i^2 -2X_i\bar X + \bar X^2}{n-1} \right)\\ 
+&= E \left(\frac{\sum_{i=1}^n (U_i + \sigma Z_i)^2 -2(U_i + \sigma Z_i)(\bar U + \sigma \bar Z) +(\bar U + \sigma \bar Z)^2}{n-1} \right)\\
+&= E \left(\frac{\sum_{i=1}^n U_i^2 + 2\sigma  U_i Z_i+ \sigma^2 Z_i^2 -2(U_i \bar U + \sigma U_i \bar Z +\sigma Z_i \bar U + \sigma^2Z_i \bar Z) +\bar U^2 + 2\sigma \bar U \bar Z + \sigma^2\bar Z^2}{n-1} \right)\\
+&= E \left(\frac{\sum_{i=1}^n U_i^2-2U_i \bar U+\bar U^2 + \sigma^2 Z_i^2  -2 \sigma^2Z_i \bar Z  + \sigma^2\bar Z^2}{n-1} \right)\\
+&= E \left(\frac{\sum_{i=1}^n(U_i- \bar U)^2}{n-1} \right) + \sigma^2 E \left(\frac{\sum_{i=1}^n(Z_i- \bar Z)^2}{n-1} \right)\\
+&= s_U^2 + \sigma^2 E \left(\frac{\sum_{i=1}^n(Z_i- \bar Z)^2}{n-1} \right)\\
+&= s_U^2 + \sigma^2 E \left(\frac{\sum_{i=1}^n(Z_i- \bar Z)^2}{n-1} \right)\\
+\end{aligned}
+$$
+Note that,
+$$ \begin{aligned}
+(n-1) \left(\frac{\sum_{i=1}^n(Z_i- \bar Z)^2}{n-1} \right)\sim \chi^2(n-1) \\
+\implies E \left[(n-1) \left(\frac{\sum_{i=1}^n(Z_i- \bar Z)^2}{n-1} \right)\right] &= n-1 \\
+\implies E \left(\frac{\sum_{i=1}^n(Z_i- \bar Z)^2}{n-1} \right) &= 1
+\end{aligned}
+$$
+Therefore, $E(s_X^2)= s_U^2 + \sigma^2 E \left(\frac{\sum_{i=1}^n(Z_i- \bar Z)^2}{n-1} \right) =s_U^2 + \sigma^2$.
+
+**For the remainder of this problem assume that $s_U^2 \to \sigma_U^2$ as $n \to \infty$ and that $s_X^2$ converges in probability to $\sigma_U^2$. (Note that even though $\{U_i\}_1^n$ are parameters it still makes sense to talk about their sample variance, and denoting the limit of $s_U^2$ as $n \to \infty$ by $\sigma_U^2$ is simply a matter of convenience).**
+
+### b.
+
+Show that the estimate of slope from the least squares regression of $\{Y_i\}_1^n$ on $\{X_i\}_1^n$ (call it $\hat{\beta}_{Y|X}$ is not consistent for $\beta$ as $n \to \infty$). This shows that it is not OK to simply ignore the measurement error in the predictor variable.
+
+Solution:
+
+It is a well-known result that in SLR $\hat{\beta}_{Y|X}= \frac{\widehat{Cov(X,Y)}}{s^2_X}$. Thus,
+$$ \begin{aligned}
+\lim_{n \to \infty}\hat{\beta}_{Y|X} &= \lim_{n \to \infty} \frac{Cov(X,Y)}{s^2_X} \\
+&= \frac{1}{\sigma_U^2+ \sigma^2} \lim_{n \to \infty} \frac{\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)}{n-1} \\
+&= \frac{1}{\sigma_U^2+ \sigma^2} \lim_{n \to \infty} \frac{\sum_{i=1}^nX_iY_i-X_i\bar Y-\bar XY_i+\bar X\bar Y}{n-1} \\
+X_iY_i &= (U_i + \sigma Z_i)(\alpha + \beta U_i +\sigma_e e_i) \\
+&= \alpha U_i + \beta U_i^2 +\sigma_e U_ie_i +\alpha \sigma Z_i+ \beta \sigma U_i Z_i +\sigma_e\sigma e_i Z_i \\
+X_i\bar Y &= (U_i + \sigma Z_i)(\alpha + \beta \bar U +\sigma_e \bar e) \\
+&= \alpha U_i + \beta U_i \bar U +\sigma_e U_i \bar e +\alpha \sigma Z_i+ \beta \sigma \bar U Z_i +\sigma_e\sigma \bar e Z_i \\
+\bar XY_i &= (\bar U + \sigma \bar Z)(\alpha + \beta U_i +\sigma_e e_i) \\
+&= \alpha \bar U + \beta U_i \bar U +\sigma_e \bar Ue_i +\alpha \sigma \bar Z+ \beta \sigma U_i \bar Z +\sigma_e\sigma e_i \bar Z \\
+\bar X \bar Y &= (\bar U + \sigma \bar Z)(\alpha + \beta \bar U +\sigma_e \bar e) \\
+&= \alpha \bar U + \beta \bar U^2 +\sigma_e \bar U \bar e +\alpha \sigma \bar Z+ \beta \sigma \bar U \bar Z +\sigma_e\sigma \bar e \bar Z \\
+\implies \lim_{n \to \infty}\hat{\beta}_{Y|X} &= \frac{1}{\sigma_U^2+ \sigma^2} \lim_{n \to \infty} \frac{\sum_{i=1}^n \beta (U_i^2-2 U_i\bar U +\bar U^2)+\sigma_e(U_i e_i -U_i \bar e -\bar U e_i + \bar U \bar e)}{n-1} \\
+&~~~~~+\frac{\sum_{i=1}^n \beta \sigma (U_iZ_i- \bar U Z_i - U_i \bar Z +\bar U \bar Z)+\sigma_e \sigma(e_i Z_i -\bar e Z_i - e_i\bar Z + \bar e\bar Z )}{n-1}  \\
+&= \frac{1}{\sigma_U^2+ \sigma^2} \lim_{n \to \infty} \left[ \beta s_U^2+\frac{\sum_{i=1}^n \sigma_e \sigma(e_i Z_i -\bar e Z_i - e_i\bar Z + \bar e\bar Z )}{n-1} \right] ~~~~~~ \left( \overset{\text{Central Limit Theorem,}}{e_i,Z_i, \sqrt n \bar e, \sqrt n \bar Z \sim N(0,1)} \right) \\
+&= \frac{1}{\sigma_U^2+ \sigma^2} \lim_{n \to \infty} \left[ \beta s_U^2+\frac{\sigma_e \sigma \left[\sum_{i=1}^n (e_i - \bar e) (Z_i- \bar Z)\right]}{n-1} \right]\\
+&= \frac{1}{\sigma_U^2+ \sigma^2} \lim_{n \to \infty} \left[ \beta s_U^2+\sigma_e \sigma Cov(e_i,Z_i) \right] \\
+&= \frac{1}{\sigma_U^2+ \sigma^2}(\beta s_U^2)~~~~~~~~~~~~~~~~~\bigg(e_i,Z_i \overset{iid}{\sim} N(0,1) \implies Cov(e_i,Z_i) =0 \bigg) \\
+&= \frac{\beta s_U^2}{\sigma_U^2+ \sigma^2}
+\end{aligned}
+$$
+Therefore $\lim_{n \to \infty}\hat{\beta}_{Y|X}$ is not a consistent estimator of $\beta$.
+
+### c. 
+
+Now construct the full likelihood for $\alpha,\beta,\sigma_{\epsilon}^2, U_1,\dots,U_n$ and show that it has no sensible maximum. Do this by showing that the full likelihood diverges to $\infty$ when $U_i =(Y_i-\alpha)/\beta$ for all $i$ and $\sigma_{\epsilon}^2 \to 0$. This is another well-known example of the failure of maximum likelihood to produce meaningful estimates.
+
+Solution:
+
+$$ \begin{aligned}
+Y_i &= \alpha + \beta U_i +\sigma_e e_i \sim N(\alpha + \beta U_i, \sigma_{e}^2) \\
+\implies \mathcal L(\alpha, \beta, \mathbf U, \sigma_e | \mathbf Y) &= \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma_{e}^2}}\exp \left(\frac{-(y_i -(\alpha +\beta U_i))^2}{2\sigma_{e}^2}\right) \\
+\lim_{\sigma^2_{e} \to 0}L(\alpha, \beta, \mathbf U, \sigma_e | \mathbf Y)|_{U_i =(Y_i-\alpha)/\beta} &=\lim_{\sigma^2_{e} \to 0} \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma_{e}^2}}\exp \left(\frac{-(y_i -(\alpha +\beta ((Y_i-\alpha)/\beta)))^2}{2\sigma_{e}^2}\right) \\
+&=\lim_{\sigma^2_{e} \to 0}\prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma_{e}^2}} = \lim_{\sigma^2_{e} \to 0} (2 \pi \sigma_{e}^2)^{-n/2} \\
+&= \infty
+\end{aligned} $$
+
+### d.
+
+Consider the simple estimator (of $\beta$) $$\hat \beta_{MOM} = \frac{s_X^2}{s_X^2-\sigma^2} \hat \beta _{Y|X},$$ and show that it is a consistent estimator of $\beta$. This shows that consistent estimators exist, and thus the problem with maximum likelihood is not intrinsic to the model.
+
+Solution:
+
+$$
+\begin{aligned}
+\lim_{n \to \infty}\hat \beta_{MOM} &= \lim_{n \to \infty}\frac{s_X^2}{s_X^2-\sigma^2} \hat \beta _{Y|X} \\
+&=\frac{\sigma_U^2 + \sigma^2}{\sigma_U^2} \left(\frac{\beta \sigma_U^2}{\sigma_U^2+ \sigma^2}\right) \\
+&=\beta
+\end{aligned}
+$$
+\newpage
+
+### e. 
+
+Assuming that all other parameters are known, show that $T_i = Y_i \beta/\sigma_{e}^2+X_i/\sigma^2$ is a sufficient statistic for $U_i$, $i=1,\dots,n$.
+
+Solution:
+
+$$
+\begin{aligned}
+X_i  &\sim N(U_i, \sigma^2)\\
+Y_i &  \sim N(\alpha + \beta U_i, \sigma^2_e) \\
+\end{aligned}
+$$
+$$
+\begin{aligned}
+f_{X_i,Y_i|U_i}(x,y)&=f_{Y_i|U_i}(y_i|u_i) f_{X_i|U_i}(x_i) \\
+&=\frac{1}{\sqrt{2 \pi \sigma_{e}^2}}\exp \left(\frac{-(y_i -(\alpha +\beta u_i))^2}{2 \sigma_{e}^2}\right) \frac{1}{\sqrt{2 \pi \sigma^2}}\exp \left(\frac{-(x_i- u_i)^2}{2 \sigma^2}\right)   \\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left(\frac{-(y_i^2 -2y_i\alpha - 2y_i \beta u_i +\alpha^2 +2\alpha \beta u_i + \beta^2u_i^2)}{2 \sigma_{e}^2}-\frac{x_i^2-2x_iu_i+ u_i^2}{2 \sigma^2}\right)   \\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left(\frac{-\sigma^2((y_i-\alpha)^2 - 2y_i \beta u_i +2\alpha \beta u_i + \beta^2u_i^2)-\sigma_e^2(x_i^2-2x_iu_i+ u_i^2)}{2 \sigma^2\sigma_e^2}\right)   \\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left(\frac{(2\sigma^2 y_i\beta +2\sigma_e^2x_i)u_i}{2\sigma^2\sigma^2_e}\right)\exp \left(\frac{-\sigma^2((y_i-\alpha)^2 +2\alpha \beta u_i + \beta^2u_i^2)-\sigma_e^2(x_i^2+ u_i^2)}{2 \sigma^2\sigma_e^2}\right)   \\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left[ u_i\left(\frac{y_i\beta}{\sigma_e^2}+\frac{ x_i}{\sigma^2}\right)\right]\exp \left(\frac{-(\sigma^2(y_i-\alpha)^2 +2\sigma^2\alpha \beta u_i + \sigma^2\beta^2u_i^2+ \sigma_e^2x_i^2+\sigma_e^2u_i^2)}{2 \sigma^2\sigma_e^2}\right)   \\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left[ u_i\left(\frac{y_i\beta}{\sigma_e^2}+\frac{ x_i}{\sigma^2}\right)\right]\exp \left[\frac{-(\sigma^2(y_i-\alpha)^2+ \sigma_e^2x_i^2)}{2 \sigma^2\sigma_e^2} -\left(\frac{\alpha \beta}{\sigma_e^2}u_i + \frac{\beta^2}{2\sigma_e^2}u_i^2+\frac{1}{2\sigma^2}u_i^2\right)\right]   \\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left[ u_i\left(\frac{y_i\beta}{\sigma_e^2}+\frac{ x_i}{\sigma^2}-\frac{\alpha \beta}{\sigma_e^2}\right) -\left(\frac{\beta^2}{2\sigma_e^2}+\frac{1}{2\sigma^2}\right)u_i^2\right]\exp \left[\frac{-(\sigma^2(y_i-\alpha)^2+ \sigma_e^2x_i^2)}{2 \sigma^2\sigma_e^2}\right]\\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left[ u_i\left(t_i-\frac{\alpha \beta}{\sigma_e^2}\right) -\left(\frac{\beta^2}{2\sigma_e^2}+\frac{1}{2\sigma^2}\right)u_i^2\right]\exp \left[\frac{-(\sigma^2(y_i-\alpha)^2+ \sigma_e^2x_i^2)}{2 \sigma^2\sigma_e^2}\right]\\
+\end{aligned}
+$$
+
+
+Thus, $\left(\frac{y_i\beta}{\sigma_e^2}+\frac{ x_i}{\sigma^2}\right)$ is sufficient for $U_i$.
+
+\newpage
+
+### f.
+
+Find the conditional distribution of $Y_i|T_i$ and use it to construct a conditional likelihood for $\alpha, \beta$, and $\sigma_{\epsilon}^2$  in a manner similar to that for the logistic regression measurement error model.
+
+Solution:
+
+$$ \begin{aligned}
+T_i &= Y_i \beta/\sigma_{e}^2+X_i/\sigma^2 \implies X_i= (T_i-Y_i\beta)\left(\frac{\sigma^2}{\sigma_e^2} \right)
+\end{aligned}
+$$
+By the Jacobian method of transformations:
+$$ \begin{aligned}
+f_{Y_i,T_i} (y_i,t_i) &= f_{X_i,Y_i}\left(y_i,(t_i-y_i\beta)\left(\frac{\sigma^2}{\sigma_e^2}\right)\right)\left| \begin{matrix} 0&1/\sigma^2 \\ 1 &  \beta/\sigma_e^2\end{matrix} \right| \\
+&=\frac{1}{2 \pi \sigma_e \sigma}\exp \left[ u_i\left(\frac{y_i\beta}{\sigma_e^2}+\frac{(t_i-y_i\beta)\left(\frac{\sigma^2}{\sigma_e^2}\right)}{\sigma^2}-\frac{\alpha \beta}{\sigma_e^2}\right) -\left(\frac{\beta^2}{2\sigma_e^2}+\frac{1}{2\sigma^2}\right)u_i^2\right] \\
+&~~~~~~\times\exp \left[\frac{-(\sigma^2(y_i-\alpha)^2+ \sigma_e^2\left((t_i-y_i\beta)\left(\frac{\sigma^2}{\sigma_e^2}\right)\right)^2)}{2 \sigma^2\sigma_e^2}\right] \left|\frac{-1}{\sigma^2}\right|\\
+\implies f_{Y_i|T_i=t_i}(y_i,t_i) &= \frac{f_{Y_i, T_i}(y_i,t_i)}{f_{T_i}(t_i)}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&=\frac{\frac{1}{2 \pi \sigma_e \sigma^3}\exp \left[ u_i\left(\frac{y_i\beta}{\sigma_e^2}+\frac{(t_i-y_i\beta)\left(\frac{\sigma^2}{\sigma_e^2}\right)}{\sigma^2}-\frac{\alpha \beta}{\sigma_e^2}\right) -\left(\frac{\beta^2}{2\sigma_e^2}+\frac{1}{2\sigma^2}\right)u_i^2\right]\exp \left[\frac{-(\sigma^2(y_i-\alpha)^2+ \sigma_e^2\left((t_i-y_i\beta)\left(\frac{\sigma^2}{\sigma_e^2}\right)\right)^2)}{2 \sigma^2\sigma_e^2}\right] }
+{\frac{1}{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}} \exp \left[\frac{-(t_i-(\sigma_e^{-2}\beta \alpha+ \sigma_e^{-2}\beta^2 u_i+\sigma^{-2}u_i))^2}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right]} \\
+&=\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\exp \left[ u_i\left(\frac{y_i\beta}{\sigma_e^2}+\frac{t_i-y_i\beta}{\sigma_e^2}-\frac{\alpha \beta}{\sigma_e^2}\right) -\left(\frac{\beta^2}{2\sigma_e^2}+\frac{1}{2\sigma^2}\right)u_i^2-\frac{(y_i-\alpha)^2+ (t_i-y_i\beta)^2\left(\frac{\sigma^2}{\sigma_e^2}\right)}{2 \sigma_e^2}\right] }
+{2 \pi \sigma_e \sigma^3 \exp \left[\frac{-(t_i-(\sigma_e^{-2}\beta \alpha+ \sigma_e^{-2}\beta^2 u_i+\sigma^{-2}u_i))^2}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right]} \\
+&=\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\exp \left[ u_i\left(\frac{t_i-\alpha \beta}{\sigma_e^2}\right) -\left(\frac{\beta^2}{2\sigma_e^2}+\frac{1}{2\sigma^2}\right)u_i^2-\frac{(y_i-\alpha)^2+ (t_i-y_i\beta)^2\left(\frac{\sigma^2}{\sigma_e^2}\right)}{2 \sigma_e^2}\right] }
+{2 \pi \sigma_e \sigma^3 \exp \left[\frac{-(t_i^2-2t_i\sigma_e^{-2}\beta \alpha-2t_i \sigma_e^{-2}\beta^2 u_i-2t_i\sigma^{-2}u_i+\sigma_e^{-4}\beta^2\alpha^2 +2\sigma_e^{-4}\beta^3\alpha u_i +2 \sigma_e^{-2}\sigma^{-2}\alpha\beta u_i+\sigma_e^{-4}\beta^4u_i^2 + 2\sigma_e^{-2}\sigma^{-2}\beta^2u_i^2 + \sigma^{-4}u_i^2)}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right]} \\
+&=\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\exp \left[ \frac{2u_i (\beta^2 \sigma_e^{-2}+ \sigma^{-2})(t_i-\alpha\beta)\sigma_e^{-2} -(\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left(\beta^2\sigma_e^{-2}+\sigma^{-2}\right)u_i^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2} }{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right] }
+{2 \pi \sigma_e \sigma^3 \exp \left[\frac{-\left(t_i^2-2t_i\sigma_e^{-2}\beta \alpha-2t_i \sigma_e^{-2}\beta^2 u_i-2t_i\sigma^{-2}u_i+\sigma_e^{-4}\beta^2\alpha^2 +2\sigma_e^{-4}\beta^3\alpha u_i +2 \sigma_e^{-2}\sigma^{-2}\alpha\beta u_i+\sigma_e^{-4}\beta^4u_i^2 + 2\sigma_e^{-2}\sigma^{-2}\beta^2u_i^2 + \sigma^{-4}u_i^2\right)}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right]} \\
+&=\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\\
+&~~~~~~~\times\exp \left[ \frac{2(\beta^2 \sigma_e^{-2}+ \sigma^{-2})(t_i-\alpha\beta)\sigma_e^{-2} u_i-2t_i \sigma_e^{-2}\beta^2 u_i-2t_i\sigma^{-2}u_i+2\sigma_e^{-4}\beta^3\alpha u_i +2 \sigma_e^{-2}\sigma^{-2}\alpha\beta u_i}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right] \\
+&~~~~~~~\times \exp \left[ \frac{-(\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left(\beta^2\sigma_e^{-2}+\sigma^{-2}\right)u_i^2+\sigma_e^{-4}\beta^4u_i^2 + 2\sigma_e^{-2}\sigma^{-2}\beta^2u_i^2 + \sigma^{-4}u_i^2}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right] \\
+&~~~~~~\times\exp \left[\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right] \\
+&=\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\exp \left[\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right] \\
+\end{aligned}
+$$
+Therefore, the conditional likelihood is:
+$$\mathcal L =\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\exp \left[\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\right]$$
+
+And the MLEs based on this are:
+
+{% raw %}
+
+$$ \begin{aligned}
+\ell (\alpha, \beta, \sigma_e^2, \sigma^2 ; Y_i, T_i) &= \log \left(\frac{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}{2 \pi \sigma_e \sigma^3}\right)+\frac{t_i^2-2t_i\sigma_e^{-2}\beta \alpha+\sigma_e^{-4}\beta^2\alpha^2- (\beta^2 \sigma_e^{-2}+ \sigma^{-2})\left((y_i-\alpha)^2+ (t_i-y_i\beta)^2\sigma^2\sigma_e^{-2}\right)\sigma_e^{-2}}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})} \\
+0 = \frac{\partial \ell}{\partial \alpha} &= \frac{2t_i\sigma_e^{-2}\beta +2\sigma_e^{-4}\beta^2\alpha-2(\beta^2 \sigma_e^{-2}+ \sigma^{-2})(y_i-\alpha)}{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}\\
+&= t_i\sigma_e^{-2}\beta -\beta^2 \sigma_e^{-2}y_i- \sigma^{-2}y_i +\beta^2 \sigma_e^{-2}\alpha+\sigma^{-2}\alpha\\
+\implies \alpha &= \frac{t_i\sigma_e^{-2}\beta-\beta^2 \sigma_e^{-2}y_i- \sigma^{-2}y_i}{\sigma_e^{-4}\beta^2-\beta^2 \sigma_e^{-2}-\sigma^{-2}}\\
+0 = \frac{\partial \ell}{\partial \beta} &=  \left(\frac{1}{\sqrt{2\pi (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}}\right)\left(\frac{{2 (\beta^2 \sigma_e^{-2}+ \sigma^{-2})}[-2t_i\sigma_2^{-2}\alpha+2\sigma_e^{-4}\alpha^2\beta-2\beta\sigma_e^{-4}[(y_i-\alpha)^2-(t_i-y_i\beta)^2\sigma^2\sigma_e^2]+2y_i(t_i-y_i\beta)\sigma^2\sigma_e^{-2}(\beta^2\sigma_e^{-2}+\sigma^{-2})]}{4(\beta^2\sigma_e^{-2}+\sigma^{-2})^2}\right)\\
+&=  -2t_i\sigma_2^{-2}\alpha+2\sigma_e^{-4}\alpha^2\beta-\beta\sigma_e^{-4}[(y_i-\alpha)^2-(t_i-y_i\beta)^2\sigma^2\sigma_e^2]+y_i(t_i-y_i\beta)\sigma^2\sigma_e^{-2}(\beta^2\sigma_e^{-2}+\sigma^{-2})\\
+\end{aligned}$$
+{% endraw %}
+
+
+Ran out of time to finish problem. but just taking derivatives to find MLEs of conditional likelihood from here.
+
+
+<!-- \newpage -->
+<!-- ## Extra Problem: -->
+
+<!-- Let $Y \sim Beta(a,b)$.  Derive the distribution of $Z = \log(Y/(1-Y))$.  Let $\mu = a/(a+b)$ and $\phi=a+b$.  Denote the distribution of $Z$ with this parametrization as $f_Z(z;\mu,\phi)$.  Now, let $X$ be a vector of covariates.  Suppose that the conditional distribution of $Z$ given $X$ is equal to $f_Z(z;\theta(X;\beta),\phi)$, where $\theta(X;\beta)=X'\beta$.  Here beta is a vector of regression coefficients.  Argue why $f_Z(z;\theta(X;\beta),\phi)$ is not a generalized linear model. -->
+
+<!-- Solution: -->
+
+<!-- $$\begin{aligned} -->
+<!-- P(Z \leq z) &= P(\log(Y/(1-Y)) \leq z) \\ -->
+<!-- &= P(Y/(1-Y) \leq e^z) \\ -->
+<!-- &= P(Y \leq e^z(1-Y)) & Y \in (0,1),~\text{so}~(1-Y)>0\\ -->
+<!-- &= P(Y+ e^zY \leq e^z) \\ -->
+<!-- &= P\left(Y \leq \frac{e^z}{1+e^z} \right) \\ -->
+<!-- &= \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)} \left(\frac{e^z}{1+e^z}\right)^{a-1}\left(1-\frac{e^z}{1+e^z}\right)^{b-1} & \text{pdf of beta distribution} -->
+<!-- \end{aligned}$$ -->
+<!-- $$\begin{aligned} -->
+<!-- \mu = a/(a+b) &,~~ \phi = a+b \\ -->
+<!-- \implies a = \mu\phi&,~~b= \phi-\mu \phi -->
+<!-- \end{aligned} -->
+<!-- $$ -->
+<!-- $$\begin{aligned} -->
+<!-- f_Z(z;a,b)&= \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)} \left(\frac{e^z}{1+e^z}\right)^{a-1}\left(1-\frac{e^z}{1+e^z}\right)^{b-1} \\ -->
+<!-- \implies f_Z(z;\mu,\phi)&= \frac{\Gamma(\mu\phi)\Gamma(\phi-\mu \phi)}{\Gamma(\mu\phi+\phi-\mu \phi)} \left(\frac{e^z}{1+e^z}\right)^{\mu\phi-1}\left(\frac{1}{1+e^z}\right)^{\phi-\mu \phi-1}\\ -->
+<!-- \implies f_Z(z;\theta(X;\beta),\phi)&= \frac{\Gamma(\theta\phi)\Gamma(\phi-\theta \phi)}{\Gamma(\phi)} \left(\frac{e^z}{1+e^z}\right)^{\theta\phi-1}\left(\frac{1}{1+e^z}\right)^{\phi-\theta \phi-1}  -->
+<!-- \end{aligned}$$ -->
+<!-- $$\begin{aligned} -->
+<!-- \implies \log f_Z(z;\theta(X;\beta),\phi)&= \log \left(\frac{\Gamma(\theta\phi)\Gamma(\phi-\theta \phi)}{\Gamma(\phi)} \right)+(\theta\phi-1) \log\left(\frac{e^z}{1+e^z}\right)+(\phi-\theta \phi-1) \log\left(\frac{1}{1+e^z}\right) \\ -->
+<!-- &= \log \left(\frac{\Gamma(\theta\phi)\Gamma(\phi-\theta \phi)}{\Gamma(\phi)} \right)+(\theta\phi-1) \log(e^z) -(\theta\phi-1+\phi-\theta \phi-1)\log(1+e^z) \\ -->
+<!-- &= \log \left(\frac{\Gamma(\theta\phi)\Gamma(\phi-\theta \phi)}{\Gamma(\phi)} \right)+(\theta\phi-1) z -(\phi-2)\log(1+e^z) \\ -->
+<!-- &= \log \left(\frac{\Gamma(\theta\phi)\Gamma(\phi-\theta \phi)}{\Gamma(\phi)} \right)+\theta\phi z-z -(\phi-2)\log(1+e^z) \\ -->
+<!-- &= \log (\Gamma(\theta\phi)) + \log(\Gamma(\phi(1-\theta)))+\theta\phi z-z -(\phi-2)\log(1+e^z)-\log (\Gamma(\phi)) \\ -->
+<!-- \end{aligned}$$ -->
+
+<!-- In trying to fit this into GLM framework, we will be stuck with a term $\theta\phi z$. This term must be in the fraction $z\theta_i/a(\phi)$ as it cannot be split into a function dependent only on the data and $\phi$. This means, $a(\phi)=1/\phi$. However, the terms $\log (\Gamma(\theta\phi)) + \log(\Gamma(\phi(1-\theta)))$ cannot factor out either $\theta$ or $\phi$. Thus, there is no plausible choice $b(\theta)$ to match the function $a$. Therefore, $f_Z(z;\theta(X;\beta),\phi)$ is not a generalized linear model. -->
+
+\newpage
+## 2.35.
+
+Derive the Fisher information matrix $\mathbf I(\boldsymbol \theta)$ for the reparameterized ZIP model:$$\begin{aligned} P(Y =0) = \pi\\ P(Y=y) = \left(\frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^ye^{-y}}{y!} \end{aligned}$$
+
+Solution:
+
+$$\begin{aligned}
+P(Y =0) &= \pi\\
+P(Y=y) &= \left(\frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^ye^{-y}}{y!} \\
+\implies \mathcal L(\pi, \lambda |y) &= \pi^{I(y=0)} \left[\left(\frac{1-\pi}{1-e^{-\lambda}}\right)\frac{\lambda^ye^{-y}}{y!}\right]^{I(y \in \mathbb N^+)} \\
+\implies \ell(\pi, \lambda |y) &= \log (\pi) I(y=0) + \left[\log (1-\pi) - \log(1-e^{-\lambda})+y \log (\lambda) -y -\log (y!)\right]I(y \in \mathbb N^+) \\
+S(\pi,\lambda) = \frac{\partial \ell}{\partial (\pi,\lambda)^T} &= \begin{pmatrix}\frac{1}{\pi}I(y= 0)-\frac{1}{1-\pi} I(y \in \mathbb N^+) \\ \left[-\frac{e^{-\lambda}}{1-e^{-\lambda}} + \frac{y}{\lambda} \right]I(y \in \mathbb N^+)\end{pmatrix} \\
+I(\theta) = - E \left[\frac{\partial S}{\partial (\pi,\lambda)} \right] &= -E\begin{pmatrix}\frac{-1}{\pi^2}I(y= 0)+\frac{1}{(1-\pi)^2} I(y \in \mathbb N^+) & 0 \\ 0& \left[-\frac{-e^{-\lambda}(1-e^{-\lambda})-e^{-\lambda}(e^{-\lambda})}{1-e^{-\lambda}} - \frac{y}{\lambda^2} \right]I(y \in \mathbb N^+)\end{pmatrix} \\
+&= -\begin{pmatrix}\frac{-1}{\pi^2}\pi-\frac{1}{(1-\pi)^2} (1-\pi) & 0 \\ 0& \left[-\frac{-e^{-\lambda}(1-e^{-\lambda})-e^{-\lambda}(e^{-\lambda})}{1-e^{-\lambda}} - \frac{\left(\frac{1}{1-e^{-\lambda}}\right)\lambda}{\lambda^2} \right](1-\pi))\end{pmatrix} \\
+&=\begin{pmatrix}\frac{1}{\pi}+\frac{1}{1-\pi} & 0 \\ 0& \left[\frac{-e^{-\lambda}}{1-e^{-\lambda}} + \frac{1}{(1-e^{-\lambda})\lambda} \right](1-\pi)\end{pmatrix}
+\end{aligned}$$
+
+\newpage
+## 2.37
+
+Suppose that $Y_1, \dots, Y_n$ are iid from the one parameter exponential family $f(y;\theta)= \exp[yg(\theta)-b(\theta)+c(y)]$.
+
+### a.
+
+For $g(\theta) = \theta$, find $\bar{\mathbf{I}}(Y,\theta)$ (sample version) and explain why it is the same as $I(\theta)$ (Fisher information).
+
+Solution: 
+
+$$
+\begin{aligned}
+\mathcal L(\theta|\mathbf Y) &= \prod_{i=1}^n \exp[y_ig(\theta)-b(\theta)+c(y_i)] \\
+\implies \ell (\theta | \mathbf Y) &= \sum_{i=1}^n y_i \theta-b(\theta)+c(y_i) \\
+\implies S (\theta | \mathbf Y) &= \sum_{i=1}^n y_i -b'(\theta)\\
+\implies \frac{d S (\theta | \mathbf Y)}{d \theta} &= -b''(\theta) = -nb''(\theta) \\
+\implies \bar{\mathbf{I}}(Y,\theta) &= \frac{1}{n} \sum_{i=1}^n \left[-\frac{d S (\theta | Y_i)}{d \theta}\right] \\
+&= b''(\theta)
+\end{aligned}
+$$
+
+The fisher information is the same as the sample fisher information as the derivative of the score function is constant with respect to the sample data. The fisher information and sample information should be equal when variables are iid.
+
+### b.
+
+Now for general differentiable $g(\theta)$, find $I(\theta)$
+
+Solution:
+
+$$
+\begin{aligned}
+\mathcal L(\theta|\mathbf Y) &= \prod_{i=1}^n \exp[y_ig(\theta)-b(\theta)+c(y_i)] \\
+\implies \ell (\theta | \mathbf Y) &= \sum_{i=1}^n y_i g(\theta)-b(\theta)+c(y_i) \\
+\implies S (\theta | \mathbf Y) &= \sum_{i=1}^n y_ig'(\theta) -b'(\theta)\\
+\implies \frac{d S (\theta | \mathbf Y)}{d \theta} &= \sum_{i=1}^n y_ig''(\theta) -b''(\theta) \\
+&= n \bar y g''(\theta) -nb''(\theta) \\
+\implies I(Y,\theta) &= - E \left[\frac{d S (\theta | Y_i)}{d \theta}\right] \\
+&= -E\left[y_ig''(\theta) -b''(\theta)\right] \\
+&= - \left[b'(\theta) g''(\theta) -b''(\theta)\right] & E(y_i) = b'(\theta) \\
+&= b''(\theta) - b'(\theta) g'' (\theta) 
+\end{aligned}
+$$
+
+
+\newpage
+
+## 2.41
+
+Use simulation to verify that the information matrix for Example 2.21 (p. 78) is correct when $\mu =1$ and $\sigma =1$. One approach is to generate samples of size $n=100$ (or larger) from a normal(1,1) distribution and exponentiate to get lognormal data. Then form the log likelihood and use a numerical derivative routine to find the second derivative matrix for each sample. Then average over 1000 replications and compare to the given information matrix.
+
+Solution:
+
+```{r}
+library(numDeriv)
+set.seed(11062023)
+n = 100
+n_sim = 1000
+params = c(mu = 1, sigma = 1, lambda = 0)
+fisher_info = list()
+
+##Using Sima's code as a base
+
+# Define log-likelihood function of box-cox transformation
+# Source: Scott Hyde master's thesis, Montana State University
+#https://math.montana.edu/grad_students/writing-projects/Pre-2000/99hyde.pdf
+
+log_likelihood <- function(params, y) {
+  mu = params[1]
+  sigma = params[2]
+  lambda = params[3]
+  
+  if(lambda == 0){
+    z= log(y)
+  } else{
+    z = (y^(lambda)-1)/lambda
+  }
+  
+  log_lik <- sum(-1/(2*sigma^2)*(z-mu)^2 - 0.5*log(2*pi*sigma^2)+(lambda-1)*log(y))
+  return(log_lik)  # Return log-likelihood
+}
+for(i in 1:n_sim){
+  y = exp(rnorm(n, mean = params["mu"], sd = params["sigma"]))
+  fisher_info[[i]] = -hessian(log_likelihood,params,y= y)/n
+}
+
+mean_fisher_info = Reduce("+", fisher_info) / length(fisher_info)
+
+
+## Get matrix as defined in book
+
+tau_1 = (params["sigma"]^2+params["mu"]^2)/2
+tau_2 = (7*params["sigma"]^4+10*params["sigma"]^2*params["mu"]^2+params["mu"]^4)/4
+
+book = matrix(c(1,0,-tau_1,
+                0,2,-2*params["sigma"]*params["mu"],
+                -tau_1,-2*params["sigma"]*params["mu"], tau_2),nrow =3,ncol= 3)
+
+mean_fisher_info
+book
+```
+
+The mean of the fisher information matrices that I simulated is printed above, with the fisher info the book describes right below it. These two matrices are very close together, which means the simulation supports the book's example.
+
+\newpage
+## 2.43
+
+For the generalized linear model with link function $g$, not necessarily the canonical link, write down the likelihood function and show how to obtain the likelihood score equation, $$S(\boldsymbol \beta, \phi) = \sum_{i=1}^n \mathbf D_i \frac{(Y_i-\mu_i)}{Var(Y_i)}=0, \text{ where } \mathbf D_i =\mathbf D_i(\boldsymbol \beta) = \frac{\partial \mu_i(\boldsymbol \beta)}{\partial \boldsymbol \beta^T}$$ (In the above expression we have suppressed the dependence of $D_i$ and $\mu_i$ on $\boldsymbol \beta$.) The key idea used is the chain rule and the fact that the derivative of $\theta_i= b'^{-1}(\mu_i)$ with respect to $\mu_i$ is $1/b''(\theta_i)$.
+
+Solution:
+
+$$
+\begin{aligned}
+\ell (y_i;\theta_i,\phi) &= \frac{y_i\theta_i - b(\theta_i)}{a_i(\phi)} + c(y_i,\phi) \\
+&= \frac{y_ib'^{-1}(\mu_i) - b(b'^{-1}(\mu_i))}{a_i(\phi)} + c(y_i,\phi) \\
+S(\beta, \phi) &= \frac{y_ib''^{-1}(\mu_i)\mathbf D_i - b'(b'^{-1}(\mu_i))b''^{-1}(\mu_i) \mathbf D_i}{a_i(\phi)} \\
+&= \frac{y_i\mathbf D_i - b'(b'^{-1}(\mu_i)) \mathbf D_i}{b''(\theta_i)a_i(\phi)} & \left[b''^{-1}(\mu_i) = \frac{1}{b''(\theta_i)}\right] \\
+&= \frac{y_i\mathbf D_i - \mu_i \mathbf D_i}{b''(\theta_i)a_i(\phi)} \\
+&= \mathbf D_i\frac{Y_i - \mu_i}{Var(Y_i)} & \left[Var(Y_i) = b''(\theta_i)a_i(\phi)\right]\\
+\end{aligned}
+$$
+
+
+\newpage
+## 2.44
+
+Continuing the last problem, show that the Fisher information matrix for the $\boldsymbol \beta$ part of the generalized linear model is given by $$\bar{\mathbf I} ( \boldsymbol  \beta ) = \frac{1}{n} \sum_{i=1}^n \frac{\mathbf{D_i D_i}^T}{Var(Y_i)}$$ Here you can use either of two methods: a) take the expectation of the negative of the derivative of $S(\boldsymbol \beta, \phi)$, and noting that all the ugly derivatives drop out because $E(Y_i-\mu_i)=0$; or b) the individual summed components of $\mathbf{\bar I}(\boldsymbol \beta)$ can also be found using the cross-product definition of information in (2.39, p. 67).
+
+Solution:
+
+$$
+\begin{aligned}
+\bar{\mathbf I}(\boldsymbol \beta) 
+&= \frac{1}{n}\sum_{i=1}^n E\left[\mathbf s_i(\boldsymbol \beta) \mathbf s_i(\boldsymbol \beta)^T\right] \\
+&= \frac{1}{n}\sum_{i=1}^n E\left[\mathbf D_i\frac{Y_i - \mu_i}{Var(Y_i)}\mathbf D_i^T\frac{Y_i - \mu_i}{Var(Y_i)}\right] \\
+&= \frac{1}{n}\sum_{i=1}^n \mathbf D_i \mathbf D_i^T\frac{E[(Y_i - \mu_i)^2]}{[Var(Y_i)]^2} \\
+&= \frac{1}{n}\sum_{i=1}^n \mathbf D_i \mathbf D_i^T\frac{Var(Y_i)}{[Var(Y_i)]^2} \\
+&= \frac{1}{n}\sum_{i=1}^n \frac{\mathbf D_i \mathbf D_i^T}{Var(Y_i)} \\
+\end{aligned}
+$$
+
+\newpage
+
+
+## 2.45
+
+Suppose that $X_1$ and $X_2$ are independent and continuous random variables with densities $f_1$ and $f_2$, respectively. $Z$ is a Bernoulli($p$) random variable and independent of $X_1$ and $X_2$. Define $Y= ZX_1 +(1-ZX_2)$.
+
+### a)
+
+Use the $2h$ method to show that the joint density of $(Y,Z)$ is given by $$f_{Y,Z}(y,z) = [pf_1(y)]^z[(1-p)f_2(y)]^{1-z}$$
+
+Solution:
+
+$$\begin{aligned}
+f_{Y,Z} (y,z) &= lim_{h \to 0^+} (2h)^{-2} P\left(Y \in(y-h, y+h], Z \in (z-h,z+h]\right) \\
+&= lim_{h \to 0^+} (2h)^{-1} P\left(Y \in(y-h, y+h], Z = z\right) ~~~~~~~~~\text{(for small }h) \\
+&= lim_{h \to 0^+} (2h)^{-1} \big[P(z\,x_1+ (1-z)\,x_2 \leq y+h], z= 0) -P(z\,x_1+ (1-z)\,x_2 < y-h], z= 0) \\ &~~~~~~~~~~~~~~~~~~+
+P(z\,x_1+ (1-z)\,x_2 \leq y+h], z= 1) -P(z\,x_1+ (1-z)\,x_2 < y-h], z= 1)\big] \\
+&= lim_{h \to 0^+} (2h)^{-1} \big[P(z=0)[P(x_2 \leq y+h]) -P(\,x_2 < y-h])] \\&~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+P(z=1)[P(x_1\leq y+h]) -P(x_1 < y-h])\big] \\
+&= lim_{h \to 0^+} (2h)^{-1} \big\{p[P((x_2 \leq y+h]) -P(\,x_2 < y-h])]^{1-z} \\
+&~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\times\left[(1-p)[P(z\,x_1 \leq y+h]) -P(x_1 < y-h]) \right]^{z} \big\} \\
+&= [pf_1(y)]^z[(1-p)f_2(y)]^{1-z}
+\end{aligned}
+$$
+
+### b)
+
+Use the $2h$ method to show that $$P(Z=1|Y=y) = \frac{pf_1(y)}{pf_1(y) + (1-p)f_2(y)}$$
+
+Solution:
+
+I have already used the $2h$ method in the problem above to find the pdf $f_{Y,Z}(y,z)$, now we can use simple probability rules for the rest of the work:
+
+$$\begin{aligned}
+P(Z=1|Y=y) &= \frac{P(Z=1,Y=y)}{P(Y=y)}\\
+&= \frac{P(Z=1,Y=y)}{\sum_{Z}P(Y=y,Z=z)}\\
+&= \frac{P(Z=1,Y=y)}{P(Y=y,Z=0) + P(Y=y,z=1)}\\
+&= \frac{f_{Y,Z} (y,z=1)}{f_{Y,Z} (y,z=0) + f_{Y,Z} (y,z=1)} \\
+&= \frac{pf_1(y)}{[(1-p)f_2(y)] + [pf_1(y)]}
+\end{aligned}
+$$
+
+\newpage
+
+## 2.47
+
+A mixture of three component densities has the form $$f(y;\boldsymbol \theta, \mathbf p) = p_1f_1(y;\boldsymbol \theta) + p_2f_2(y;\boldsymbol \theta) + p_3f_3(y;\boldsymbol \theta),$$ where $p_1= p_2 = p_3 = 1$. We observe an iid sample $Y_1,\dots, Y_n$ from $f(y;\boldsymbol \theta, \mathbf p )$.
+
+### a.
+
+Show how to define multinomial($1;p_1,p_2,p_3$) vectors $(Z_{i1},Z_{i2},Z_{i3})$ to get a representation for the $Y_i$ from $f(y;\boldsymbol \theta, \mathbf p )$ based on independent random variables $(X_{i1},X_{i2},X_{i3})$ from the individual components.
+
+Solution:
+
+Let $Z_{i1} \sim Bernoulli(p_1),Z_{i2} \sim Bernoulli(p_2),Z_{i3} \sim Bernoulli(p_3)$ such that $(Z_{i1},Z_{i2},Z_{i3}) \sim multinomial(1;p_1,p_2,p_3)$ Also, let the pdfs of $X_{i1},X_{i2},X_{i3}$ be
+$f_1(y;\boldsymbol \theta), f_1(y;\boldsymbol \theta), f_1(y;\boldsymbol \theta)$ respectively.
+
+Define $Y_i = Z_{i1}X_{i1}+ Z_{i2}X_{i2} + Z_{i3}X_{i3}$.
+
+Thus, $f_{Y_i}(y) = p_1f_1(y;\boldsymbol \theta) + p_2f_2(y;\boldsymbol \theta) + p_3f_3(y;\boldsymbol \theta)$
+
+
+### b.
+
+Give the complete data log likelihood and the function $Q$ to be maximized at the M step.
+
+Solution:   
+
+The joint distribution $f(Y_i,Z_i)$ can be found as follows:
+
+$$
+\begin{aligned}
+f(Y_i,Z_i) &= f(Y_i|Z_i)f(Z_i) \\
+&= f(Z_{i1}X_{i1}+ Z_{i2}X_{i2} + Z_{i3}X_{i3}|Z_i)f(Z_i) \\
+&= f_{X_{i1}}(y_i|Z_{i1})f_{X_{i2}}(y_i|Z_{i2})f_{X_{i3}}(y_i|Z_{i3})f(Z_i)\\
+&= [f_{X_{i1}}(y_i;\boldsymbol \theta)]^{z_{i1}}[f_{X_{i2}}(y_i;\boldsymbol \theta)]^{Z_{i2}}[f_{X_{i3}}(y_i;\boldsymbol \theta)]^{Z_{i3}}p_1^{z_{i1}}p_2^{z_{i2}}p_3^{z_i3}
+\end{aligned}
+$$
+Thus, the complete log likelihood is
+$$\begin{aligned}\ell_C(\boldsymbol \theta,p_1,p_2,p_3|\mathbf Y,\mathbf Z) &= \sum_{i=1}^n z_{i1}\log(f_{X_{i1}}(\boldsymbol \theta;y_i))+z_{i2}\log (f_{X_{i2}}(\boldsymbol \theta;y_i))+z_{i3}\log(f_{X_{i3}}(\boldsymbol \theta;y_i))\\
+&~~~~~~~~~~~~~~~~~~~~~+z_{i1}\log p_1+z_{i2}\log p_2+z_{i3} \log p_3 \end{aligned}$$
+
+and,
+$$\begin{aligned}Q(\boldsymbol \theta,p_1,p_2,p_3,\boldsymbol \theta^v,p_1^v,p_2^v,p_3^v,\mathbf Y) &= E_{(\boldsymbol \theta^v,p_1^v,p_2^v,p_3^v)} [\ell_C(\boldsymbol \theta,p_1,p_2,p_3|\mathbf Y,\mathbf Z)]\\
+&=\sum_{i=1}^n \bigg\{w_{i1}^v\log(f_{X_{i1}}(y_i;\boldsymbol \theta))+w_{i2}^v\log (f_{X_{i2}}(y_i;\boldsymbol \theta))+w^v_{i3}\log(f_{X_{i3}}(y_i;\boldsymbol \theta))\\
+&~~~~~~~~~~~~~~~~~~~~~+w^v_{i1}\log p_1+w^v_{i2}\log p_2+w^v_{i3} \log p_3\bigg\} \end{aligned}$$
+
+Where $\begin{aligned} w_{ij}^v= E_{(\boldsymbol \theta^v,p_1^v,p_2^v,p_3^v)}[Z_{ij}|Y_i]&= \frac{p_j^{v}f_j(Y_i,\boldsymbol \theta^v)}{\sum_{j=1}^n p_j^vf_j(Y_i,\boldsymbol \theta^v)}\end{aligned}$
+
+\newpage
+
+## 2.48
+
+Suppose that the data $Y_1, \dots, Y_n$ are assumed to come from a mixture of two binomial distributions. Thus $$f(y;p,\theta_1,\theta_2) = p {n \choose y} \theta_1^y(1-\theta_1)^{n-y} +(1-p) {n \choose y} \theta_2^y(1-\theta_2)^{n-y}.$$ Find $Q(p,\theta_1,\theta_2,p^v,\theta_1^v,\theta_2^v)$ and the updating formulas.
+
+Solution:
+
+Define $Z_i \sim Bernoulli(p)$, $Y_i = ZX_{1i}+ (1-Z)X_{2i}$, where $X_{1i} \sim Binom(n,\theta_1)$, $X_{2i} \sim Binom(n,\theta_2)$ and $X_{1i},X_{2i}$ are independent of $Z$. Thus, $Y_i$ will have a mixture density equal to $f(y;p,\theta_1,\theta_2)$.
+
+Therefore, 
+$$\mathcal L_C(p,\theta_1,\theta_2;y_i,Z) = \left[p f_{X_1}(y_i;n,\theta_1)\right]^{z_i} \left[(1-p) f_{X_2}(y_i;n,\theta_2)\right]^{1-{z_i}}$$
+And, following steps outlined on page 85 of Boos,
+$$\begin{aligned}
+Q(p,\theta_1,\theta_2,p^v,\theta_1^v,\theta_2^v) &= \sum_{i=1}^n  w_i^v \log f_{X_1}(y_i;n,\theta_1)+(1-w^v_i) \log f_{X_2}(y_i;n,\theta_2) +w^v_i \log p + (1-w^v_i)\log(1-p)
+\end{aligned}
+$$
+
+Where $w^v_i = \frac{p^vf_{X_1}(y_i;n,\theta_1)}{p^vf_{X_1}(y_i;n,\theta_1)+(1-p^v)f_{X_2}(y_i;n,\theta_2)}$.
+
+Substituting in the distributions, 
+
+$$
+\begin{aligned}
+Q(p,\theta_1,\theta_2,p^v,\theta_1^v,\theta_2^v) &= \sum_{i=1}^n \bigg\{ w_i^v \log \left[{n \choose y_i} \theta_1^{y_i}(1-\theta_1)^{n-y_i}\right] +(1-w_i^v) \log \left[{n \choose y_i} \theta_2^{y_i}(1-\theta_2)^{n-y_i}\right]\\
+&~~~~~~~~~ +w_i^v \log p + (1-w_i^v)\log(1-p)\bigg\} \\
+&= \sum_{i=1}^n \bigg\{ w_i^v \left[ \log {n \choose y_i} + y_i \log \theta_1 +\log y_i +(n-y_i)\log(1-\theta_1)\right]\\
+&~~~~~~~~~  +(1-w_i^v) \left[ \log {n \choose y_i} + y_i \log \theta_2 +\log y_i +(n-y_i)\log(1-\theta_2)\right]\\
+&~~~~~~~~~ +w_i^v \log p + (1-w_i^v)\log(1-p)\bigg\}
+\end{aligned}
+$$
+
+Now to maximize $Q$,
+$$ \begin{aligned}
+0= \frac{\partial Q}{\partial \theta_1} &=\sum_{i=1}^n \frac{w_i^vy_i}{\theta_1}-\frac{w_i^v(n-y_i)}{1-\theta_1} \\
+\implies 0&= \sum_{i=1}^n w_i^v(y_i-y_i\theta_1-(n-y_i)\theta_1)\\
+\implies 0&= \sum_{i=1}^n w_i^v(y_i-n\theta_1)\\
+\implies \theta_1^{v+1} &= \frac{\sum_{i=1}^n w_i^vy_i}{\sum_{i=1}^n w_i^vn}
+\end{aligned}
+$$
+Similarly,
+$$ \begin{aligned}
+0= \frac{\partial Q}{\partial \theta_1} &=\sum_{i=1}^n \frac{(1-w_i^v)y_i}{\theta_2}-\frac{(1-w_i^v)(n-y_i)}{1-\theta_2} \\
+\implies 0&= \sum_{i=1}^n (1-w_i^v)(y_i-y_i\theta_2-(n-y_i)\theta_2)\\
+\implies \theta_2^{v+1} &= \frac{\sum_{i=1}^n (1-w_i^v)y_i}{\sum_{i=1}^n (1-w_i^v)n}
+\end{aligned}
+$$
+
+and,
+$$\begin{aligned}
+0=\frac{\partial Q}{\partial p} &=\frac{w_i^v}{p}-\frac{1-w_i^v}{1-p} \\
+\implies 0&= w_i^v-pw_i^v-p+pw_i^v \\
+\implies p^{v+1} &= w_i^v
+\end{aligned}$$
+
+
+
+
+
+\newpage
+
+## 2.49
+
+Recall that the ZIP model is just a mixture of densities $f(y;\lambda, p) =pf_1(y)+(1-p)f_2(y;\lambda)$ where $$\begin{aligned}f_1(y)=I(y=0)~&~~~~~~~~~f_2(y;\lambda)= \frac{\lambda^ye^{-\lambda}}{y!}~&~~y=0,1,2,\dots\end{aligned}$$ Lambert (1992) used it to model product defects as a function of covariates. In the “perfect” state, no defects occur ($P(Y_i= 0)= 0$), whereas in the “imperfect” state, the number of defects $Y_i$ follows a Poisson$(\lambda)$ distribution. The author used the EM Algorithm as follows (except we won’t do the more complicated modeling with covariates.) Let $Z_i = 1$ if the product is in the perfect state and $Z_i = 0$ for the imperfect state. Recall that the contribution to the complete data likelihood for a pair $(Y_i,Z_i)$ is $[pf_1(Y_i)]^{Z_i}[(1-p)f_2(Y_i;\lambda)]^{1-Z_i}$ (and here note that the first part reduces to $p^{Z_i}$ because $f_1$ is a point mass at 0).
+
+### a. E step.
+
+Write down the complete data log likelihood and find $Q(\lambda,p,\lambda^v,p^v)$ in terms of $w_i^v = E(Z_i|Y_i,\lambda^v,p^v)$. (You do not need to give an expression for $w_i^v$.)
+
+Solution:
+
+$$
+\begin{aligned}
+\mathcal L_C (\lambda, p, \lambda^v, p^v; Y_i,Z_i) &= \prod_{i=1}^n[pf_1(Y_i)]^{Z_i}[(1-p)f_2(Y_i;\lambda)]^{1-Z_i} \\
+\implies  \ell_C(\lambda, p, \lambda^v, p^v; Y_i,Z_i) &= \sum_{i=1}^n z_i \log(f_1(y_i))+(1-z_i)\log(f_2(y)) +z_i \log p +(1-z_i)\log(1-p) \\
+\implies  Q(\lambda, p, \lambda^v, p^v; Y_i) &=\sum_{i=1}^nE_{(\lambda^v,p^v)}
+\left[z_i \log(f_1(y_i))+(1-z_i)\log(f_2(y,\lambda)) +z_i \log p +(1-z_i)\log(1-p)\right] \\
+&=\sum_{i=1}^nw_i^v \log(f_1(y_i))+(1-w^v_i)\log(f_2(y,\lambda)) +w^v_i \log p +(1-w^v_i)\log(1-p) \\
+&=\sum_{i=1}^nw_i^v I(y_i=0)+(1-w^v_i)\log\left(\frac{\lambda^{y_i}e^{-\lambda}}{y_i!}\right)I(y_i \in \mathbb N^+) \\&~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+w^v_i \log p +(1-w^v_i)\log(1-p) \\
+\end{aligned}
+$$
+
+### b. M step.
+
+Find expressions for $\lambda^{v+1}$ and $p^{v+1}$ by maximizing $Q$ from the E step.
+
+Solution:
+
+$$
+\begin{aligned}
+0 =\frac{\partial Q}{\partial p} &= \sum_{i=1}^n\frac{w_i^v}{p}-\frac{1-w_i^v}{1-p}\\
+\implies 0 &= \sum_{i=1}^n w_i^v-pw_i^v-p+pw_i^v \\
+\implies p^{v+1} &= \frac{\sum_{i=1}^n w_i^v}{n}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+0 =\frac{\partial Q}{\partial \lambda} &= (1-w_i^v)\left[\frac{y_i}{\lambda}-1\right]I(y_i \in \mathbb N^+)\\
+\implies 0 &= (1-w_i^v)(y_i-\lambda)I(y_i \in \mathbb N^+) \\
+\implies \lambda^{v+1} &=\frac{(1-w_i^v)y_i}{1-w_i^v}
+\end{aligned}
+$$
