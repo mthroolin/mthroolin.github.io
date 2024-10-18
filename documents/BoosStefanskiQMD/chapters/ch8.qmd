@@ -1,7 +1,6 @@
 ---
-title: "Selected Solutions to Boos and Stefanski"
 author: "Michael Throolin"
-subtitle: "Chapter 8: Hypothesis Tests under Misspecification and Relaxed Assumptions"
+title: "Chapter 8: Hypothesis Tests under Misspecification and Relaxed Assumptions"
 ---
 
 ## Extra Problem 1
