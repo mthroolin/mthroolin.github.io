@@ -50,6 +50,6 @@ jobs:
           publish_branch: master  # Deploy to the master branch
           dest_dir: documents/BoosStefanski  # Target subdirectory in the master branch
           allow_empty_commit: false
-          keep_files: true  # Keep existing files
+          keep_files: false  # clear dest_dir before adding files
           force_orphan: false
           enable_jekyll: false
