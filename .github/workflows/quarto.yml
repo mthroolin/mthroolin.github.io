@@ -1,6 +1,10 @@
 name: Render Quarto Book
 
 on:
+  workflow_run:
+    workflows: ["Pages build and deployment"]  # Name of the first workflow
+    types:
+      - completed  # Run after the first workflow completes (success or failure)
   push:
     branches:
       - main
