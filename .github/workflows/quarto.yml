@@ -50,11 +50,6 @@ jobs:
         run: |
           ls -R documents/BoosStefanskiQMD/_book
 
-      - name: Disable Jekyll for subdirectory
-        run: |
-          echo '' > documents/BoosStefanski/.nojekyll
-
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4  # Updated to v4 to support Node.js 20
         with:
@@ -65,4 +60,8 @@ jobs:
           allow_empty_commit: false
           keep_files: true  # Ensure files outside destination_dir are preserved
           force_orphan: false
-          #enable_jekyll: false
+          enable_jekyll: false
+
+      - name: Remove .nojekyll from root
+        run: rm -f .nojekyll  # Remove the .nojekyll file from the root of the repository
+        continue-on-error: true  # Continue even if the file doesn't exist (avoids errors)
