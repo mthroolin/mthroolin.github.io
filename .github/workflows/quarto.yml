@@ -1,4 +1,4 @@
-name: Render Quarto Book
+name: Render Boos Stefanski Solutions
 
 on:
   push:
@@ -46,9 +46,10 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: documents/BoosStefanskiQMD/_book
+          publish_dir: documents/BoosStefanskiQMD/_book  # Directory with rendered files
           publish_branch: master  # Deploy to the master branch
+          dest_dir: documents/BoosStefanski  # Target subdirectory in the master branch
           allow_empty_commit: false
-          keep_files: true
+          keep_files: true  # Keep existing files
           force_orphan: false
           enable_jekyll: false
