@@ -2,7 +2,7 @@
 title: Curriculum Vitae
 layout: resume
 ---
-
+ 
 ## Summary
 
 I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah and am funded as a Research Assistant. As such, I provide statistical support for papers being published by my department. I am fluent in Portuguese and am proficient in Spanish.
