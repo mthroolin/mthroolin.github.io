@@ -1,4 +1,4 @@
-name: Render Quarto Book
+name: Render Boos and Stefanski
 
 on:
   workflow_run:
