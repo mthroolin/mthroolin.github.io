@@ -1,6 +1,0 @@
-# Preface {.unnumbered}
-
-These are solutions of problems given from Essential Statistical Inference: Theory and Methods [@boos2013essential]. The solutions were written by me, with occasional help from fellow classmates during our coursework at the University of Utah. We covered chapters 1 through 8, and these are the solutions to the problems that came from the text.
-
-I am not affiliated with the authors of the book. The solutions are for self-study purposes only. Be aware that some of these solutions may not have been peer-reviewed or verified and as such may be incomplete or incorrect.
-
