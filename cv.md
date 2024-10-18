@@ -62,7 +62,7 @@ University of Washington
 
 ## Preprints
 `2024`
-B. Tegner Jacobson, Jessica DeWit, LaShae Zanca, Sobha Sonar, Carol Hardy, **Michael Throolin**, Patricia C. Brewster, Kaitlyn Andujo, Kerri Jones, Jonathon Sago, Stephen Smith, Lizabeth Bowen, Diane Bimczok (2024). Pathogen delivery route impacts disease severity in experimental co-infection of sheep with Mycoplasma ovipneumoniae and Mannheimia haemolytica. DOI: [10.21203/rs.3.rs-4735328/v1](http://dx.doi.org/10.21203/rs.3.rs-4735328/v1). 
+Jacobson BT, DeWit J, Zanca L, Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Sago J, Smith S, Bowen L, Bimczok D (2024). Pathogen delivery route impacts disease severity in experimental co-infection of sheep with Mycoplasma ovipneumoniae and Mannheimia haemolytica. DOI: [10.21203/rs.3.rs-4735328/v1](http://dx.doi.org/10.21203/rs.3.rs-4735328/v1). 
 
 ## Conference Posters
 
