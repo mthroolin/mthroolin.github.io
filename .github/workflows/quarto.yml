@@ -26,18 +26,21 @@ jobs:
 
       - name: Install Quarto
         run: |
-          wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.2.313/quarto-1.2.313-linux-amd64.deb
-          sudo dpkg -i quarto-1.2.313-linux-amd64.deb
-          sudo ln -s /usr/local/bin/quarto /usr/bin/quarto  # Create a symlink to ensure it's in the PATH
+          wget $(curl -s https://api.github.com/repos/quarto-dev/quarto-cli/releases/latest | grep browser_download_url | grep linux-amd64.deb | cut -d '"' -f 4)
+          sudo dpkg -i quarto-*-linux-amd64.deb
+          sudo ln -s /usr/local/bin/quarto /usr/bin/quarto  # Ensure Quarto is in the PATH
 
       - name: Install R dependencies
         run: |
-          Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "numDeriv"))'
+          Rscript -e 'install.packages(c("jsonlite", "rmarkdown", "numDeriv", "kableExtra"))'
 
       - name: Render Quarto project
         run: |
-          Rscript -e 'install.packages("kableExtra")'
           quarto render documents/BoosStefanskiQMD
+
+      - name: List rendered files
+        run: |
+          ls -R documents/BoosStefanskiQMD/_site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
