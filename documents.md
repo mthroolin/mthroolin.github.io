@@ -5,11 +5,9 @@ title: Work Samples
 
 ## Publications
 
+Jacobson BT, DeWit-Dibbert J, Zanca L,  Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Sago J, Smith S, Bowen L, Bimczok D. Pathogen delivery route impacts disease severity in experimental Mycoplasma ovipneumoniae infection of domestic lambs. Vet Res 56, 10 (2025). [https://doi.org/10.1186/s13567-024-01439-y](https://doi.org/10.1186/s13567-024-01439-y)
+
 Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sonar S, Zanca L, Schwarz ER, Bimczok D. Innovative Methodology for Antimicrobial Susceptibility Determination in Mycoplasma Biofilms. Microorganisms. 2024; 12(12):2650. [https://doi.org/10.3390/microorganisms12122650](https://doi.org/10.3390/microorganisms12122650)
-
-## Preprints
-
-Jacobson BT, DeWit J, Zanca L, Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Sago J, Smith S, Bowen L, Bimczok D (2024). Pathogen delivery route impacts disease severity in experimental co-infection of sheep with Mycoplasma ovipneumoniae and Mannheimia haemolytica. DOI: [10.21203/rs.3.rs-4735328/v1](http://dx.doi.org/10.21203/rs.3.rs-4735328/v1)
 
 ## Projects at the University of Utah
 
