@@ -154,6 +154,8 @@ tr:nth-child(even) {
 
 | **Course Title** | **Year** | **School/Organization** |
 |-----------------------|:-----------:|-----------------------:|
+| Causal Inference | 2025  | University of Utah |
+| Bayesian Analysis | 2025  | University of Utah |
 | Advanced Statistical Inference | 2023-2024  | University of Utah |
 | EHR Data Analysis | 2024  | University of Utah |
 | High Dimensional Data Analysis | 2024  | University of Utah |
