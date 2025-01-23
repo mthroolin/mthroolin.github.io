@@ -62,11 +62,15 @@ University of Washington
 
 ## Publications
 
+`2025`
 Jacobson BT, DeWit-Dibbert J, Zanca L,  Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Sago J, Smith S, Bowen L, Bimczok D. Pathogen delivery route impacts disease severity in experimental Mycoplasma ovipneumoniae infection of domestic lambs. Vet Res 56, 10 (2025). [https://doi.org/10.1186/s13567-024-01439-y](https://doi.org/10.1186/s13567-024-01439-y)
 
+`2024`
 Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sonar S, Zanca L, Schwarz ER, Bimczok D. Innovative Methodology for Antimicrobial Susceptibility Determination in Mycoplasma Biofilms. Microorganisms. 2024; 12(12):2650. [https://doi.org/10.3390/microorganisms12122650](https://doi.org/10.3390/microorganisms12122650)
 
 ## Conference Posters
+
+`2025` Kolomaya AE, Christensen J, **Throolin M**, Witt DM, Barnes GD, Cameron KA, Passman R, Noseworthy P, Cavanaugh KL, Fagerlin A, Steinberg BA, Ozanne EM. "Patient Values and Anticoagulant Decisions in Atrial Fibrillation: a Secondary Analysis of the RED-AF Shared Decision-Making Trial." Poster presentation at the 2025 American Heart Association EPI|Lifestyle Scientific Sessions, New Orleans, LA, March 2025.
 
 `2024`
 Jacobson BT, Sebrell TA, Zanca L, DeWit J, Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Jones S, Bowen L, Sago J, Smith S, Bimczok D.
