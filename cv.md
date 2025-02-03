@@ -68,7 +68,7 @@ Jacobson BT, DeWit-Dibbert J, Zanca L,  Sonar S, Hardy C, **Throolin M**, Brewst
 `2024`
 Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sonar S, Zanca L, Schwarz ER, Bimczok D. Innovative Methodology for Antimicrobial Susceptibility Determination in Mycoplasma Biofilms. Microorganisms. 2024; 12(12):2650. [https://doi.org/10.3390/microorganisms12122650](https://doi.org/10.3390/microorganisms12122650)
 
-## Conference Posters
+## Abstracts
 
 `2025`
 Kolomaya AE, Christensen J, **Throolin M**, Witt DM, Barnes GD, Cameron KA, Passman R, Noseworthy P, Cavanaugh KL, Fagerlin A, Steinberg BA, Ozanne EM. "Patient Values and Anticoagulant Decisions in Atrial Fibrillation: a Secondary Analysis of the RED-AF Shared Decision-Making Trial." Poster presentation at the 2025 American Heart Association EPI|Lifestyle Scientific Sessions, New Orleans, LA, March 2025.
