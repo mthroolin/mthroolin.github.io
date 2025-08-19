@@ -1,3 +1,7 @@
+# add these near the top
+url: https://mthroolin.github.io
+baseurl: ""          # empty for user/organization sites
+
 # Site wide configuration
 
 title: Michael Throolin 
