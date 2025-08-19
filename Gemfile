@@ -1,8 +1,7 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.9"
-gem "jekyll-sitemap"
-gem "jekyll-seo-tag"
-gem "jekyll-gist"
-gem "octopress"
-gem "kramdown-parser-gfm"
+# Use the GitHub Pages gem bundle (locks Jekyll + supported plugins)
+gem "github-pages", group: :jekyll_plugins
+
+# Needed only for local `jekyll serve` if you’re on Ruby 3.x
+gem "webrick", "~> 1.8"
