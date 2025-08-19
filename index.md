@@ -4,7 +4,7 @@ title: About Michael
 excerpt: "About Me..."
 ---
 
-I am a PhD student studying biostatistics at the University of Utah. My research interests include high-dimensional data analysis and visualization, Bayesian inference, causal inference, and mathematical statistics. Outside of my studies, I am an ultramarathoner and mountaineer.
+I am a PhD student studying biostatistics at the University of Utah. My research interests include high-dimensional data analysis and visualization, Bayesian inference, causal inference, and mathematical statistics. Outside of my studies, I am an ultramarathoner and mountaineer. 
 
 
 My love for mathematical modeling first developed at the University of Washington, where I was introduced to graph theory and Markov chains. Upon receiving a recruitment scholarship to finish my degree at Brigham Young University-Hawaii, I began independent research in applications of graph theory to probability models that culminated in a presentation at an undergraduate symposium.
