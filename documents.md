@@ -11,7 +11,8 @@ Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sona
 
 ## Projects at the University of Utah
 
-[Selected Solutions to Boos and Stefanski](/documents/BoosStefanski/index.html){:target="_blank"}
+<!-- [Selected Solutions to Boos and Stefanski](/documents/BoosStefanski/index.html){:target="_blank"} -->
+Selected Solutions to Boos and Stefanski (temporarily unavailable due to an ongoing class)
 
 [The Impact of Neurobehavior on Feeding Outcomes in Neonates with CHD](neonate_feeding.html){:target="_blank"}
 
