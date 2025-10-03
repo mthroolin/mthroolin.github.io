@@ -5,14 +5,15 @@ layout: resume
  
 ## Summary
 
-I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah and am funded as a Research Assistant. As such, I provide statistical support for papers being published by my department. I am fluent in Portuguese and am proficient in Spanish.
+I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah. I am currently funded through a Research Assistantship and a TL1 Predoctoral Fellowship (Mountain States ASCEND, NIH CTSA).
 
 ## Education
 
 `2023 - Present`
-**PhD Student Population Health Sciences**, 
+**PhD Student Population Health Sciences, emphasis in Biostatistics**, 
 University of Utah
 
+- Awarded a Mountain States ASCEND TL1 Predoctoral Fellowship (NIH CTSA).
 
 `2021 - 2023`
 **MS Statistics**, 
