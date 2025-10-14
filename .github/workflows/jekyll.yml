@@ -12,26 +12,22 @@ jobs:
     steps:
       # 1️⃣ Checkout the repository
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Using the latest version
 
-      # 2️⃣ Set up Ruby environment
+      # 2️⃣ Set up Ruby and install gems from cache
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
-          bundler-cache: true  # caches gems for faster builds
+          bundler-cache: true  # This step also runs 'bundle install'
 
-      # 3️⃣ Install dependencies from Gemfile
-      - name: Install gems
-        run: bundle install
-
-      # 4️⃣ Build the Jekyll site
+      # 3️⃣ Build the Jekyll site
       - name: Build site
         run: bundle exec jekyll build
 
-      # 5️⃣ Deploy to GitHub Pages
+      # 4️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v3 # v3 is a stable choice, v6 works too
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
