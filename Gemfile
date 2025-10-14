@@ -1,7 +1,9 @@
 source "https://rubygems.org"
 
-# Use the GitHub Pages gem bundle (locks Jekyll + supported plugins)
-gem "github-pages", group: :jekyll_plugins
+group :jekyll_plugins do
+  gem "github-pages"
+  gem "jekyll-scholar", "~> 7.0"
+end
 
-# Needed only for local `jekyll serve` if you’re on Ruby 3.x
+# Needed only for local `jekyll serve` on Ruby 3.x
 gem "webrick", "~> 1.8"
