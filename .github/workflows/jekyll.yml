@@ -1,33 +1,54 @@
+# This workflow builds and deploys your Jekyll site to GitHub Pages.
+# It is configured to use a custom Ruby version and install gems
+# from your Gemfile, making it compatible with jekyll-scholar.
+
 name: Build and Deploy Jekyll Site
 
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push events but only for the "main" branch
   push:
-    branches:
-      - main  # or your default branch
+    branches: ["main"]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  # This workflow contains a single job called "build_and_deploy"
+  build_and_deploy:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # 1️⃣ Checkout the repository
-      - name: Checkout repo
-        uses: actions/checkout@v4 # Using the latest version
+      # 1. Checks out your repository's code so the job can access it
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-      # 2️⃣ Set up Ruby and install gems from cache
-      - name: Set up Ruby
+      # 2. Sets up the specific version of Ruby and installs your gems
+      # This step is crucial for jekyll-scholar compatibility.
+      - name: Setup Ruby, Bundler, and Jekyll 💎
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
-          bundler-cache: true  # This step also runs 'bundle install'
+          # Use the Ruby version known to be compatible with jekyll-scholar
+          ruby-version: '2.7'
+          # This caches your gems between runs for much faster builds
+          bundler-cache: true
 
-      # 3️⃣ Build the Jekyll site
-      - name: Build site
+      # 3. Builds the Jekyll site
+      - name: Build the site 🏗️
         run: bundle exec jekyll build
+        env:
+          # Sets the environment to 'production' for optimal build
+          JEKYLL_ENV: production
 
-      # 4️⃣ Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3 # v3 is a stable choice, v6 works too
+      # 4. Deploys the built site to the `gh-pages` branch
+      # This action handles all the git commands for you.
+      - name: Deploy to GitHub Pages 🚀
+        uses: peaceiris/actions-gh-pages@v3
         with:
+          # The token is required for the action to push to your repository
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # This is the folder that Jekyll builds your site into
           publish_dir: ./_site
