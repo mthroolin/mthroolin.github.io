@@ -4,7 +4,7 @@ title: Work Samples
 bibliography: references.bib
 ---
 
-## Publications {#publications} test
+## Publications {#publications}
 
 {% bibliography %} 
 
