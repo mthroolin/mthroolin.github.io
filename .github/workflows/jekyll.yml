@@ -1,7 +1,7 @@
 # This workflow builds and deploys your Jekyll site to GitHub Pages.
 # It is configured to use a custom Ruby version and install gems
 # from your Gemfile, making it compatible with jekyll-scholar.
-
+ 
 name: Build and Deploy Jekyll Site
 
 # Controls when the workflow will run
