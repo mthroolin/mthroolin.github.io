@@ -61,15 +61,15 @@ University of Washington
 - Typeset tutor qualification exams using LaTeX
 - Besides math, tutored Java, C++, and Algorithms
 
-## Publications
+## Publications {#publications}
 `2025`
-Derington CG, Sarwal A, Wei G, Hartsell SE, Throolin M, Singh R, Nevers MR, Drakos SG, Greene T, Shen J, Beddhu S. Liraglutide vs Semaglutide vs Dulaglutide in Veterans With Type 2 Diabetes. JAMA Network Open. 2025;8(10):e2537297. doi:10.1001/jamanetworkopen.2025.37297
+Derington CG, Sarwal A, Wei G, Hartsell SE, Throolin M, Singh R, Nevers MR, Drakos SG, Greene T, Shen J, Beddhu S. Liraglutide vs Semaglutide vs Dulaglutide in Veterans With Type 2 Diabetes. JAMA Network Open. 2025;8(10):e2537297. doi: [10.1001/jamanetworkopen.2025.37297](https://doi.org/10.1001/jamanetworkopen.2025.37297)
 
 `2025`
-Jacobson BT, DeWit-Dibbert J, Zanca L,  Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Sago J, Smith S, Bowen L, Bimczok D. Pathogen delivery route impacts disease severity in experimental Mycoplasma ovipneumoniae infection of domestic lambs. Vet Res 56, 10 (2025). [https://doi.org/10.1186/s13567-024-01439-y](https://doi.org/10.1186/s13567-024-01439-y)
+Jacobson BT, DeWit-Dibbert J, Zanca L,  Sonar S, Hardy C, **Throolin M**, Brewster P, Andujo K, Jones K, Sago J, Smith S, Bowen L, Bimczok D. Pathogen delivery route impacts disease severity in experimental Mycoplasma ovipneumoniae infection of domestic lambs. Vet Res 56, 10 (2025). doi: [10.1186/s13567-024-01439-y](https://doi.org/10.1186/s13567-024-01439-y)
 
 `2024`
-Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sonar S, Zanca L, Schwarz ER, Bimczok D. Innovative Methodology for Antimicrobial Susceptibility Determination in Mycoplasma Biofilms. Microorganisms. 2024; 12(12):2650. [https://doi.org/10.3390/microorganisms12122650](https://doi.org/10.3390/microorganisms12122650)
+Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sonar S, Zanca L, Schwarz ER, Bimczok D. Innovative Methodology for Antimicrobial Susceptibility Determination in Mycoplasma Biofilms. Microorganisms. 2024; 12(12):2650. doi: [10.3390/microorganisms12122650](https://doi.org/10.3390/microorganisms12122650)
 
 ## Abstracts
 
