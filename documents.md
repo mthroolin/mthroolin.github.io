@@ -1,6 +1,7 @@
 ---
 layout: resume
 title: Work Samples
+bibliography: references.bib
 ---
 
 ## Publications {#publications}
