@@ -68,6 +68,13 @@ sass:
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-scholar
+
+scholar:
+  style: apa        # APA citation style
+  locale: en        # English locale
+  bibliography: references.bib
+  bibliography_template: bib
 
 kramdown:
   auto_ids: true
