@@ -5,7 +5,7 @@ layout: resume
  
 ## Summary
 
-I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah. I am currently funded through a Research Assistantship and a TL1 Predoctoral Fellowship (Mountain States ASCEND, NIH CTSA).
+I am studying towards a PhD in Population Health Sciences, with an emphasis in biostatistics at the University of Utah. I am currently funded through a Research Assistantship and a TL1 Predoctoral Fellowship (Mountain States ASCEND, NIH CTSA). 
 
 ## Education
 
