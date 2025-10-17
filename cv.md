@@ -74,6 +74,21 @@ Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sona
 ## Abstracts
 
 `2025`
+Hartsell, S. E., Wei, G., Singh, R., Throolin, M. J., Nevers, M. R., Akramimoghadam, F., Derington, C. G., Sarwal, A., Boucher, R. E., Shen, J., Drakos, S., Greene, T., & Beddhu, S. (2025, November 7). Kidney failure risk modifies comparative effectiveness of SGLT2 inhibitors and GLP‑1 receptor agonists on cardiovascular‑kidney‑metabolic (CKM) events [Conference presentation abstract]. CKD: Identifying Risks and Optimizing Outcomes, Room 362A, Convention Center, Salt Lake City, UT, United States. [10.1681/ASN.2025gvpshbjk](https://doi.org/10.1681/ASN.2025gvpshbjk)
+
+`2025`
+Sarwal, A., Throolin, M. J., Wei, G., Singh, R., Shen, J., Nevers, M. R., Hartsell, S. E., Akramimoghadam, F., Ence, T. S., Boucher, R. E., & Beddhu, S. (2025, November 7). ESKD in veterans with type 2 diabetes: Comparative effectiveness of valproic acid and lamotrigine [Conference presentation abstract]. Diabetic Kidney Disease: Progression, Predictive Tools, Therapeutics, and Outcomes, Exhibit Hall, Convention Center, Salt Lake City, UT, United States. [https://doi.org/10.1681/ASN.20257cq92try](https://doi.org/10.1681/ASN.20257cq92try)
+
+`2025`
+Hartsell, S. E., Singh, R., Nevers, M. R., Wei, G., Derington, C. G., Throolin, M. J., Akramimoghadam, F., Ence, T. S., Sarwal, A., Drakos, S., & Beddhu, S. (2025, November 8). Sex differences in SGLT2 inhibitor and GLP-1 receptor agonist discontinuation in patients with and without CKD [Conference presentation abstract]. CKD: Advancing Epidemiology, Risk Factors, and Prevention, Room 362A, Convention Center, Salt Lake City, UT, United States. [https://doi.org/10.1681/ASN.20251ctrq6jw](https://doi.org/10.1681/ASN.20251ctrq6jw)
+
+`2025`
+Hartsell, S. E., Wei, G., Singh, R., Throolin, M. J., Nevers, M. R., Sarwal, A., Derington, C. G., Katkam, N., Akramimoghadam, F., Boucher, R. E., Shen, J., Drakos, S., Cheung, A. K., Greene, T., & Beddhu, S. (2025, November 8). Impact of SGLT2 inhibitors and GLP-1 receptor agonists on kidney failure risk prediction [Conference presentation abstract]. CKD: SGLT2 Inhibitors and GLP-1 RAs for Kidney Health, Exhibit Hall, Convention Center, Salt Lake City, UT, United States. [https://doi.org/10.1681/ASN.2025b720vjd3](https://doi.org/10.1681/ASN.2025b720vjd3)
+
+`2025`
+Derington, C. G., Sarwal, A., Wei, G., Hartsell, S. E., Throolin, M. J., Singh, R., Nevers, M. R., Drakos, S., Greene, T., Shen, J., & Beddhu, S. (2025, November 8). Comparative effectiveness of liraglutide, semaglutide, and dulaglutide on kidney outcomes [Conference presentation abstract]. CKD: SGLT2 Inhibitors and GLP-1 RAs for Kidney Health, Exhibit Hall, Convention Center, Salt Lake City, UT, United States. [https://doi.org/10.1681/ASN.202533kyg5gr](https://doi.org/10.1681/ASN.202533kyg5gr)
+
+`2025`
 Kolomaya AE, Christensen J, **Throolin M**, Witt DM, Barnes GD, Cameron KA, Passman R, Noseworthy P, Cavanaugh KL, Fagerlin A, Steinberg BA, Ozanne EM. "Patient Values and Anticoagulant Decisions in Atrial Fibrillation: a Secondary Analysis of the RED-AF Shared Decision-Making Trial." Poster presentation at the 2025 American Heart Association EPI|Lifestyle Scientific Sessions, New Orleans, LA, March 2025. [https://doi.org/10.1161/cir.151.suppl_1.P1019](https://doi.org/10.1161/cir.151.suppl_1.P1019)
 
 `2024`
