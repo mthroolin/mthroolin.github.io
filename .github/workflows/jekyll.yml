@@ -52,3 +52,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # This is the folder that Jekyll builds your site into
           publish_dir: ./_site
+          force_orphan: true
+          keep_files: false
