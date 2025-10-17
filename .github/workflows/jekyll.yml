@@ -32,7 +32,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           # Use the Ruby version known to be compatible with jekyll-scholar
-          ruby-version: '2.7'
+          ruby-version: '3.2.9'
           # This caches your gems between runs for much faster builds
           bundler-cache: true
 
