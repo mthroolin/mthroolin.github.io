@@ -5,6 +5,7 @@ group :jekyll_plugins do
   gem "jekyll-scholar", "~> 7.0"
   gem "jekyll-sass-converter", "~> 2.2" # compatible with sassc
   gem "jekyll-sitemap", "~> 1.4" # add this line
+  gem "jekyll-seo-tag", "~> 2.8"
 
 end
 
