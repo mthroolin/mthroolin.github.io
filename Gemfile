@@ -4,7 +4,8 @@ group :jekyll_plugins do
   gem "jekyll", "~>  4.4"
   gem "jekyll-scholar", "~> 7.0"
   gem "jekyll-sass-converter", "~> 2.2" # compatible with sassc
-  gem "jekyll-sitemap"
+  gem "jekyll-sitemap", "~> 1.4" # add this line
+
 end
 
 # Needed only for local `jekyll serve` on Ruby 3.x
