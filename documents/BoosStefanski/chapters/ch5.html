@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Michael Throolin">
+
+<title>Chapter 5: Large Sample Theory: The Basics – Selected Solutions to Boos and Stefanski</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/ch6.html" rel="next">
+<link href="../chapters/ch3.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/ch5.html"><span class="chapter-title">Chapter 5: Large Sample Theory: The Basics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Selected Solutions to Boos and Stefanski</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 1: Roles of Modeling in Statistical Inference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 2: Likelihood Construction and Estimation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 3: Likelihood-Based Tests and Confidence Regions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch5.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Chapter 5: Large Sample Theory: The Basics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch6.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 6: Large Sample Results for Likelihood-Based Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 7: M-Estimation (Estimating Equations)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/ch8.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Chapter 8: Hypothesis Tests under Misspecification and Relaxed Assumptions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Chapter 5: Large Sample Theory: The Basics</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Michael Throolin </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">5.1</h2>
+<p>Suppose that <span class="math inline">\(Y_1, \dots, Y_n\)</span> are identically distributed with mean <span class="math inline">\(E(Y_1)= \mu\)</span>, <span class="math inline">\(Var(Y_1)= \sigma^2\)</span> and covariances given by <span class="math inline">\(Cov(Y_{i},Y_{i+j})= \begin{cases} \rho\sigma^2, &amp; |j| \leq2 \\ 0, &amp;|j| &gt;2 \end{cases}\)</span>. Prove that <span class="math inline">\(\bar Y \overset{p}{\to} \mu\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+Var(\bar Y) &amp;= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma_i^2 + 2\sum_{i=1}^{n-1}\sum_{j=i+1}^{n} \sigma_{ij}\right] \\
+&amp;= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma^2 + 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^{n} \sigma_{ij}\right]\\
+&amp;= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma^2 + 2 \sum_{i=1}^{n-1}\left(\sigma_{i,i+1} +\sigma_{i,i+2}+\sigma_{i,i+3} + \dots+\sigma_{i,n}\right)\right] \\
+&amp;= \frac{1}{n^2}\left[\sum_{i=1}^n \sigma^2 + 2 \sum_{i=1}^{n-1}\left(\rho \sigma^2 +\rho \sigma^2\right)\right] \\
+&amp;= \frac{1}{n^2}\left[n\sigma^2 + 4 (n-1) \rho \sigma^2\right] \\
+&amp; \to 0 \text{ as } n \to \infty.
+\end{aligned}
+\]</span> Thus, by Theorem 5.3, <span class="math inline">\(\bar Y - \bar \mu \overset p \to 0\)</span> as <span class="math inline">\(n \to \infty\)</span>. As, in this case, <span class="math inline">\(\bar \mu = \mu\)</span>, it is shown that <span class="math inline">\(\bar Y \overset p \to \mu\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">5.2</h2>
+<p>Suppose that <span class="math inline">\(Y_1, \dots, Y_n\)</span> are independent random variables with <span class="math inline">\(Y_n \sim N(\mu,\sigma_n^2)\)</span>, where the sequence <span class="math inline">\(\sigma_n^2 \to \sigma^2 &gt;0\)</span> as <span class="math inline">\(n \to \infty\)</span>. Prove that there is no random variable <span class="math inline">\(Y\)</span> such that <span class="math inline">\(Y_n \overset{p}{\to}Y\)</span>. (Hint: Assume there is such a <span class="math inline">\(Y\)</span> and obtain a contradiction from <span class="math inline">\(|Y_n-Y_{n+1}| \leq |Y_n-Y|+|Y_{n+1}-Y|\)</span>.)</p>
+<p>Solution:</p>
+<p>Assume <span class="math inline">\(Y_n \overset{p}{\to}Y\)</span>, then <span class="math inline">\(|Y_n-Y_{n+1}| \leq |Y_n-Y|+|Y_{n+1}-Y|\)</span> by the triangle inequality.</p>
+<p>Note that <span class="math display">\[\begin{aligned}
+Y_n - Y_{n+1} &amp;\sim N(0,\sigma_n^2+ \sigma_{n+1}^2) \\
+\implies \lim_{n \to \infty} Y_n - Y_{n+1} &amp;\sim N(0,2\sigma^2) \\
+&amp;\sim \sqrt{2\sigma}N(0,1) \\
+\implies \lim_{n \to \infty} (Y_n - Y_{n+1})^2 &amp;\sim {2\sigma^2}\chi^2(1) \\
+\implies E \left[\lim_{n \to \infty}(Y_n - Y_{n+1})^2\right] &amp;= {2\sigma^2} &gt; 0.
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+|Y_n-Y_{n+1}| &amp;\leq |Y_n-Y|+|Y_{n+1}-Y| \\
+\implies |Y_n-Y_{n+1}|^2 &amp;\leq (|Y_n-Y|+|Y_{n+1}-Y|)^2 \\
+\implies (Y_n-Y_{n+1})^2 &amp;\leq (Y_n-Y)^2+2|Y_n-Y||Y_{n+1}-Y|+(Y_{n+1}-Y)^2 \\
+\end{aligned}
+\]</span> Thus, <span class="math display">\[
+\begin{aligned}
+0 &lt; {2 \sigma^2} &amp;= E\left[\lim_{n\to \infty}(Y_n-Y_{n+1})^2\right] \\
+&amp;\leq E\left[\lim_{n\to \infty}(Y_n-Y)^2+2|Y_n-Y||Y_{n+1}-Y|+(Y_{n+1}-Y)^2\right] \\
+&amp;\leq E\left[\lim_{n\to \infty}(0)^2+2|0||0|+(0)^2\right] ~~~~~~~~~~~~~~~~~~~~~~~(Y_n \overset p \to Y) \\
+&amp;= 0
+\end{aligned}
+\]</span></p>
+<p>We have achieved a contradiction. Thus, there is no random variable <span class="math inline">\(Y\)</span> such that <span class="math inline">\(Y_n \overset{p}{\to}Y\)</span>.</p>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">5.3</h2>
+<p>Show that <span class="math inline">\(Y_n \overset d \to c\)</span> for some constant <span class="math inline">\(c\)</span> implies <span class="math inline">\(Y_n \overset p \to c\)</span> by directly using the definitions of convergence in probability and in distribution. Start with <span class="math inline">\(P(|Y_n-c| &gt; \epsilon)\)</span>.</p>
+<p>Solution:</p>
+<p>Assume <span class="math inline">\(Y_n \overset d \to c\)</span>, then <span class="math inline">\(\lim_{n \to \infty} F_{Y_n}(y) = c\)</span> for all points <span class="math inline">\(y\)</span> where <span class="math inline">\(F_{Y_n}(y)\)</span> is continuous.</p>
+<p><span class="math display">\[ \begin{aligned}
+\lim_{n \to \infty}P(|Y_n-c| &gt; \epsilon) &amp;\leq \lim_{n \to \infty}\frac{E(Y_n-c)^2}{\epsilon^2} \\
+&amp;\leq \lim_{n \to \infty}\frac{\int_y(Y_n-c)^2 \frac{d}{dy}\left\{F_{Y_n}(y)\right\}dy}{\epsilon^2} \\
+&amp;\leq \lim_{n \to \infty}\frac{\int_y(Y_n-c)^2 (0)dy}{\epsilon^2} ~~~since~\lim_{n \to \infty} F_{Y_n}(y) = c\\
+&amp;= 0
+\end{aligned}\]</span></p>
+<p>Thus, <span class="math inline">\(Y_n \overset p \to c\)</span> by definition.</p>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">5.5</h2>
+<p>Consider the simple linear regression setting, <span class="math inline">\(Y_i = \alpha + \beta x_i + e_i, ~~~i=1,\dots, n\)</span>, where the <span class="math inline">\(x_i\)</span> are known constants and <span class="math inline">\(e_1, \dots, e_n\)</span> are iid with mean <span class="math inline">\(0\)</span> and finite variance <span class="math inline">\(\sigma^2\)</span>. After a little algebra, the least squares estimator has the following representation, <span class="math inline">\(\hat \beta - \beta = \frac{\sum_{i=1}^n (x_i-\bar x)e_i}{\sum_{i=1}^n (x_i-\bar x)^2}\)</span>. Using that representation, prove that <span class="math inline">\(\hat \beta \overset p \to \beta\)</span> as <span class="math inline">\(n \to \infty\)</span> if <span class="math inline">\(\sum_{i=1}^n(x_i-\bar x)^2 \to \infty\)</span></p>
+<p>Solution:</p>
+<p><span class="math display">\[ \begin{aligned}
+\lim_{n \to \infty} P(|\hat \beta - \beta| &gt; \epsilon) &amp;\leq \lim_{n \to \infty} \frac{E|\hat \beta - \beta|^r}{\epsilon^r} &amp; \text{ by the Markov Inequality} \\
+&amp;\leq \lim_{n \to \infty} E \left|\frac{\sum_{i=1}^n (x_i-\bar x)e_i}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r \\
+&amp;\leq \lim_{n \to \infty}E \left |\frac{\sum_{i=1}^n x_ie_i- n\bar x \bar e}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r \\
+&amp;\leq \lim_{n \to \infty}E \left |\frac{\sum_{i=1}^n x_ie_i}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r &amp; \bar e \to 0 ~ by ~ WLLN\\
+&amp;\leq \lim_{n \to \infty}\left |\frac{\sum_{i=1}^n x_iE(e_i)}{\epsilon \sum_{i=1}^n (x_i-\bar x)^2}\right|^r &amp; note,~E(e_i) =0, so~\lim_{n \to \infty}\sum_{i=1}^n x_iE(e_i)=0\\
+&amp;=0 &amp; \text{ if } \lim_{n \to \infty} \sum_{i=1}^n (x_i-\bar x)^2= \infty
+\end{aligned}\]</span></p>
+<p>Thus, by definition, <span class="math inline">\(\hat \beta \overset p \to \beta\)</span> as <span class="math inline">\(n \to \infty\)</span> if <span class="math inline">\(\sum_{i=1}^n(x_i-\bar x)^2 \to \infty\)</span>.</p>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">5.9</h2>
+<p>Let <span class="math inline">\(X_1, \dots, X_n\)</span> be iid from a distribution with mean <span class="math inline">\(\mu\)</span>, variance <span class="math inline">\(\sigma^2\)</span>, and finite central moments <span class="math inline">\(\mu_3\)</span> and <span class="math inline">\(\mu_4\)</span>. Consider <span class="math inline">\(\hat \theta = \bar X /s_n\)</span>, a measure of “effect size” used in meta-analysis. Prove that <span class="math inline">\(\hat \theta \overset p \to \theta = \mu/\sigma\)</span> as <span class="math inline">\(n \to \infty\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[ \begin{aligned}
+\bar X  &amp; \overset p \to \mu  &amp; (WLLN) \\
+s_n^2 &amp; \overset p \to \sigma^2 &amp; (Example~5.12,~p.~ 227) \\
+\frac{1}{s_n} &amp; \overset p \to \frac 1 \sigma &amp; (Continuous~Mapping~Theorem) \\
+\implies \frac{\bar X}{s_n} &amp; \overset p \to \frac{\mu} \sigma &amp; (Slutsky's~Theorem)
+\end{aligned}\]</span></p>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">5.24</h2>
+<p>When two independent binomials, <span class="math inline">\(X_1\)</span> is binomial<span class="math inline">\((n_1,p_1)\)</span> and <span class="math inline">\(X_2\)</span> is binomial<span class="math inline">\((n_2,p_2)\)</span>, are put in the form of a <span class="math inline">\(2\times 2\)</span> table (see Example 5.31, p.&nbsp;240), then one often estimates the odds ratio <span class="math display">\[\theta = \frac{\frac{p_1}{1-p_1}}{\frac{p_2}{1-p_2}} = \frac{p_1(1-p_2)}{p_2(1-p_1)}.\]</span> The estimate <span class="math inline">\(\hat \theta\)</span> is obtained by inserting <span class="math inline">\(\hat{p_1} = X_1/n_1\)</span> and <span class="math inline">\(\hat p_2 = X_2/n_2\)</span> in the above expression. Show that <span class="math inline">\(\log(\hat \theta)\)</span> has asymptotic variance <span class="math display">\[\frac{1}{n_1p_1(1-p_1)}+\frac{1}{n_1p_2(1-p_2)}.\]</span></p>
+<p>Solution:</p>
+<p>Let <span class="math inline">\(\lambda = \frac{n_1}{n_1+n_2}= \frac{n_1}{n}\)</span> Then, following class notes and by central limit theorem,</p>
+<p><span class="math display">\[
+\sqrt n  \ \begin{pmatrix} \left(\frac{X_1}{n_1} - p_1 \right) \\
+\left( \frac{X_2}{n_2} - p_2 \right) \end{pmatrix} \overset d \to MVN \left(\mathbf 0, \begin{bmatrix} \frac{p_1 \left(1 - p_1 \right)}{\lambda} &amp; 0 \\
+0 &amp; \frac{p_2 \left(1 - p_2 \right)}{1-\lambda} \end{bmatrix}  \right)
+\]</span> Define <span class="math display">\[ \begin{aligned}
+g \begin{pmatrix} p_1 \\ p_2 \end{pmatrix} &amp;= \log \left(\frac{p_1(1-p_2)}{p_2(1-p_1)}\right) \\
+\implies g' \begin{pmatrix} p_1 \\ p_2 \end{pmatrix}  &amp;= \begin{pmatrix} \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{p_2(1-p_1)(1-p_2)- p_1(1-p_2)(-p_2)}{p_2^2(1-p_1)^2} \\ \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{p_2(1-p_1)(-p_1)- p_1(1-p_2)(1-p_1)}{p_2^2(1-p_1)^2}  \end{pmatrix} \\
+&amp;=\begin{pmatrix} \frac{p_2(1-p_1)}{p_1(1-p_2)}  \frac{(1-p_1)(1-p_2)+ p_1(1-p_2)}{p_2(1-p_1)^2} \\ \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{p_2(-p_1)- p_1(1-p_2)}{p_2^2(1-p_1)}  \end{pmatrix} \\
+&amp;=\begin{pmatrix} \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{1-p_2}{p_2(1-p_1)^2} \\ \frac{p_2(1-p_1)}{p_1(1-p_2)} \frac{-p_1}{p_2^2(1-p_1)}  \end{pmatrix} \\
+&amp;=\begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}
+\end{aligned}\]</span></p>
+<p>Thus, by delta method, <span class="math display">\[\begin{aligned}
+\log(\hat \theta) &amp;= g \begin{pmatrix} \frac{X_1}{n_1} - p_1 \\ \frac{X_2}{n_2} - p_2 \end{pmatrix} \\
+&amp;\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}^T \begin{pmatrix} \frac{p_1 \left(1 - p_1 \right)}{\lambda} &amp; 0 \\
+0 &amp;  \frac{p_2 \left(1 - p_2 \right)}{1-\lambda} \end{pmatrix} \begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}/n\right) \\
+&amp;\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\begin{pmatrix} \frac{1}{\lambda} &amp; \frac{1}{1-\lambda}  \end{pmatrix} \begin{pmatrix} \frac{1}{p_1(1-p_1)} \\ \frac{-1}{(1-p_2)p_2}\end{pmatrix}/n\right)\\
+&amp;\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\left( \frac{1}{\lambda p_1(1-p_1)} + \frac{1}{(1-p_2)p_2 (1-\lambda)}\right)/n\right)\\
+&amp;\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\left( \frac{1}{\left(\frac{n_1}{n}\right) p_1(1-p_1)} + \frac{1}{(1-p_2)p_2 \left(1-\left(\frac{n_1}{n_1+n_2}\right)\right)}\right)/n\right)\\
+&amp;\sim AN \left( \begin{pmatrix} p_1 \\ p_2 \end{pmatrix},\left( \frac{1}{n_1 p_1(1-p_1)} + \frac{1}{n_2p_2(1-p_2) }\right)\right)\\
+\end{aligned}\]</span></p>
+</section>
+<section id="a" class="level2">
+<h2 class="anchored" data-anchor-id="a">5.27 a)</h2>
+<p>For an iid sample <span class="math inline">\(Y_1,\dots, Y_n\)</span>, consider finding the asymptotic joint distribution of <span class="math inline">\((\bar Y, s_n, s_n/ \bar Y)\)</span> using Theorem 5.20 (p.&nbsp;239) and (5.34, p.&nbsp;256). Find the matrices <span class="math inline">\(\mathbf{g'(\boldsymbol \theta)}\)</span> and <span class="math inline">\(\boldsymbol \Sigma\)</span> used to compute the asymptotic covariance <span class="math inline">\(\mathbf{g'(\boldsymbol \theta) \boldsymbol \Sigma g'(\boldsymbol \theta)^T}\)</span>.</p>
+<p>Solution:</p>
+<p>By Theorem 5.20, <span class="math display">\[ \begin{aligned}
+\sqrt n \begin{pmatrix} \bar Y - \mu \\  s_n^2-\sigma^2\end{pmatrix} &amp;\overset d \to N\left(\mathbf 0, \begin{pmatrix} \sigma^2 &amp; \mu_3 \\ \mu_3 &amp; \mu_4-\sigma^4 \end{pmatrix} \right) \\
+\implies \begin{pmatrix} \bar Y \\  s_n^2 \end{pmatrix} &amp; is~ AN\left( \begin{pmatrix} \mu \\  \sigma^2\end{pmatrix}, \begin{pmatrix} \sigma^2 &amp; \mu_3 \\ \mu_3 &amp; \mu_4-\sigma^4 \end{pmatrix}/n \right)
+\end{aligned}\]</span></p>
+<p>Define <span class="math inline">\(g \begin{pmatrix} a \\b \end{pmatrix} = \begin{pmatrix} a \\ \sqrt b \\ \frac {\sqrt b} a \end{pmatrix}\)</span> Then, <span class="math inline">\(g' \begin{pmatrix} a \\b \end{pmatrix} = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} &amp; \frac{1}{2a\sqrt b}\end{pmatrix}\)</span>.</p>
+<p>By Delta Method,</p>
+<p><span class="math display">\[\begin{aligned}
+g\begin{pmatrix} \bar Y \\  s_n^2 \end{pmatrix} &amp; is~ AN\left( g \begin{pmatrix} \mu \\  \sigma^2\end{pmatrix}, \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} &amp; \frac{1}{2a\sqrt b}\end{pmatrix}\begin{pmatrix} \sigma^2 &amp; \mu_3 \\ \mu_3 &amp; \mu_4-\sigma^4 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} &amp; \frac{1}{2a\sqrt b}\end{pmatrix}^T/n\right)
+\end{aligned}\]</span></p>
+<p>In conclusion, <span class="math display">\[ \begin{aligned}
+g'(\boldsymbol \theta) =\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \frac{1}{2 \sqrt b} \\ \frac{-\sqrt b}{a^2} &amp; \frac{1}{2a\sqrt b}\end{pmatrix} \\
+\boldsymbol \Sigma = \begin{pmatrix} \sigma^2 &amp; \mu_3 \\ \mu_3 &amp; \mu_4-\sigma^4 \end{pmatrix} \\
+g'(\boldsymbol \theta)^T =\begin{pmatrix} 1 &amp; 0 &amp;  \frac{-\sqrt b}{a^2} \\ 0 &amp; \frac{1}{2 \sqrt b} &amp; \frac{1}{2a\sqrt b}\end{pmatrix} \\
+\end{aligned}\]</span></p>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">5.29</h2>
+<p>In most of Chapter 5 we have dealt with iid samples of size <span class="math inline">\(n\)</span> of either univariate or multivariate random variables. Another situation of interest is when we have a number of different independent samples of different sizes. For simplicity, consider the case of two iid samples, <span class="math inline">\(X_1, \dots, X_m\)</span> and <span class="math inline">\(Y_1, \dots Y_n\)</span>, with common variance <span class="math inline">\(\sigma^2\)</span> and under a null hypothesis they have a common mean, say <span class="math inline">\(\mu\)</span>. Then the two-sample pooled t statistic is <span class="math display">\[t_p = \frac{\bar X- \bar Y}{\sqrt{s_p^2(\frac{1}{m}+ \frac 1 n)}},\]</span> where <span class="math display">\[s_p^2= \frac{(m-1)s_X^2 +(n-1)s_Y^2}{m+n-2}\]</span> and <span class="math display">\[s_X^2 = \frac{1}{m-1} \sum_{i=1}^m (X_i-\bar X)^2,~~s_Y^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i-\bar X)^2.\]</span> It can be shown that <span class="math inline">\(t_p \overset d \to N(0,1)\)</span> as <span class="math inline">\(\min(m,n) \to \infty\)</span>. However, the proof is fairly tricky. Instead it is common to assume that both sample sizes go to 1 at a similar rate, i.e., <span class="math inline">\(\lambda_{m,n} = m/(m+n) \to \lambda &gt;0\)</span> as <span class="math inline">\(\min(m,n) \to \infty\)</span>. Under this assumption prove that <span class="math inline">\(t_p \overset d \to N(0,1)\)</span>. Hint: show that <span class="math inline">\(t_p = \left[\sqrt{1- \lambda_{m,n}}\sqrt m (\bar X-\mu)- \sqrt{1- \lambda_{m,n}}\sqrt n (\bar Y-\mu) \right]/s_p\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[\begin{aligned}
+t_p &amp;= \frac{\bar X- \bar Y}{\sqrt{s_p^2(\frac{1}{m}+ \frac 1 n)}} \\
+&amp;= \frac{(\bar X - \mu)- (\bar Y-\mu)}{s_p\sqrt{\frac{n+m}{nm}}} \\
+&amp;= \frac{\sqrt{\frac{nm}{n+m}}(\bar X - \mu)- \sqrt{\frac{nm}{n+m}}(\bar Y-\mu)}{s_p} \\
+&amp;= \frac{\sqrt{\frac{n+m-m}{n+m}} \sqrt m(\bar X - \mu)- \sqrt{\frac{m}{n+m}}\sqrt n(\bar Y-\mu)}{s_p} \\
+&amp;= \frac{\sqrt{1-\lambda_{m,n}} \sqrt m(\bar X - \mu)- \sqrt{\lambda_{m,n}}\sqrt n(\bar Y-\mu)}{s_p} \\
+\end{aligned}\]</span></p>
+<p>Note that: <span class="math display">\[\begin{aligned}
+s_p^2 &amp;= \frac{(m-1)s_X^2 +(n-1)s_Y^2}{m+n-2} \\
+&amp;\overset P \to \frac{(m-1)\sigma^2 +(n-1)\sigma^2}{m+n-2} \\
+&amp;= \frac{(m+n-2)\sigma^2}{m+n-2} = \sigma^2 \\
+\implies s_p &amp;\overset P \to \sigma \\
+\sqrt m(\bar X - \mu) &amp;\overset d \to N(0,\sigma^2) \\
+\sqrt n(\bar Y - \mu) &amp;\overset d \to N(0,\sigma^2)
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+t_p &amp;= \frac{\sqrt{1-\lambda_{m,n}} \sqrt m(\bar X - \mu)- \sqrt{\lambda_{m,n}}\sqrt n(\bar Y-\mu)}{s_p} \\
+&amp; \overset d \to \frac{\sqrt{1-\lambda}N(0,\sigma^2)- \sqrt{\lambda}N(0,\sigma^2)} \sigma \\
+&amp; \overset d \to N(0,1-\lambda)-N(0, \lambda) \\
+&amp; \overset d \to N(0,1)
+\end{aligned}\]</span></p>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">5.33</h2>
+<p>Let <span class="math inline">\((X_1,Y_1),\dots ,(X_n,Y_n)\)</span> be iid pairs with <span class="math inline">\(E(X_1) = \mu_1\)</span>, <span class="math inline">\(E(Y_1) =\mu_2\)</span>, <span class="math inline">\(Var(X_1) = \sigma_1^2\)</span>, <span class="math inline">\(Var(Y_1) = \sigma_2^2\)</span>, and <span class="math inline">\(Cov(X_1, Y_1) = \sigma_{12}\)</span>.</p>
+<section id="a." class="level3">
+<h3 class="anchored" data-anchor-id="a.">a.</h3>
+<p>What can we say about the asymptotic distribution of <span class="math inline">\((\bar X, \bar Y)^T\)</span>?</p>
+<p>Solution:</p>
+<p>By Central Limit theorem, <span class="math inline">\((\bar X, \bar Y)^T\)</span>is <span class="math inline">\(AN\left( \begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix}, \begin{pmatrix} \sigma_1^2 &amp; \sigma_{12} \\ \sigma_{12} &amp; \sigma_2^2 \end{pmatrix} \bigg/n \right)\)</span>.</p>
+</section>
+<section id="b.-suppose-that-mu_1mu_20-and-let-t-bar-xbar-y.-show-that-nt-overset-d-to-q-as-n-to-infty-and-describe-the-random-variable-q." class="level3">
+<h3 class="anchored" data-anchor-id="b.-suppose-that-mu_1mu_20-and-let-t-bar-xbar-y.-show-that-nt-overset-d-to-q-as-n-to-infty-and-describe-the-random-variable-q.">b. Suppose that <span class="math inline">\(\mu_1=\mu_2=0\)</span> and let <span class="math inline">\(T = (\bar X)(\bar Y)\)</span>. Show that <span class="math inline">\(nT \overset d \to Q\)</span> as <span class="math inline">\(n \to \infty\)</span> and describe the random variable Q.</h3>
+<p>Solution:</p>
+<p><strong>Attempt 1: INCORRECT if X and Y are correlated</strong></p>
+<p>By CLT, <span class="math inline">\(\sqrt n \bar X \overset d \to N(0,\sigma_1^2)\)</span>, <span class="math inline">\(\sqrt n \bar Y \overset d \to N(0,\sigma_2^2)\)</span>. Thus, <span class="math display">\[\begin{aligned}\frac{\sqrt n \bar X}{\sigma_1} &amp;\overset d \to N(0,1)\\
+\frac{\sqrt n \bar Y}{\sigma_2} &amp;\overset d \to N(0,1)\\
+\implies \left(\frac{\sqrt n \bar X}{\sigma_1} \right)\left(\frac{\sqrt n \bar Y}{\sigma_2} \right) &amp;\overset d \to \chi^2(1) ~~~ \mathbf{assumes}~~ \sigma_{12}=0\\
+\implies n \bar X \bar Y &amp;\overset d \to \sigma_1\sigma_2\chi^2(1)
+\end{aligned} \]</span></p>
+<p><strong>Attempt 2: INCORRECT if <span class="math inline">\(\sigma_{12} =0\)</span>, we should get a <span class="math inline">\(\chi^2\)</span> distribution</strong></p>
+<p>Note that <span class="math inline">\(\bar X -0= \frac{1}{n} \sum_{i=1}^n h_1(X_i,Y_i) + R_{n1}\)</span>, where <span class="math inline">\(h_1(X_i) = X_i\)</span> and <span class="math inline">\(R_{n1} = 0\)</span>. Similarly, <span class="math inline">\(\bar Y - 0 = \frac{1}{n} \sum_{i=1}^n h_2(X_i,Y_i) + R_{n2}\)</span>, where <span class="math inline">\(h_2(Y_i) = Y_i\)</span> and <span class="math inline">\(R_{n2} = 0\)</span>. Note, in this case <span class="math inline">\(E(h_1(X_i,Y_i)) =E(h_2(X_i,Y_i)) =0\)</span>.</p>
+<p>Define <span class="math inline">\(g((a,b)^T) = ab\)</span>, which implies <span class="math inline">\(g'(a,b) = (b,a)^T\)</span>. Note that g is a real valued function with partial derivatives existing in the neighborhood of <span class="math inline">\(\mathbf 0\)</span> and is continuous at <span class="math inline">\(\mathbf 0\)</span>. By Thm 5.27, <span class="math display">\[\begin{aligned}
+g((\bar X, \bar Y)) -g(\boldsymbol{\theta}) &amp;= \frac{1}{n} \sum_{i=1}^n \left[g_1' (\boldsymbol \theta)h_1(X_i,Y_i)+g_2'(\boldsymbol \theta)h_2(X_i,Y_i)\right] + R_n, ~~where~\sqrt n R_n \overset p \to 0 \\
+\bar X \bar Y -g(\mathbf 0) &amp;= \frac{1}{n} \sum_{i=1}^n \left[g_1' (\mathbf 0)X_i+g_2'(\mathbf 0)Y_i\right] + R_n \\
+&amp;= \frac{1}{n} \sum_{i=1}^n [0] + R_n \\
+\end{aligned}\]</span> Thus, by Theorem 5.23, <span class="math inline">\(\bar X \bar Y \overset d \to N(0,0)\)</span></p>
+<p><strong>Attempt 3: LEADS NOWHERE</strong></p>
+<p>Define <span class="math inline">\(g((a,b)^T) = ab\)</span>. Then, by (Taylor, 1712)</p>
+<p><span class="math display">\[\begin{aligned}
+g((\bar X,  \bar Y)^T) - g((\mu_1,\mu_2)^T) &amp;= \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} \mu_2 \\ \mu_1 \end{pmatrix} + \frac 1 2 \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix} \\
+&amp;~~~~~~~~~+ \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} 0 &amp; 0 &amp; 0 &amp; 0\\ 0 &amp; 0&amp; 0 &amp;0 \end{pmatrix} \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix} \otimes\begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix} \\
+&amp;= \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} \mu_2 \\ \mu_1 \end{pmatrix} + \frac 1 2 \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}^T \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} \bar X - \mu_1  \\ \bar Y- \mu_2\end{pmatrix}
+\end{aligned}\]</span> Thus, in the case where <span class="math inline">\(\mu_1=\mu_2= 0\)</span> <span class="math display">\[\begin{aligned}
+g((\bar X,  \bar Y)^T) - g((0,0)^T) &amp;=  \begin{pmatrix} \bar X  &amp; \bar Y \end{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix} + \frac 1 2 \begin{pmatrix} \bar X &amp; \bar Y\end{pmatrix} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} \bar X  \\ \bar Y \end{pmatrix} \\
+\implies \bar X \bar Y &amp;= 0 + \frac 1 2 \begin{pmatrix} \bar Y &amp; \bar X\end{pmatrix} \begin{pmatrix} \bar X  \\ \bar Y \end{pmatrix} =  \bar X \bar Y
+\end{aligned}\]</span></p>
+<p>So doing a Taylor expansion is not useful.</p>
+</section>
+<section id="c." class="level3">
+<h3 class="anchored" data-anchor-id="c.">c.</h3>
+<p>Suppose that <span class="math inline">\(\mu_1 = 0, \mu_2 \neq 0\)</span> and let <span class="math inline">\(T = (\bar X) (\bar Y)\)</span>. Show that <span class="math inline">\(\sqrt n T \overset d \to R\)</span> as <span class="math inline">\(n \to \infty\)</span> and describe the random variable <span class="math inline">\(R\)</span>.</p>
+<p>Solution:</p>
+<p>Define <span class="math inline">\(g (a , b)^T = ab \implies g( \bar X, \bar Y)= \bar X \bar Y\)</span>, <span class="math inline">\(g'\begin{pmatrix} a\\ b \end{pmatrix} = \begin{pmatrix} b \\ a \end{pmatrix}\)</span>. By Theorem 5.26,</p>
+<p><span class="math display">\[\begin{aligned}
+g\begin{pmatrix} \bar X \\ {\bar Y} \end{pmatrix} - g\begin{pmatrix} {0} \\ \mu_2 \end{pmatrix}
+&amp;= \frac 1 n \sum_{i=1}^n \begin{pmatrix} \mu_2 &amp; 0 \end{pmatrix} \begin{pmatrix} X_i \\ Y_i - \mu_2 \end{pmatrix} + R_n,  ~~ where \sqrt n R_n \overset p \to 0 \\
+&amp;= \mu_2 \bar X + R_n \\
+\implies  \sqrt n \left( g\begin{pmatrix} \bar X \\ {\bar Y} \end{pmatrix} - g\begin{pmatrix} {0} \\ \mu_2 \end{pmatrix} \right) &amp;=  \mu_2(\sqrt n \bar X) +\sqrt n R_n \\
+\implies  \sqrt n  \bar X {\bar Y}  &amp;=  \mu_2(\sqrt n \bar X) +\sqrt n R_n \\
+&amp; \overset d \to N(0, \sigma_1^2 + \mu_2^2)
+\end{aligned}\]</span></p>
+</section>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">5.32</h2>
+<p>Suppose that <span class="math inline">\(\hat \theta_1, \dots, \hat \theta_k\)</span> each satisfy the assumptions of Theorem 5.23 (p.&nbsp;242): <span class="math display">\[\hat \theta_i - \theta_i = \frac 1 n \sum_{j=1}^n h_i(X_j) + R_{in},~~~\sqrt n R_{in} \overset p \to 0,\]</span> and <span class="math inline">\(E[h_i(X_1)] = 0\)</span> and <span class="math inline">\(var[h_i(X_1)] = \sigma_{hi}^2 &lt; \infty\)</span>. Let <span class="math inline">\(T = \sum_{i=1}^k c_i \hat \theta_i\)</span> for any set of constants <span class="math inline">\(c_1, \dots, c_k\)</span>. Find the correct approximating function <span class="math inline">\(h_T\)</span> for <span class="math inline">\(T\)</span>, show that Theorem 5.23 may be used (verify directly without using later theorems), and find the limiting distribution of <span class="math inline">\(T\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[\begin{aligned}
+\hat \theta_i - \theta_i &amp;= \frac 1 n \sum_{j=1}^n h_i(X_j) + R_{in},~~~\sqrt n R_{in} \overset p \to 0 \\
+\implies c_i(\hat \theta_i - \theta_i) &amp;= c_i\left(\frac 1 n \sum_{j=1}^n h_i(X_j) + R_{in} \right),~~~\sqrt n R_{in} \overset p \to 0 \\
+\implies c_i \hat \theta_i - c_i\theta_i &amp;= \frac 1 n \sum_{j=1}^n c_ih_i(X_j) + c_iR_{in},~~~\sqrt n R_{in} \overset p \to 0 \\
+\end{aligned}\]</span></p>
+<p>Note that <span class="math inline">\(c_i \sqrt nR_{in} \overset p \to 0\)</span> by Slutsky’s Theorem. <span class="math inline">\(E[c_i h_i (X_i)] = 0\)</span>, <span class="math inline">\(Var[c_i h_i (X_1)] = c_i^2 \sigma_{hi}^2 &lt; \infty\)</span>.</p>
+<p><span class="math display">\[\begin{aligned}
+c_i \hat \theta_i - c_i\theta_i &amp;= \frac 1 n \sum_{j=1}^n c_ih_i(X_j) + c_iR_{in},~~~\sqrt n c_iR_{in} \overset p \to 0 \\
+\implies \sum_{i=1}^k c_i \hat \theta_i - c_i\theta_i &amp;= \sum_{i=1}^k \frac 1 n \sum_{j=1}^n c_ih_i(X_j) + c_iR_{in},~~~\sqrt n c_iR_{in} \overset p \to 0 \\
+\implies T -\sum_{i=1}^k c_i\theta_i &amp;= \frac 1 n \sum_{j=1}^n \left(\left[\sum_{i=1}^k c_ih_i(X_j) \right] + \left[\sum_{i=1}^k c_iR_{in} \right]\right),~~~\sqrt n c_iR_{in} \overset p \to 0 \\
+\end{aligned}\]</span></p>
+<p>As <span class="math inline">\(\left[\sum_{i=1}^k c_iR_{in} \right] \overset p \to 0\)</span> because a finite sum of random variables that converge in probability to zero will converge in probability to 0 by Slutsky’s Theorem.</p>
+<p>Therefore, the correct approximating of T is <span class="math inline">\(h_T =\left[\sum_{i=1}^k c_ih_i(X_j) \right]\)</span>, which has mean 0 and variance <span class="math inline">\(\sum_{i=1}^k c_i^2 \sigma_{hi}^2 &lt; \infty\)</span>.</p>
+<p>Thus, all conditions apply to use Theorem 5.23 and <span class="math inline">\(\sqrt n\left(T -\sum_{i=1}^k c_i\theta_i \right) \overset d \to N\left(0,  \sum_{i=1}^k c_i^2 \sigma_{hi}^2\right)\)</span>. In other words, the limiting distribution of <span class="math inline">\(T\)</span> is <span class="math inline">\(AN\left(0, \frac 1 n \sum_{i=1}^k c_i^2 \sigma_{hi}^2\right)\)</span>.</p>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">5.40</h2>
+<p>Formulate an extension of Theorem 5.27 (p.&nbsp;247) for the situation of two independent samples <span class="math inline">\(X_1, \dots, X_m\)</span> and <span class="math inline">\(Y_1, \dots, Y_n\)</span>. The statistic of interest is <span class="math inline">\(T = g(\hat \theta_1, \hat \theta_2)\)</span>, and the conclusion is <span class="math display">\[g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) = \frac 1 m \sum_{i=1}^m g_1'(\boldsymbol \theta) h_1(X_i) + \frac 1 n \sum_{i=1}^n g_2'(\boldsymbol \theta) h_2(Y_i) + R_{mn},~~ \sqrt{\max(m,n)} R_{m,n} \overset p \to 0.\]</span></p>
+<p>Solution:</p>
+<p>I define <span class="math inline">\(\boldsymbol \theta = (\theta_1, \theta_2)^T\)</span></p>
+<p><span class="math display">\[ \begin{aligned}
+g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) &amp;= (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g'(\theta_1,\theta_2) + \frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T \\
+\end{aligned}
+\]</span> For some <span class="math inline">\(\boldsymbol \theta^*\)</span> in the neighborhood between <span class="math inline">\(\boldsymbol {\hat  \theta}\)</span> and <span class="math inline">\(\boldsymbol \theta\)</span>. Looking carefully at the first component of the right hand side, <span class="math display">\[ \begin{aligned}
+(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g'(\theta_1,\theta_2) &amp;=
+(\hat \theta_1 - \theta_1)g_1'(\boldsymbol \theta) +(\hat \theta_2 - \theta_2)g_2'(\boldsymbol \theta) \\
+by~ Theorem~5.27&amp;= \left(\frac 1 m \sum_{i=1}^m h_1(X_i) +R_{m1} \right)g_1'(\boldsymbol \theta) +\left(\frac 1 n \sum_{i=1}^n h_2(Y_i) +R_{n2} \right)g_2'(\boldsymbol \theta),~~where~ \substack{\sqrt n R_{n2} \overset p \to 0 \\ \sqrt m R_{m1} \overset p \to 0 } \\
+&amp;= \frac 1 m \sum_{i=1}^m h_1(X_i)  g_1'(\boldsymbol \theta) +\frac 1 n \sum_{i=1}^n h_2(Y_i)  g_2'(\boldsymbol \theta)+R_{m1}g_1'(\boldsymbol \theta)+R_{n2}g_2'(\boldsymbol \theta)
+\end{aligned}
+\]</span> Combining this with the second component, we get:</p>
+<p><span class="math display">\[g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) = \frac 1 m \sum_{i=1}^m h_1(X_i)  g_1'(\boldsymbol \theta) +\frac 1 n \sum_{i=1}^n h_2(Y_i)  g_2'(\boldsymbol \theta) + R_{mn}\]</span> where, <span class="math display">\[R_{mn} = R_{m1}g_1'(\boldsymbol \theta)+R_{n2}g_2'(\boldsymbol \theta) + \frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T.\]</span></p>
+<p>Note that <span class="math inline">\(\sqrt m R_{m1}g_1'(\boldsymbol \theta) \overset p \to 0\)</span> and <span class="math inline">\(\sqrt n R_{n2}g_2'(\boldsymbol \theta) \overset p \to 0\)</span> by Slutsky’s Theorem. To finish this prove I only need to show <span class="math inline">\(\frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T \overset p \to 0\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{1}{2}&amp;(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2) g^{(2)}(\boldsymbol \theta^*) (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T = \frac{1}{2}(\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)\begin{pmatrix}g_{11}^{(2)}(\boldsymbol \theta^*) &amp;g_{12}^{(2)}(\boldsymbol \theta^*) \\ g_{21}^{(2)}(\boldsymbol \theta^*) &amp;g_{22}^{(2)}(\boldsymbol \theta^*)\end{pmatrix} (\hat \theta_1  - \theta_1 , \hat \theta_2 - \theta_2)^T \\
+&amp;= \frac{1}{2}\left((\hat \theta_1  - \theta_1)g_{11}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)g_{21}^{(2)}(\boldsymbol \theta^*), (\hat \theta_1  - \theta_1)g_{12}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)g_{22}^{(2)}(\boldsymbol \theta^*)\right) \begin{pmatrix} \hat \theta_1  - \theta_1 \\ \hat \theta_2  - \theta_2\end{pmatrix} \\
+&amp;= \frac{1}{2}\left((\hat \theta_1  - \theta_1)^2g_{11}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{21}^{(2)}(\boldsymbol \theta^*) + (\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{12}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)^2g_{22}^{(2)}(\boldsymbol \theta^*)\right)
+\end{aligned}
+\]</span> We know that <span class="math inline">\(\sqrt m (\hat \theta_1 - \theta_1) \to 0\)</span> and <span class="math inline">\(\sqrt n (\hat \theta_2 - \theta_2) \to 0\)</span>. This implies <span class="math inline">\(\sqrt {\max(m,n)} (\hat \theta_1 - \theta_1) \to 0\)</span> and <span class="math inline">\(\sqrt {\max(m,n)} (\hat \theta_2 - \theta_2) \to 0\)</span>.</p>
+<p>Accordingly, <span class="math inline">\(\max(m,n) (\hat \theta_1 - \theta_1)^2 \to 0\)</span>, <span class="math inline">\(\max(m,n) (\hat \theta_2 - \theta_2)^2 \to 0\)</span>, and <span class="math inline">\(\max(m,n) (\hat \theta_1 - \theta_1)(\hat \theta_2 - \theta_2)  \to 0\)</span>.</p>
+<p>Thus, <span class="math display">\[\frac{\max(m,n)}{2}\left((\hat \theta_1  - \theta_1)^2g_{11}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{21}^{(2)}(\boldsymbol \theta^*) + (\hat \theta_1  - \theta_1)(\hat \theta_2  - \theta_2)g_{12}^{(2)}(\boldsymbol \theta^*) +(\hat \theta_2  - \theta_2)^2g_{22}^{(2)}(\boldsymbol \theta^*)\right) \overset p \to 0\]</span></p>
+<p>I have shown <span class="math display">\[g(\hat \theta_1, \hat \theta_2) - g(\theta_1, \theta_2) = \frac 1 m \sum_{i=1}^m h_1(X_i)  g_1'(\boldsymbol \theta) +\frac 1 n \sum_{i=1}^n h_2(Y_i)  g_2'(\boldsymbol \theta) + R_{mn},\]</span> where <span class="math inline">\(\sqrt{max(m,n)} R_{mn} \overset p \to 0\)</span>.</p>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">5.42</h2>
+<p>Thinking of the <span class="math inline">\(k^{th}\)</span> central moment as a functional, <span class="math inline">\(T_k(F)= \int (t-\mu)^k d F(t)\)</span>, show that the Gateaux derivative is given by <span class="math inline">\(T_k(F;\Delta) = \int \left\{t-T_1(F)\right\}^k d \Delta(t) - T_1(F;\Delta) \int k \left\{t-T_1(F) \right\}^{k-1} d F(t)\)</span>, where <span class="math inline">\(T_1(F;\Delta) = \int t d \Delta(t)\)</span> is the Gateaux derivative for the mean functional diven in Example 5.5.8i (p.253). Then, substitute <span class="math inline">\(\Delta(t)= \delta_x(t)- F(t)\)</span> and obtain <span class="math inline">\(h_k\)</span> given in Theorem 5.24 (p.&nbsp;243).</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+T_k(F) &amp;= \int (t-\mu)^k d F(t) =\int \left(t-\int_s s dF(s)\right)^k dF(t) \\
+\implies T_k(F;\Delta) &amp;= \frac{\partial}{\partial \epsilon} T_k(F+\epsilon \Delta) \bigg|_{\epsilon = 0^+} = \int\frac{\partial}{\partial \epsilon} \left\{ \left(t-\int_s s d\{F(s)+\epsilon \Delta(s) \}\right)^k d \{F(t)+\epsilon \Delta(t) \} \right\}  \bigg|_{\epsilon = 0^+} \\
+&amp;= \int k\left(t-\int_s s d\{F(s)+\epsilon \Delta(s) \}\right)^{k-1}\left(-\int_s s d \Delta(s)\right) d \{F(t)+\epsilon \Delta(t) \} \\
+&amp;~~~~~~~~~~~~~~~~~~~+\left(t-\int_s s d\{F(s)+\epsilon \Delta(s) \}\right)^k d\Delta(t) \bigg|_{\epsilon = 0^+} \\
+&amp;= \int k\left(t-\int_s s dF(s)\right)^{k-1}\left(-\int_s s d \Delta(s)\right) d F(t) +\left(t-\int_s s dF(s)\right)^k d\Delta(t)  \\
+&amp;=\int \left(t-T_1(F)\right)^k d\Delta(t) -T_1(F;\Delta)\int k\left(t-T_1(F)\right)^{k-1} d F(t)   \\
+\end{aligned}
+\]</span> Substituting <span class="math inline">\(\Delta(t)= \delta_x(t)- F(t)\)</span>, and noting that <span class="math inline">\(T_1(F;\Delta) = x-\mu\)</span> <span class="math display">\[
+\begin{aligned}
+&amp;= \int \left(t-T_1(F)\right)^k d\left\{\delta_x(t)- F(t)\right\} -T_1(F;\Delta)\int k\left(t-T_1(F)\right)^{k-1} d F(t) \\
+&amp;= \int \left(t-\mu\right)^k d\delta_x(t)- \int \left(t-\mu\right)^kdF(t) -(x-\mu)\int k\left(t-\mu\right)^{k-1} d F(t) \\
+&amp;= \left(x-\mu\right)^k - \mu_k -k (x-\mu)\mu_{k-1}  
+\end{aligned}
+\]</span> Which is the same <span class="math inline">\(h_k\)</span> given in Theorem 5.24 (p.&nbsp;243).</p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">5.44</h2>
+<p>A location M-estimator may be represented as <span class="math inline">\(T(F_n)\)</span>, where <span class="math inline">\(T(\cdot)\)</span> satisfies <span class="math display">\[\int \psi (t- T(F)) d F(t) = 0,\]</span> and <span class="math inline">\(\psi\)</span> is a known differentiable function. Using implicit differentiation, show that the Gateaux derivative is <span class="math inline">\(T(F;\Delta) = \frac{\int \psi (t- T(F))d\Delta(t)}{\int \psi' (t- T(F))dF(t)}\)</span>, then substitute <span class="math inline">\(\Delta(t) = \delta_x (t) - F(t)\)</span> and obtain the influence function <span class="math inline">\(h(x)\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+0=T(F;\Delta)  &amp;= \frac{\partial}{\partial \epsilon} T(F+\epsilon \Delta) \bigg|_{\epsilon = 0^+}=\frac{\partial}{\partial \epsilon} \int \psi (t- T(F(t)+\epsilon \Delta(t))) d \{F(t)+\epsilon \Delta(t) \}  \bigg|_{\epsilon = 0^+}\\
+&amp;=\int \psi' (t- T(F(t)+\epsilon \Delta(t)))\left(-T'(F(t)+\epsilon \Delta(t))\right)\Delta(t)d \{F(t)+\epsilon \Delta(t) \}  \bigg|_{\epsilon = 0^+}\\
+&amp;~~~~~~~~~~~~~~~~~+\int \psi (t- T(F(t)+\epsilon \Delta(t)))d \Delta(t)  \bigg|_{\epsilon = 0^+}\\
+0&amp;=\int -T'(F(t))\psi' (t- T(F(t)))\Delta(t)dF(t)  +\int \psi (t- T(F(t)))d \Delta(t)
+\end{aligned}
+\]</span> <span class="math display">\[
+\begin{aligned}
+\implies \int T'(F)\psi' (t- T(F))\Delta(t)dF&amp;= \int \psi (t- T(F(t)))d \Delta(t)\\
+\\
+\implies T'(F) = T(F; \Delta) &amp;= \frac{\int \psi (t- T(F))d\Delta(t)}{\int \psi' (t- T(F))dF(t)}
+\end{aligned}
+\]</span> Substituting <span class="math inline">\(\Delta(t) = \delta_x (t) - F(t)\)</span>,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\int \psi (t- T(F))d\Delta(t)}{\int \psi' (t- T(F))dF(t)} &amp;= \frac{\int \psi (t- T(F))d\{\delta_x (t) - F(t)\}}{\int \psi' (t- T(F))dF(t)} \\
+&amp;= \frac{\psi (x- T(F)) - \int \psi (t- T(F))dF(t)}{\int \psi' (t- T(F))dF(t)} \\
+&amp;= \frac{\psi (x- T(F))}{\int \psi' (t- T(F))dF(t)} \\
+\end{aligned}
+\]</span></p>
+<p>Thus, <span class="math inline">\(h(x) = \frac{\psi (x- T(F))}{\int \psi' (t- T(F))dF(t)}\)</span></p>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">5.45</h2>
+<p>One representation of a “smooth” linear combination of order statistics is <span class="math inline">\(T(F_n)\)</span>, where <span class="math inline">\(T(F)= \int_0^1 J(p) F^{-1} (p)dp\)</span>, and <span class="math inline">\(J\)</span> is a weighting function. Using the results in Example 5.5.8j (p.&nbsp;254), find the influence function <span class="math inline">\(h(x)\)</span>.</p>
+<p>Solution:</p>
+<p><span class="math display">\[
+\begin{aligned}
+T(F)&amp;= \int_0^1 J(p) F^{-1} (p)dp \\
+T(F;\Delta)  &amp;= \frac{\partial}{\partial \epsilon} T(F+\epsilon \Delta) \bigg|_{\epsilon=0^+} \\
+&amp;= \frac{\partial}{\partial \epsilon} \int_0^1 J(p) (F+\epsilon \Delta)^{-1} (p)dp \bigg|_{\epsilon=0^+} \\
+&amp;=\int_0^1 \left[\frac{\partial}{\partial \epsilon} \{J(p)\} (F+\epsilon \Delta)^{-1} (p)\right] +\left[ J(p) \frac{\partial}{\partial \epsilon}\{(F+\epsilon \Delta)^{-1} (p)\}\right]dp \bigg|_{\epsilon=0^+} \\
+&amp;=\int_0^1  J(p) \frac{\partial}{\partial \epsilon}\{(F+\epsilon \Delta)^{-1} (p)\}dp \bigg|_{\epsilon=0^+} \\
+&amp;=-\int_0^1  J(p) \frac{\Delta (p)}{F'(p)} dp ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \text{by Example 5.5.8j results}\\
+\end{aligned}
+\]</span> Setting <span class="math inline">\(\Delta(p) =  \delta_{x}(p) - F(p)\)</span> <span class="math display">\[
+\begin{aligned}
+h(x) &amp;= -\int_0^1  J(p) \frac{\Delta (p)}{F'(p)} dp \\
+&amp;= -\int_0^1  J(p) \frac{\delta_{x}(p) - F(p)}{F'(p)} dp \\
+&amp;= \int_0^1  J(p) \frac{F(p)-\delta_{x}(p)}{F'(p)} dp
+\end{aligned}
+\]</span></p>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">5.48</h2>
+<p>Use Theorem 5.4 (p.&nbsp;219), the univariate CLT and Theorem 5.31 (p.&nbsp;256) to prove Theorem 5.7 (p.&nbsp;255, the multivariate CLT). Perhaps it is easier to use an alternate statement of the conclusion of the univariate CLT than given in Theorem 5.4: <span class="math inline">\(\sqrt n (\bar X - \mu) \overset d \to Y\)</span>, where <span class="math inline">\(Y \sim N(0,\sigma^2)\)</span>.</p>
+<p>Solution:</p>
+<p>CLT: <span class="math inline">\(\sqrt n (\bar X - \mu ) \overset d \to Y, Y \sim N(0,\sigma^2)\)</span>.</p>
+<p>Cramer-Wold Device: <span class="math inline">\(\mathbf Y_n \overset d \to \mathbf Y\)</span> iff <span class="math inline">\(\mathbf c^T \mathbf Y_n \overset d \to \mathbf c ^T \mathbf Y ,~ \forall \mathbf c \in \mathbb R^K\)</span>.</p>
+<p>Proof: Let <span class="math inline">\(\mathbf{X_1,\dots, X_n}\)</span> be iid random k-vectors with finite mean <span class="math inline">\(E(\mathbf X_1)= \boldsymbol \mu\)</span> and covariance matrix <span class="math inline">\(\boldsymbol \Sigma\)</span>.</p>
+<p>Consider a vector <span class="math inline">\(\mathbf c \in \mathbb R ^k\)</span>. Then <span class="math inline">\(\mathbf c^T \mathbf X_n\)</span> is some scalar and <span class="math display">\[E(\mathbf c^T \mathbf X_n) = \mathbf c^T E(\mathbf X_n) = \mathbf c^T \boldsymbol  \mu\]</span> <span class="math display">\[Var(\mathbf c^T \mathbf X_n) = \mathbf c^T Var(\mathbf X_n) \mathbf c = \mathbf c^T \boldsymbol \Sigma \mathbf c\]</span> Thus, by the CLT (scalar case):</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sqrt n \left(\frac {\sum_{i=1}^n \mathbf c^T \mathbf X_i}{n} - \mathbf c^T \boldsymbol  \mu \right) &amp;\overset d \to W,~~~~W \sim N(0,\mathbf c^T \boldsymbol \Sigma \mathbf c) \\
+\implies \mathbf c^T \sqrt n \left(\frac {\sum_{i=1}^n\mathbf X_i}{n} - \boldsymbol  \mu \right)&amp; \overset d \to \mathbf c^T Y,~~~~Y \sim N(0, \boldsymbol \Sigma) &amp;\text{by properties of normal distribution}\\
+\implies \sqrt n \left(\mathbf {\bar X} - \boldsymbol  \mu \right)&amp; \overset d \to \mathbf Y,~~~~Y \sim MVN(\mathbf 0, \boldsymbol \Sigma) &amp; \text{by Cramer-Wold Device}
+\end{aligned}
+\]</span> </p>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">5.52</h2>
+<p>Consider a Gauss-Markov linear model <span class="math inline">\(\mathbf{Y= X} \boldsymbol{\beta} + \boldsymbol{\epsilon}\)</span> where <span class="math inline">\(\mathbf Y\)</span> is <span class="math inline">\(n \times 1\)</span>, the components of <span class="math inline">\(\mathbf e = (e_1,\dots, e_n)^T\)</span> are <span class="math inline">\(iid(0,\sigma^2)\)</span>, and <span class="math inline">\(\mathbf X\)</span> is <span class="math inline">\(n \times p_n\)</span>. Note that the number of predictors, <span class="math inline">\(p_n\)</span> depends on <span class="math inline">\(n\)</span>. Let <span class="math inline">\(\mathbf{H=X(X^TX)^{-1}X^T}\)</span> denote the projection (or “hat”) matrix with entries <span class="math inline">\(h_{i,j}\)</span>. Note that <span class="math inline">\(h_{i,j}\)</span> also depend on <span class="math inline">\(n\)</span>. We are interested in the asymptotic properties of the <span class="math inline">\(i^{th}\)</span> residual, <span class="math inline">\(Y_i- \hat{Y}_i\)</span>, from this regression model, for a fixed <span class="math inline">\(i\)</span>. Prove that if <span class="math inline">\(n\)</span> and <span class="math inline">\(p_n \to \infty\)</span> such that <span class="math inline">\(h_{i,i} \to c_i\)</span> for some <span class="math inline">\(0\leq c_i &lt;1\)</span>, and <span class="math inline">\(\max_{\overset{1\leq j \leq n}{j\neq i}} |h_{i,j}| \to 0\)</span>, then <span class="math inline">\(Y_i- \hat{Y}_i \overset d \to (1-c_i)e_i+\{(1-c_i)c_i\}^{1/2}\sigma Z\)</span>, where <span class="math inline">\(Z\)</span> is a standard normal random variable independent of <span class="math inline">\(e_i\)</span>. There is a hint in the textbook.</p>
+<p>Solution:</p>
+<p><span class="math display">\[\begin{aligned}
+Y_i - \hat{Y}_i &amp;=  Y_i - HY_i \\
+&amp;= \mathbf{(I-H)Y}_i\\
+&amp;= \mathbf{(I-H)(X \boldsymbol \beta + e)}_i \\
+&amp;=\mathbf{[(IX-HX) \boldsymbol \beta + (I-H)e]}_i\\
+&amp;=\mathbf{[(X-X(X^TX)^{-1}X^TX) \boldsymbol \beta + (I-H)e]}_i \\
+&amp;=\mathbf{[(I-H)e]}_i \\
+&amp;= \left[\mathbf e - \begin{bmatrix} h_{1,1} &amp; \dots &amp; h_{1,n} \\
+\vdots &amp;\ddots &amp;\vdots \\
+h_{n1} &amp; \dots &amp;h_{n,n}
+\end{bmatrix} \begin{pmatrix} e_1 \\ \vdots \\e_n \end{pmatrix} \right]_i\\
+&amp;= e_i - \sum_{j=1}^n h_{i,j}e_i \\
+&amp;= (1-h_{i,i})e_i - \sum_{j=1, i \neq j}^n h_{i,j}e_i
+\end{aligned}\]</span></p>
+<p>From Slutsky’s <span class="math inline">\((1-h_{i,i})e_i \overset d \to (1-c_i) e_i\)</span>.</p>
+<p>So I need to figure out what <span class="math inline">\(\sum_{j=1, i \neq j}^n h_{i,j}e_i\)</span> converges to. This is a double-array, so I will need to use the Lindberg Condition, which requires the variance to be finite and the mean to be zero. The mean is zero by Slutsky’s Theorem.</p>
+<p>So, to show the variance is finite I can compute the variance.</p>
+<p>First, I want to show <span class="math inline">\(\mathbf H\)</span> is idempotent:</p>
+<p><span class="math display">\[\begin{aligned}
+\mathbf H^2 &amp;= \mathbf{[X(X^TX)^{-1}X^T][X(X^TX)^{-1}X^T]} \\
+&amp;=\mathbf{X(X^TX)^{-1}X^TX(X^TX)^{-1}X^T} \\
+&amp;=\mathbf{X(X^TX)^{-1}X^T} \\
+&amp;= \mathbf H
+\end{aligned}\]</span></p>
+<p>Thus,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf H^2  &amp;= \begin{bmatrix} h_{1,1} &amp; \dots &amp; h_{1,n} \\
+\vdots &amp;\ddots &amp;\vdots \\
+h_{n1} &amp; \dots &amp;h_{n,n}
+\end{bmatrix} \begin{bmatrix} h_{1,1} &amp; \dots &amp; h_{1,n} \\
+\vdots &amp;\ddots &amp;\vdots \\
+h_{n1} &amp; \dots &amp;h_{n,n}
+\end{bmatrix}\\
+&amp;=\begin{bmatrix} \sum_{i=1}^n h_{1,i}^2 &amp; \sum_{i=1}^n h_{1,i}h_{2,i}  &amp;\dots &amp; \sum_{i=1}^n h_{1,i}h_{n,i} \\
+\vdots &amp;\ddots &amp;&amp;\vdots \\
+\sum_{i=1}^n h_{n,i}h_{1,i}  &amp;&amp; \dots &amp;\sum_{i=1}^n h_{n,i}^2
+\end{bmatrix} \\
+&amp;= \mathbf H =  \begin{bmatrix} h_{1,1} &amp; \dots &amp; h_{1,n} \\
+\vdots &amp;\ddots &amp;\vdots \\
+h_{n1} &amp; \dots &amp;h_{n,n}
+\end{bmatrix}
+\end{aligned}
+\]</span></p>
+<p>From the main diagonal, it is clear that <span class="math inline">\(\sum_{i=1}^n{h_{j,i}^2}=h_{j,j}\)</span>.</p>
+<p>Thus, <span class="math inline">\(\sum_{i=1}^n{h_{j,i}^2} = h_{i,i}^2+\sum_{i=1,i\neq j}^n{h_{i,j}^2}=h_{i,i}\)</span> and <span class="math inline">\(\sum_{i=1,i\neq j}^n{h_{i,j}^2} = h_{i,i} -h_{i,i}^2\)</span>.</p>
+<p>Therefore, because of independence, <span class="math display">\[ \begin{aligned}
+Var \left( \sum_{i=1,i\neq j}^n h_{i,j} e_j  \right) &amp;= (h_{i,i} -h_{i,i}^2)Var(e_j) \\
+&amp;=(h_{i,i} -h_{i,i}^2)\sigma^2
+\end{aligned}
+\]</span></p>
+<p>Now that I have shown the variance is finite, and it is clear that the mean <span class="math inline">\(E(h_{i,j} e_j) =0\)</span>, I can move on to setting up the Lindeberg-Feller Condition.</p>
+<p>I will define <span class="math inline">\(X_{j,i} = \frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}\)</span>, (denominator is just the sqrt of variance found earlier)</p>
+<p><span class="math display">\[
+\begin{aligned}
+\lim_{n \to \infty} \sum_{j=1, i \neq j}^n  E\left[X_{j,i}^2 I(|X_{j,i}|&gt; \delta)\right]
+&amp;=\lim_{n \to \infty} \sum_{j=1, i \neq j}^n  E\left[\left(\frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}\right)^2 I\left(\left|\frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}\right| &gt; \delta\right)\right] \\
+&amp;=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n E\left[h_{i,j}^2e_i^2 I\left(\left|h_{i,j}e_i\right| &gt; \delta \left|\sigma\sqrt{h_{i,i}-h_{i,i}^2} \right| \right)\right] \\
+&amp;=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2E\left[e_i^2 I\left(\left|e_i\right| &gt; \frac{\delta \left|\sigma\sqrt{h_{i,i}-h_{i,i}^2} \right|}{|h_{i,j}|}\right)\right] \\
+\end{aligned}
+\]</span></p>
+<p>Noting that if <span class="math inline">\(\max_{\overset{1\leq j \leq n}{j\neq i}} |h_{i,j}| \to 0\)</span>, then all <span class="math inline">\(|h_{i,j}| \to 0\)</span>. Therefore, we get:</p>
+<p><span class="math display">\[\begin{aligned}
+&amp;\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2E\left[e_i^2 I\left(\left|e_i\right| &gt; \frac{\delta \left|\sigma\sqrt{c_i-c_i^2} \right|}{|h_{i,j}|}\right)\right]\\
+&amp;=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2E\left[e_i^2 I\left(\left|e_i\right| &gt; \infty \right)\right] \\
+&amp;=\frac{1}{\sigma^2(c_i-c_i^2)}\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}^2 \cdot 0 \\
+&amp;= 0
+\end{aligned}\]</span></p>
+<p>Therefore, by Lindberg-Feller, <span class="math inline">\(\lim_{n \to \infty} \sum_{j=1, i \neq j}^n \frac{h_{i,j}e_i}{\sigma\sqrt{h_{i,i}-h_{i,i}^2}}  \overset d \to N(0,1)\)</span>,</p>
+<p>And so, <span class="math inline">\(\lim_{n \to \infty} \sum_{j=1, i \neq j}^n h_{i,j}e_i \overset d \to N(0,(c_i -c_i^2)\sigma^2)\)</span></p>
+<p>Thus, <span class="math inline">\(Y_i- \hat{Y}_i \overset d \to (1-c_i)e_i+\{(1-c_i)c_i\}^{1/2}\sigma Z\)</span>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/ch3.html" class="pagination-link" aria-label="Chapter 3: Likelihood-Based Tests and Confidence Regions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Chapter 3: Likelihood-Based Tests and Confidence Regions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/ch6.html" class="pagination-link" aria-label="Chapter 6: Large Sample Results for Likelihood-Based Methods">
+        <span class="nav-page-text"><span class="chapter-title">Chapter 6: Large Sample Results for Likelihood-Based Methods</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
