@@ -5,7 +5,7 @@ bibliography: references.bib
 ---
 
 ## Publications {#publications}
-Hartsell SE, Wei G, Singh R, **Throolin M**, Nevers MR, Sarwal A, Derington CG, Curtis C, Boucher RE, Shen J, Drakos SG, Greene T, Beddhu S. Comparative Effectiveness of SGLT2i and GLP-1 RA on Kidney and Cardiovascular Outcomes by Kidney Failure Risk. *Journal of the American Society of Nephrology*. 2026;():. doi: [10.1681/ASN.0000001016](https://doi.org/10.1681/ASN.0000001016)
+Hartsell SE, Wei G, Singh R, **Throolin M**, Nevers MR, Sarwal A, Derington CG, Curtis C, Boucher RE, Shen J, Drakos SG, Greene T, Beddhu S. Comparative Effectiveness of SGLT2i and GLP-1 RA on Kidney and Cardiovascular Outcomes by Kidney Failure Risk. *Journal of the American Society of Nephrology*. Published online January 13, 2026. doi: [10.1681/ASN.0000001016](https://doi.org/10.1681/ASN.0000001016)
 
 Derington CG, Sarwal A, Wei G, Hartsell SE, **Throolin M**, Singh R, Nevers MR, Katkam N, Takyi A, Chakravartula A, Babu P, Deshmukh VG, Boucher RE, Drakos S, Greene T, Shen J, Beddhu S. Liraglutide vs Semaglutide vs Dulaglutide in Veterans With Type 2 Diabetes. *JAMA Network Open* 2025;8(10):e2537297. doi: [10.1001/jamanetworkopen.2025.37297](https://doi.org/10.1001/jamanetworkopen.2025.37297).
 
