@@ -17,6 +17,7 @@ Jacobson BT, DeWit-Dibbert J, Selong ET, Quirk M, **Throolin M**, Corona C, Sona
 
 <!-- [Selected Solutions to Boos and Stefanski](/documents/BoosStefanski/index.html){:target="_blank"} -->
 Selected Solutions to Boos and Stefanski (temporarily unavailable due to an ongoing class)
+
 [Selected Solutions to Boos and Stefanski]({{ site.baseurl }}/documents/BoosStefanski/){:target="_blank"}
 
 [The Impact of Neurobehavior on Feeding Outcomes in Neonates with CHD](neonate_feeding.html){:target="_blank"}
