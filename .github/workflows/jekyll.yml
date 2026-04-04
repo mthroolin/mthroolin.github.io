@@ -57,7 +57,7 @@ jobs:
             Rscript -e 'install.packages("renv"); renv::restore(project = "documents/BoosStefanskiQMD")'
           else
             # Install common packages needed for Quarto rendering
-            Rscript -e 'install.packages(c("knitr", "rmarkdown", "tidyverse", "ggplot2", "kableExtra", "numDeriv"), repos = "https://cloud.r-project.org")'
+            Rscript -e 'install.packages(c("kableExtra", "numDeriv"), repos = "https://cloud.r-project.org")'
           fi
 
       # 6. Render the Boos & Stefanski Quarto project to HTML (only if BoosStefanskiQMD changed)
