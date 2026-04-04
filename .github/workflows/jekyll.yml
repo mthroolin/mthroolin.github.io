@@ -18,22 +18,36 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      # 1. Check out the repo
+      # 1. Check out the repo (with fetch-depth 2 to detect changes)
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-      # 2. Install Quarto
+      # 2. Detect if BoosStefanskiQMD folder has changes
+      - name: Check for BoosStefanskiQMD changes
+        id: check_boosstefanski
+        run: |
+          if git diff --name-only HEAD~1 HEAD -- 'documents/BoosStefanskiQMD/' | grep -q .; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      # 3. Install Quarto
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      # 3. Install R
+      # 4. Install R (only if BoosStefanskiQMD changed)
       - name: Setup R
+        if: steps.check_boosstefanski.outputs.changed == 'true'
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.4.1'
 
-      # 4. Install R package dependencies
+      # 5. Install R package dependencies (only if BoosStefanskiQMD changed)
       - name: Install R packages
+        if: steps.check_boosstefanski.outputs.changed == 'true'
         run: |
           # Install system dependencies commonly needed by R packages
           sudo apt-get update
@@ -46,8 +60,9 @@ jobs:
             Rscript -e 'install.packages(c("knitr", "rmarkdown", "tidyverse", "ggplot2", "kableExtra", "numDeriv"), repos = "https://cloud.r-project.org")'
           fi
 
-      # 5. Render the Boos & Stefanski Quarto project to HTML
+      # 6. Render the Boos & Stefanski Quarto project to HTML (only if BoosStefanskiQMD changed)
       - name: Render Boos and Stefanski QMD
+        if: steps.check_boosstefanski.outputs.changed == 'true'
         run: |
           cd documents/BoosStefanskiQMD
           quarto render --output-dir _output
@@ -57,24 +72,24 @@ jobs:
           mkdir -p documents/BoosStefanski
           cp -r documents/BoosStefanskiQMD/_output/* documents/BoosStefanski/
 
-      # 6. Setup Ruby and install gems (for jekyll-scholar, etc.)
+      # 7. Setup Ruby and install gems (for jekyll-scholar, etc.)
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
 
-      # 7. Configure GitHub Pages
+      # 8. Configure GitHub Pages
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      # 8. Build the Jekyll site
+      # 9. Build the Jekyll site
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl ""
         env:
           JEKYLL_ENV: production
 
-      # 9. Upload the built site as a Pages artifact
+      # 10. Upload the built site as a Pages artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
