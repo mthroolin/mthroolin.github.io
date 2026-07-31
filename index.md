@@ -12,7 +12,7 @@ My love for mathematical modeling began at the University of Washington, where I
 
 Between undergraduate and graduate study, I worked as a teaching aide for Johns Hopkins Center for Talented Youth (CTY) and founded a homeschool math club, where I taught topology, combinatorics, and game theory. During two years of church service in Portugal I developed a bilingual mathematical vocabulary to continue tutoring students in mathematics. It was while I was in Portugal that I decided I wanted to persue a career in statistics, so I began self-studying mathematical statistics in preparation for graduate study.
 
-I earned an MS in Statistics at Montana State University, where I collaborated with microbiologists on experiments in antimicrobial susceptibility and livestock infection. Over the summary I returned to the Johns Hopkins Center for Talented Youth as an instructor for a course entitled Paradoxes and Infinities. My culminating project at Montana State was an introduction to directed acyclic graphs and Markov equivalence in causal inference.
+I earned an MS in Statistics at Montana State University, where I collaborated with microbiologists on experiments in antimicrobial susceptibility and livestock infection. Over the summer, I returned to the Johns Hopkins Center for Talented Youth as an instructor for a course entitled Paradoxes and Infinities. My culminating project at Montana State was an introduction to directed acyclic graphs and Markov equivalence in causal inference.
 
 At the University of Utah, I joined the Department of Population Health Sciences as a research assistant, consulting on nephrology and cardiology projects while advancing my methodological research.
 
